@@ -806,21 +806,20 @@ $btn-mb: 0.5rem;
   }
 
   .sidebar-bottom {
-    padding-left: 2rem;
-    padding-right: 1rem;
+    padding-left: 3rem;
+    padding-right: 2rem;
     margin-bottom: 1.5rem;
 
-    $btn-size: 1.75rem;
+    $btn-size: 2.5rem;
 
     %button {
       width: $btn-size;
       height: $btn-size;
-      margin-bottom: $btn-mb; // multi line gap
+      margin: $btn-mb; // multi line gap
       border-radius: 50%;
       color: var(--sidebar-btn-color);
       background-color: var(--sidebar-btn-bg);
       text-align: center;
-      display: flex;
       align-items: center;
       justify-content: center;
 
