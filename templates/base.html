@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="font-montserrat ">
+<html lang="en" class="font-montserrat dark">
 
 <head>
   <meta charset="utf-8">
   <title>MyBlog</title>
   <link rel="stylesheet" href="/reset.css">
-  <link rel="stylesheet" href="/main.css">
   <link rel="stylesheet" href="/output.css">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,11 +15,46 @@
 </head>
 
 <body>
-  <section class="section">
+  <section id="section-navbar" class="sticky top-0">
+    <div>
+      <!-- Theme -->
+      <div id="theme" class="flext flex-row items-center p-[1rem]">
+        <button class="flex items-center w-[5rem] h-[2.5rem] rounded-full 
+          bg-c05 text-c00 
+          transition duration-[250ms] focus:outline-none shadow" onclick="switch_theme()">
+          <div id="theme-switcher" class="relative text-[1.5rem] mx-[0.6rem] transition duration-[250ms]">
+            <i class="fa-solid fa-moon"></i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="">
     <div>
       {% block content %} {% endblock %}
     </div>
   </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    localStorage.theme = "dark";
+    function switch_theme() {
+      "dark" == ([...document.documentElement.classList].includes("dark") ? "dark" : "light") ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+  </script>
 </body>
 
 </html>
