@@ -2,92 +2,95 @@
 
 {% block content %}
 <!-- Spash Screen -->
-<div class="flex flex-col items-center w-screen h-screen">
-  <div class="grow"></div>
-  <div class="grow-0 flex flex-col items-center text-center justify-center space-y-[3rem]">
-    <!-- Photo -->
-    <div id="photo"
-      class="relative top-[2rem] overflow-hidden w-[20rem] h-[20rem] border-solid border-4 rounded-full border-c07">
-      <img class="relative top-[-2rem]" src="mhs-photo.png" />
-    </div>
-    <!-- Name-->
-    <div id="name" class="flex flex-row space-x-8 text-8xl">
-      <h1 class="font-bold"> Martí </h1>
-      <div class="flex flex-row font-extrabold">
-        <h1 class="text-c08"> H </h1>
-        <h1 class="text-c09"> O </h1>
-        <h1 class="text-c0a"> M </h1>
-        <h1 class="text-c0b"> S </h1>
-        <h1> &nbsp; </h1>
-        <h1 class="text-c0b"> S </h1>
-        <h1 class="text-c0c"> O </h1>
-        <h1 class="text-c0d"> L </h1>
-        <h1 class="text-c0e"> E </h1>
-        <h1 class="text-c0f"> R </h1>
+<div class="absolute top-0 w-screen h-screen">
+  <div class="flex flex-col items-center w-full h-full">
+    <div class="grow"></div>
+    <div class="flex flex-col items-center text-center justify-center space-y-[1rem]">
+      <!-- Photo -->
+      <div id="photo" class="relative top-[2rem] overflow-hidden 
+      w-[20rem] h-[20rem] 
+      border-solid border-4 rounded-full border-c07 
+      z-20">
+        <img class="relative top-[-2rem]" src="images/mhs-photo.png" />
+      </div>
+      <!-- Name-->
+      <div id="name" class="flex flex-row space-x-8 text-8xl pt-[3rem]">
+        <h1 class="font-bold"> Martí </h1>
+        <div class="flex flex-row font-extrabold">
+          <h1 class="text-c08"> H </h1>
+          <h1 class="text-c09"> O </h1>
+          <h1 class="text-c0a"> M </h1>
+          <h1 class="text-c0b"> S </h1>
+          <h1> &nbsp; </h1>
+          <h1 class="text-c0b"> S </h1>
+          <h1 class="text-c0c"> O </h1>
+          <h1 class="text-c0d"> L </h1>
+          <h1 class="text-c0e"> E </h1>
+          <h1 class="text-c0f"> R </h1>
+        </div>
+      </div>
+      <!-- Interests -->
+      <!-- <div id="interests" class="space-y-[0.25rem] text-2xl font-bold"> -->
+      <div id="interests" class="grid grid-cols-2 gap-[0.75rem] text-3xl font-bold">
+        <h2> 🏢 Co-Founder @ Histolution </h2>
+        <h2> 🦀 Rust Developer </h2>
+        <h2> ⌨️ Ergo-Split Keyboard Snob </h2>
+        <h2> 🎲 Forever GM </h2>
+        <h2> ❄️ I use NixOS BTW</h2>
+        <h2> 💀 OSR Enthusiast </h2>
+      </div>
+      <!-- Links -->
+      <div id="links" class="flex flex-row space-x-32 text-2xl pt-[2rem]">
+        <a class="text-c09" href="mailto:martihomssoler@gmail.com">
+          <i class="fa-solid fa-envelope fa-2x"></i>
+        </a>
+        <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
+          <i class="fa-brands fa-linkedin fa-2x"></i>
+        </a>
+        <a class="text-c0e" href="https://github.com/martihomssoler">
+          <i class="fa-brands fa-github-alt fa-2x"></i>
+        </a>
+      </div>
+      <!-- Sections -->
+      <div id="sections" class="text-lg font-bold">
+        <!-- Down ==> About -->
+        <!-- <a href="/about"> -->
+        <!-- <div class="absolute w-screen bottom-[1rem] -translate-x-1/2"> -->
+        <!-- <div class="flex flex-col text-center space-y-[-0.25rem] animate-bounce"> -->
+        <!-- <h3 class="">About</h3> -->
+        <!-- <i class="fa-solid fa-chevron-down text-c0d text-4xl font-extrabold"></i> -->
+        <!-- </div> -->
+        <!-- </div> -->
+        <!-- </a> -->
+        <!-- Right ==> Tech Articles -->
+        <a href="/tech">
+          <div class="absolute h-[25vh] right-[1rem] top-0 translate-y-[200%]">
+            <div class="-rotate-90">
+              <div class="text-center animate-bounce">
+                <h3 class="rotate-90">
+                  Tech Articles
+                  <i class="fa-solid fa-chevron-right text-c09 text-4xl font-extrabold translate-y-[0.5rem]"></i>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="/blog">
+          <div class="absolute h-[25vh] left-[1rem] top-0 translate-y-[200%]">
+            <div class="rotate-90">
+              <div class="flex flex-col text-center animate-bounce">
+                <h3 class="-rotate-90">
+                  <i class="fa-solid fa-chevron-left text-c0e text-4xl font-extrabold translate-y-[0.5rem]"></i>
+                  RPG Blog
+                </h3>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
-    <!-- Interests -->
-    <div id="interests" class="space-y-4 text-4xl font-bold">
-      <h2> 🏢 Co-Founder @ Histolution </h2>
-      <h2> 🦀 Rust Developer </h2>
-      <h2> ⌨️ Ergo-Split Keyboard Snob </h2>
-      <h2> 🎲 Forever GM </h2>
-      <h2> 💀 OSR Enthusiast </h2>
-      <h2> ❄️ I use NixOS BTW</h2>
-    </div>
-    <!-- Links -->
-    <div id="links" class="flex flex-row space-x-32 text-2xl pb-[3rem]">
-      <a class="text-c09" href="mailto:martihomssoler@gmail.com">
-        <i class="fa-solid fa-envelope fa-2x"></i>
-      </a>
-      <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
-        <i class="fa-brands fa-linkedin fa-2x"></i>
-      </a>
-      <a class="text-c0e" href="https://github.com/martihomssoler">
-        <i class="fa-brands fa-github-alt fa-2x"></i>
-      </a>
-    </div>
-
-    <!-- Sections -->
-    <div id="sections" class="text-xl font-bold">
-      <!-- Down ==> About -->
-      <a href="/about">
-        <div class="absolute w-screen bottom-[1rem] -translate-x-1/2">
-          <div class="flex flex-col text-center space-y-[-0.25rem] animate-bounce">
-            <h3 class="">About</h3>
-            <i class="fa-solid fa-chevron-down text-c0d text-4xl font-extrabold"></i>
-          </div>
-        </div>
-      </a>
-      <!-- Right ==> Tech Articles -->
-      <a href="/tech">
-        <div class="absolute h-[25vh] right-[1rem] top-0 translate-y-[200%]">
-          <div class="-rotate-90">
-            <div class="text-center animate-bounce">
-              <h3 class="rotate-90">
-                Tech Articles
-                <i class="fa-solid fa-chevron-right text-c09 text-4xl font-extrabold translate-y-[0.5rem]"></i>
-              </h3>
-            </div>
-          </div>
-        </div>
-      </a>
-      <!-- <h3 class="">RPG Blog</h3> -->
-      <a href="/blog">
-        <div class="absolute h-[25vh] left-[1rem] top-0 translate-y-[200%]">
-          <div class="rotate-90">
-            <div class="flex flex-col text-center animate-bounce">
-              <h3 class="-rotate-90">
-                <i class="fa-solid fa-chevron-left text-c0e text-4xl font-extrabold translate-y-[0.5rem]"></i>
-                RPG Blog
-              </h3>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
+    <div class="grow"></div>
   </div>
-  <div class="grow"></div>
 </div>
 
 <!-- Language -->

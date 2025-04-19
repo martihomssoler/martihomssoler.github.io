@@ -15,10 +15,12 @@
 </head>
 
 <body>
-  <section id="section-navbar" class="sticky top-0">
-    <div>
-      <!-- Theme -->
-      <div id="theme" class="flext flex-row items-center p-[1rem]">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="sticky top-0 z-10">
+    <div class="absolute w-screen bg-c00 border-solid border-b-4 border-c07">
+      <!-- Navbar -->
+      <div id="navbar" class="flex flex-row justify-center items-center p-[1rem]">
+        <!-- Theme -->
         <button class="flex items-center w-[5rem] h-[2.5rem] rounded-full 
           bg-c05 text-c00 
           transition duration-[250ms] focus:outline-none shadow" onclick="switch_theme()">
@@ -26,10 +28,18 @@
             <i class="fa-solid fa-moon"></i>
           </div>
         </button>
+        <!-- Breadcrumbs -->
+        <div class="grow">
+          <div class="flex flex-row items-center justify-center space-x-[0.2rem]">
+            {% block breadcrumbs %} {% endblock %}
+          </div>
+        </div>
+        <!-- Language -->
+        <div class="w-[5rem]"> </div>
       </div>
     </div>
   </section>
-  <section id="section-content" class="">
+  <section id="section-content" class="pt-[3rem]">
     <div>
       {% block content %} {% endblock %}
     </div>

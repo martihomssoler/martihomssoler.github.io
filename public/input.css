@@ -32,14 +32,14 @@
   --c05: from #383a42 r g b;
   --c06: from #202227 r g b;
   --c07: from #090a0b r g b;
-  --c08: from #ca1243 r g b;
-  --c09: from #d75f00 r g b;
-  --c0a: from #c18401 r g b;
-  --c0b: from #50a14f r g b;
-  --c0c: from #0184bc r g b;
-  --c0d: from #4078f2 r g b;
-  --c0e: from #a626a4 r g b;
-  --c0f: from #986801 r g b;
+  --c08: from #e06c75 r g b;
+  --c09: from #d19a66 r g b;
+  --c0a: from #e5c07b r g b;
+  --c0b: from #98c379 r g b;
+  --c0c: from #56b6c2 r g b;
+  --c0d: from #61afef r g b;
+  --c0e: from #c678dd r g b;
+  --c0f: from #be5046 r g b;
 }
 
 .prose {
@@ -127,6 +127,6 @@
 }
 
 #links a {
-  @apply border-solid border-2 rounded-full p-2 w-[5rem] h-[5rem] flex flex-col items-center justify-center;
+  @apply border-solid border-[3px] rounded-full w-[5rem] h-[5rem] flex flex-col items-center justify-center;
   @apply hover:scale-125 hover:rotate-[15deg] duration-[150ms] ease-in-out;
 }

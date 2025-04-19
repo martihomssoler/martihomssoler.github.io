@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+<a class="text-c0d font-bold underline" href="/">Home</a>
+{% set_global path = "" %}
+{% for ancestor in section.components %}
+{% set_global path = path ~ "/" ~ ancestor %}
+<p class="text-c0d font-bold"> / </p>
+<a class="text-c0d font-bold underline" href="{{path}}"> {{ancestor | replace(from="-", to=" ") | title}} </a>
+{% endfor %}
+
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+<div class="flex flex-col items-center text-center pt-12 pb-6 space-y-4">
+  <h1 class="text-5xl font-extrabold w-[75rem] ">
+    {{ section.title }}
+  </h1>
+  <p class="text-xl font-mono w-[75rem] "> {{ section.description }} </p>
+</div>
+<div class="grid grid-cols-3 gap-[2rem] px-[6rem] py-[2rem]">
+  <!-- If you are using pagination, section.pages will be empty.
+       You need to use the paginator object -->
+  {% for page in section.pages %}
+  <a href="{{ page.permalink | safe }}">
+    <div class="p-[1rem] rounded-xl space-y-[1rem] text-sm
+      bg-c01 border-solid border-[4px] border-c04 
+      hover:bg-c02 hover:border-c0d hover:scale-[1.05]
+      duration-[200ms]">
+      <p class="text-base text-center"> {{ page.title }} </p>
+      <!-- Publishing Date -->
+      <p class="grow font-mono text-left text-center">
+        <i class="fa-solid fa-calendar pr-[0.75rem] "></i>
+        {{ page.date | date(format="%A %-d %B %Y", timezone="Europe/Berlin") }}
+      </p>
+      <!-- Word Cound and Reading Time -->
+      <div class="flex flex-row">
+        <p class="grow font-mono text-left">
+          <i class="fa-solid fa-pencil pr-[0.3rem]"></i>
+          {{ page.word_count }} words
+        </p>
+        <p class="grow font-mono text-right">
+          <i class="fa-regular fa-clock pr-[0.3rem]"></i>
+          {{ page.reading_time }} min
+        </p>
+      </div>
+      <!-- Content Preview -->
+      <p class="text-justify"> "{{ page.content | striptags | truncate(length=500)}}" </p>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock content %}
