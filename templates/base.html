@@ -48,26 +48,24 @@
   <script>
     const theme_switcher = document.querySelector('#theme-switcher');
     function theme_switch() {
-      localStorage.theme = localStorage.theme == "dark" ? "light" : "dark";
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
       theme_set();
     }
     function theme_set() {
-      <!-- "dark" == ([...document.documentElement.classList].includes("dark") ? "dark" : "light") ? -->
-
-      localStorage.theme == "dark" ?
-        (
-          localStorage.theme = "dark",
-          document.documentElement.classList.add("dark"),
-          document.documentElement.classList.remove("light"),
-          theme_switcher.classList.remove('translate-x-[2.2rem]'),
-          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
-        ) :
+      localStorage.theme == "light" ?
         (
           localStorage.theme = "light",
           document.documentElement.classList.remove("dark"),
           document.documentElement.classList.add("light"),
           theme_switcher.classList.add('translate-x-[2.2rem]'),
           setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
         )
     }
     theme_set();
