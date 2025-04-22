@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/reset.css">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="sticky top-0 z-10">
+    <div class="absolute w-screen bg-c00 border-solid border-b-4 border-c07">
+      <!-- Navbar -->
+      <div id="navbar" class="flex flex-row justify-center items-center p-[1rem]">
+        <!-- Theme -->
+        <button class="flex items-center w-[5rem] h-[2.5rem] rounded-full 
+          bg-c05 text-c00 
+          transition duration-[250ms] focus:outline-none shadow" onclick="theme_switch()">
+          <div id="theme-switcher" class="relative text-[1.5rem] mx-[0.6rem] transition duration-[250ms]">
+            <i class="fa-solid fa-moon"></i>
+          </div>
+        </button>
+        <!-- Breadcrumbs -->
+        <div class="grow">
+          <div class="flex flex-row items-center justify-center space-x-[0.2rem]">
+            {% block breadcrumbs %} {% endblock %}
+          </div>
+        </div>
+        <!-- Language -->
+        <div class="w-[5rem]"> </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="pt-[3rem] w-full h-full">
+    <div class="w-full h-full">
+      {% block content %} {% endblock %}
+    </div>
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "dark" ? "light" : "dark";
+      theme_set();
+    }
+    function theme_set() {
+      <!-- "dark" == ([...document.documentElement.classList].includes("dark") ? "dark" : "light") ? -->
+
+      localStorage.theme == "dark" ?
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+</body>
+
+</html>

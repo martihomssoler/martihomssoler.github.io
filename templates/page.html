@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+<a class="text-c0d font-bold underline" href="/">Home</a>
+{% set_global path = "" %}
+{% for ancestor in page.components %}
+{% set_global path = path ~ "/" ~ ancestor %}
+<p class="text-c0d font-bold"> / </p>
+<a class="text-c0d font-bold underline" href="{{path}}"> {{ancestor | replace(from="-", to=" ") | title}} </a>
+{% endfor %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="flex flex-col items-center text-center pt-12 pb-6 space-y-4">
+  <h1 class="text-5xl font-extrabold w-[75rem] ">
+    {{ page.title }}
+  </h1>
+  <p class="text-xl font-mono w-[75rem] "> [ {{ page.date }} ] </p>
+</div>
+<div class="prose">
+  {{ page.content | safe }}
+</div>
+
+{% if page.lower or page.higher %}
+<!-- Previous/Next Article -->
+<div id="page-navbar" class="sticky bottom-[25%] -z-[999]">
+  <div class="flex flex-row items-center w-screen h-min">
+    {% if page.higher %}
+    <a class="flex items-center text-sm w-[12rem] p-[2rem] space-x-[1rem]" href="{{ page.higher.permalink | safe }}">
+      <i class="fa-solid fa-chevron-left text-c0d font-extrabold text-4xl"></i>
+      <p>{{ page.higher.title }}</p>
+    </a>
+    {% endif %}
+
+    <div class="grow"> </div>
+
+    {% if page.lower %}
+    <a class="flex items-center text-sm w-[12rem] p-[2rem] space-x-[1rem]" href="{{ page.lower.permalink | safe }}">
+      <p>{{ page.lower.title }}</p>
+      <i class="fa-solid fa-chevron-right text-c0e font-extrabold text-4xl"></i>
+    </a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endblock content %}

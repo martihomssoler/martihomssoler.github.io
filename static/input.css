@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c00: from #282c34 r g b;
+  --c01: from #353b45 r g b;
+  --c02: from #3e4451 r g b;
+  --c03: from #545862 r g b;
+  --c04: from #565c64 r g b;
+  --c05: from #abb2bf r g b;
+  --c06: from #b6bdca r g b;
+  --c07: from #c8ccd4 r g b;
+  --c08: from #e06c75 r g b;
+  --c09: from #d19a66 r g b;
+  --c0a: from #e5c07b r g b;
+  --c0b: from #98c379 r g b;
+  --c0c: from #56b6c2 r g b;
+  --c0d: from #61afef r g b;
+  --c0e: from #c678dd r g b;
+  --c0f: from #be5046 r g b;
+
+  @apply bg-c00 text-c07;
+}
+
+.light {
+  --c00: from #fafafa r g b;
+  --c01: from #f0f0f1 r g b;
+  --c02: from #e5e5e6 r g b;
+  --c03: from #a0a1a7 r g b;
+  --c04: from #696c77 r g b;
+  --c05: from #383a42 r g b;
+  --c06: from #202227 r g b;
+  --c07: from #090a0b r g b;
+  --c08: from #e06c75 r g b;
+  --c09: from #d19a66 r g b;
+  --c0a: from #e5c07b r g b;
+  --c0b: from #98c379 r g b;
+  --c0c: from #56b6c2 r g b;
+  --c0d: from #61afef r g b;
+  --c0e: from #c678dd r g b;
+  --c0f: from #be5046 r g b;
+}
+
+.prose {
+  @apply p-8 m-auto w-[65rem] border-solid border-2 rounded-3xl border-c07 z-[999];
+
+  h1 {
+    @apply text-5xl font-extrabold underline;
+  }
+
+  h2 {
+    @apply text-3xl font-bold underline capitalize;
+  }
+
+  h3 {
+    @apply text-xl font-bold;
+  }
+
+  h4 {
+    @apply text-lg font-bold;
+  }
+
+  h5 {
+    @apply text-base font-bold;
+  }
+
+  h6 {
+    @apply text-base font-bold;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply my-[1rem];
+  }
+
+  p {
+    @apply mb-[1rem] text-justify;
+  }
+
+  img {
+    @apply block mx-auto bg-c01 rounded-lg mb-[1rem];
+  }
+
+  pre {
+    @apply !bg-c02 px-2 py-4 mb-[1rem] border-solid border-2 rounded-lg border-c04;
+
+    code {
+      @apply font-firaCode text-c07 bg-c02 font-normal;
+    }
+  }
+
+  code {
+    @apply font-firaCode text-c07 bg-c02 px-[4px] py-[1px] rounded font-bold;
+  }
+
+  em {
+    @apply italic font-light;
+  }
+
+  strong {
+    @apply font-bold;
+  }
+
+  a {
+    @apply text-c0d underline;
+  }
+
+  :is(:not(sup))>a[rel]:after {
+    content: '\f08e';
+    font-family: FontAwesome;
+    @apply relative bottom-[-0.1rem] mx-1;
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  ol {
+    list-style-type: number;
+  }
+
+}
+
+#links a {
+  @apply border-solid border-[3px] rounded-full w-[5rem] h-[5rem] flex flex-col items-center justify-center;
+  @apply hover:scale-125 hover:rotate-[15deg] duration-[150ms] ease-in-out;
+}

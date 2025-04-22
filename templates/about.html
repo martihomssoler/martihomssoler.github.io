@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+<a class="text-c0d font-bold underline" href="/">Home</a>
+{% set_global path = "" %}
+{% for ancestor in section.components %}
+{% set_global path = path ~ "/" ~ ancestor %}
+<p class="text-c0d font-bold"> / </p>
+<a class="text-c0d font-bold underline" href="{{path}}"> {{ancestor | replace(from="-", to=" ") | title}} </a>
+{% endfor %}
+
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+<div class="flex flex-col items-center text-center pt-12 pb-6 space-y-4">
+  <!-- Photo -->
+  <h1 class="text-5xl font-extrabold py-[2rem]">
+    {{ section.title }}
+  </h1>
+
+  <div class="prose text-xl">
+    <div id="photo" class="absolute float-none overflow-hidden 
+      w-[27rem] h-[27rem] m-[1rem] translate-x-[-17rem] translate-y-[-3.2rem]
+      border-solid border-4 rounded-full border-c07 
+      z-20">
+      <img class="relative top-[-2rem]" src="images/mhs-photo.png" />
+    </div>
+    <div class="float-left w-[14rem] h-[25rem]"></div>
+    <p>
+      I’m <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.linkedin.com/in/martihomssoler/">
+        Martí Homs Soler</a> — a Software Engineer,
+      Co-Founder, wannabe professional Tinkerer and AI enthusiast
+      currently based in Lübeck, Germany 🇩🇪.
+    </p>
+    <p>
+      I studied Computer Science at UPC Barcelona 🏫, specializing in Computation and
+      Algorithms. Over the years, I’ve worked in computer vision, industrial automation, and medical tech. Right now,
+      I’m the technical lead at <a rel="noopener nofollow noreferrer" target="_blank" href="https://histolution.com/">
+        Histolution</a> 🏢, a medical hardware start-up I co-founded as a spin-off from university.
+    </p>
+    <p>
+      I’m mainly into systems programming in Rust 🦀 (but ocasionally in C and a bit of Zig/Odin here and there). I also
+      enjoy experimental tooling, and well-thought tech stacks — currently thriving on NixOS ❄️. I really like to
+      try out odd programming languages like Koka and digging into theory when I need to reset my brain — like compilers
+      and game engines but just for fun.
+    </p>
+    <p>
+      This blog is my personal space, where I write mostly for myself — to explain what I’m learning, clarify ideas, or
+      document rabbit holes I fall into. I use it to keep track of all the things that interest me so it may be chaotic
+      at times, and unless said otherwise this is not a tutorial, but rather a personal notebook of both sucesses and
+      failures.
+    </p>
+    <p>
+      You can find interesting tech stuff under <a rel="" href="/tech"> Tech Articles </a>. It is mainly about NixOS ❄️
+      (did I tell you that I use NixOS ❄️ BTW?), Ergo-Split Keyboards ⌨️ and Homelabbing, with the ocassional theory
+      notes on different technologies and ideas I have.
+    </p>
+    <p>
+      You can find some weird D&D-like OSR-adjacent 💀 stuff under <a rel="" href="/blog"> RPG Posts </a>. Here is where
+      I let my creative side out regarding tabletop RPG mechanics, world-building, and random storytelling experiments.
+      It helps me keep things balanced between being a Forever GM 🎲 and having the chance to play my vast collection on
+      modules and systems I keep gathering.
+    </p>
+    <p>
+      If you’re into low-level code, weird software, analog adventures or just like some OSR
+      blogging/rambling/session-logs, you’ll probably find something here. I will try to keep it up to date, but only
+      time will tell...
+    </p>
+  </div>
+</div>
+<!-- Sections -->
+<div id="sections" class="text-lg font-bold">
+  <!-- Right ==> Tech Articles -->
+  <a href="/tech">
+    <div class="absolute h-[25vh] right-[1rem] top-0 translate-y-[200%]">
+      <div class="-rotate-90">
+        <div class="text-center animate-bounce">
+          <h3 class="rotate-90">
+            Tech Articles
+            <i class="fa-solid fa-chevron-right text-c09 text-4xl font-extrabold translate-y-[0.5rem]"></i>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </a>
+  <a href="/blog">
+    <div class="absolute h-[25vh] left-[1rem] top-0 translate-y-[200%]">
+      <div class="rotate-90">
+        <div class="flex flex-col text-center animate-bounce">
+          <h3 class="-rotate-90">
+            <i class="fa-solid fa-chevron-left text-c0e text-4xl font-extrabold translate-y-[0.5rem]"></i>
+            RPG Blog
+          </h3>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+</div>
+
+{% endblock content %}
