@@ -12,7 +12,7 @@ jobs:
              curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.2.4/tailwindcss-linux-x64
              chmod +x tailwindcss-linux-x64
              mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
-             tailwindcss -i static/input.scss -o public/output.css --minify
+             tailwindcss -i static/input.css -o public/output.css --minify
       - name: build_and_deploy
         uses: shalzz/zola-deploy-action@master
         env:
