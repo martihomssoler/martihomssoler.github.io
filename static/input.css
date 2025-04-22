@@ -43,7 +43,7 @@
 }
 
 .prose {
-  @apply p-8 m-auto w-[65rem] border-solid border-2 rounded-3xl border-c07;
+  @apply p-8 m-auto w-[65rem] border-solid border-2 rounded-3xl border-c07 z-[999];
 
   h1 {
     @apply text-5xl font-extrabold underline;
@@ -110,7 +110,7 @@
     @apply text-c0d underline;
   }
 
-  :is(:not(sup))>a:after {
+  :is(:not(sup))>a[rel]:after {
     content: '\f08e';
     font-family: FontAwesome;
     @apply relative bottom-[-0.1rem] mx-1;

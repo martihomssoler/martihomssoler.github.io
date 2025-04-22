@@ -23,7 +23,7 @@
 
 {% if page.lower or page.higher %}
 <!-- Previous/Next Article -->
-<div id="page-navbar" class="sticky bottom-[25%]">
+<div id="page-navbar" class="sticky bottom-[25%] -z-[999]">
   <div class="flex flex-row items-center w-screen h-min">
     {% if page.higher %}
     <a class="flex items-center text-sm w-[12rem] p-[2rem] space-x-[1rem]" href="{{ page.higher.permalink | safe }}">

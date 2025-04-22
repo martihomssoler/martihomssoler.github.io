@@ -19,6 +19,11 @@
   </h1>
   <p class="text-xl font-mono w-[75rem] "> {{ section.description }} </p>
 </div>
+{% if section.pages | length == 0 %}
+<div class="flex items-center justify-center text-center">
+  <p class="text-lg font-mono text-c04"> For now, it's pretty empty... </p>
+</div>
+{% else %}
 <div class="grid grid-cols-3 gap-[2rem] px-[6rem] py-[2rem]">
   <!-- If you are using pagination, section.pages will be empty.
        You need to use the paginator object -->
@@ -51,5 +56,6 @@
   </a>
   {% endfor %}
 </div>
+{% endif %}
 
 {% endblock content %}

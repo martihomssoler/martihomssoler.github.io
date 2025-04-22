@@ -1,6 +1,7 @@
 +++
-title = "TwoOfUs - My Custom Keyboard & Layout 3"
-date = "2024-07-08"
+title = "TwoOfUs - My Custom Keyboard & Layout"
+date = "2025-04-23"
+updated = "2025-04-25"
 categories = ["Keyboard", "Layout"]
 tags = ["split-keyboard", "keyboard-layout"]
 +++
