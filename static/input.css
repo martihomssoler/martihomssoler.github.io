@@ -47,7 +47,7 @@ html {
 }
 
 .prose {
-  @apply p-8 m-auto w-[65rem] border-solid border-2 rounded-3xl border-c07 z-[999];
+  @apply p-8 m-auto w-4/5 max-w-[65rem] border-solid border-2 rounded-3xl border-c07 z-[999];
 
   h1 {
     @apply text-5xl font-extrabold underline;

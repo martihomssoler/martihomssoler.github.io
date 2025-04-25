@@ -13,11 +13,11 @@
 
 {% block content %}
 
-<div class="flex flex-col items-center text-center pt-12 pb-6 space-y-4">
-  <h1 class="text-5xl font-extrabold w-[75rem] ">
+<div class="flex flex-col items-center text-center pt-[8rem] pb-[4rem] space-y-4">
+  <h1 class="text-5xl font-extrabold w-4/5 max-w-[75rem]">
     {{ section.title }}
   </h1>
-  <p class="text-xl font-mono w-[75rem] "> {{ section.description }} </p>
+  <p class="text-xl font-mono w-4/5 max-w-[75rem]"> {{ section.description }} </p>
 </div>
 {% if section.pages | length == 0 %}
 <div class="flex items-center justify-center text-center">
