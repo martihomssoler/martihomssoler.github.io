@@ -1,13 +1,15 @@
 { pkgs ? import <nixpkgs> {} }:
 let
-  scripts = [
-    # TODO(mhs): fix this, it does not execute tailwindcss
-    (pkgs.writeShellScriptBin "serve" ''
-      trap 'kill 0' SIGINT; tailwindcss -i static/input.css -o public/output.css --watch & zola serve
+  scripts = with pkgs; [
+    (writeShellScriptBin "serve" ''
+      trap 'kill 0' SIGINT; zola serve & tailwindcss -i static/input.css -o public/output.css --watch
     '')
+    # (writeShellScriptBin "sync" ''
+    #   echo ${./.sync-path}
+    # '')
   ];
 in
-pkgs.mkShell rec {
+pkgs.mkShell {
   buildInputs = with pkgs; [
     # Rust packages
     rustc cargo rustfmt rust-analyzer clippy
