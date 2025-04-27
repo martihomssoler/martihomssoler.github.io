@@ -18,13 +18,12 @@ personal preferences: comfortable programming symbols and good layout distributi
 Catalan, and German *(with all the **äöüàèòéíóúßç** at the finger tips)*. 
 The layout in question is the [following](https://caksoylar.github.io/keymap-drawer?keymap_yaml=H4sIAAAAAAAC_41Wa1faQBD9zq9I10d9YCUBfNCHooi1DWoFaq3RNOAqOYRNmsBpPUh_ezfpbJpMwuoXZs69M3dndmc3ONajOxnXlCn5ORqaQ_rYcy3_jtTIPfV9O9gsmdrmyGY2KUYBThTOab1-ddbtmIHn2GOz_LtqamRW4Cz1g1pBUfRS-KsoG8o3sIdgP4L9DHZKAi73h-uHsj-4ShI3Ad-I8SbYM7BdsF8iGyeHSRc8ecBt60zR1YRwyLWB09vNDqJOBXXY0RHVEVRd76BKDQKlvkZEDfC3SKuerxVSR0BdZCs4EVS2bj2n3VRAS6x43D2Jc7-CPUiFNsQy2UbfQT9FhH8A_A0q6zhP6grsZSr0XIT-LxD4tmf1aXqP2Jj6iY41fFRWL8GWY_ZgGHiFcEJVMaFHQT_VSDgS69DMFDWZ5GYSbi_m2MRx5oYtIok9wDefvQZZraWYa1AHHf6jR3nEgDp3EoEVCbcq4ZYl3JOE25dwJuIE_l6Ss5CcgEzH4vlxRzSlMIXsa6Q8A_xGsuIrxD0BbhiICGc_PieDVSWaaxJuXcLdxtwRu5t3daJLg6YErgRk6Jq4Fk1VOJpwysKpCKcqnC3hbAtnRzi7sWApPZZBtIX_yldRa_uAawhfALyM8EXAKwhfAhxv-S3gWwhfBnwb4WuA7yB8BfBdhK8CXkqPX_e0IT5c9QfLZtlHIvNevPy9zVdpqvFBqlqyltRKoVIomPNS8Jc0b1DKYlDI6WRkMN3tD4lAWu4koAarYOByQKljsK6HiSqR9pBwybn1QJMSeWFIXaf3Y7xiw_3FMJat68J-GGRSyzlLh0uIi8WVxXF74EQ6qdIOLS9Au3bu22xssHbfp5TN2bpk2c_uVeKxg21Lpot3Yv6-qbgIjbxkYGI5pdB3Rz03-kcY5nikdq2pRU27KZIhz_rOBRyOEb1EbmbJoO2itgNBn9JBfwH3h_prsQoAAA%3D%3D)[^2]: 
 
-![<two_of_us keyboard layout>](../two_of_us_keymap.svg)
+![<two_of_us keyboard layout>](two_of_us_keymap.svg)
 _I use [Vial](https://get.vial.today/) to flash my keyboard, and, as such, I'm limited to **4 layers max**. 
 Layers 0, 1, and 2 are heavily, used while Layer 3 is fairly empty since I haven't really found a need for more keys._
 
 [^1]: My keyboard is a slightly modded [Ferris Sweep](https://github.com/davidphilipbarr/Sweep) with a stronger pinky stagger and splay.
 [^2]: As you can see, I squeezed in Z and J as combos. I thought it would be bothersome, but IMHO the experience has been increadibly good.
-
 
 ## Layout Reasoning
 
@@ -102,7 +101,7 @@ only reach out when I need punctuation.
               [ ] [ ]      [ ] [ ]                
 ```
 
-#### Frequent Category 
+#### Frequent Category
 
 Assinging the most frequent letters was rather easy. I took inspiration from [ARTSEY](https://artsey.io/), eventhough it is
 a one-hand layout, [Engram](https://engram.dev/), [Colemak](https://colemak.com/) and **specially** from [HandsDown](https://sites.google.com/alanreiser.com/handsdown)

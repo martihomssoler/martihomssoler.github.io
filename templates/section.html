@@ -29,11 +29,11 @@
        You need to use the paginator object -->
   {% for page in section.pages %}
   <a href="{{ page.permalink | safe }}">
-    <div class="p-[1rem] rounded-xl space-y-[1rem] text-sm
+    <div class="p-[1rem] rounded-xl space-y-[1rem] text-sm h-[29rem]
       bg-c01 border-solid border-[4px] border-c04 
       hover:bg-c02 hover:border-c0d hover:scale-[1.05]
       duration-[200ms]">
-      <p class="text-base text-center"> {{ page.title }} </p>
+      <p class="text-base text-center h-[4rem]"> {{ page.title }} </p>
       <!-- Publishing Date -->
       <p class="grow font-mono text-left text-center">
         <i class="fa-solid fa-calendar pr-[0.75rem] "></i>
