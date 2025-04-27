@@ -46,6 +46,10 @@ html {
   @apply text-[8px] md:text-[12px] lg:text-[16px];
 }
 
+.photo {
+  @apply overflow-hidden aspect-[1/1.25] w-auto h-auto max-h-[28rem] md:max-h-[40rem] md:min-h-[28rem] border-solid border-4 rounded-full border-c07 z-20;
+}
+
 .prose {
   @apply p-8 m-auto w-4/5 max-w-[65rem] border-solid border-2 rounded-3xl border-c07 z-[999];
 

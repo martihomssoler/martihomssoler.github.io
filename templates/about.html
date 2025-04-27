@@ -13,20 +13,18 @@
 
 {% block content %}
 
-<div class="flex flex-col items-center text-center pt-12 pb-6 space-y-4">
+<div class="flex flex-col items-center text-center pt-[5rem]">
   <!-- Photo -->
   <h1 class="text-5xl font-extrabold py-[2rem]">
     {{ section.title }}
   </h1>
 
   <div class="prose text-xl">
-    <div id="photo" class="absolute float-none overflow-hidden 
-      w-[27rem] h-[27rem] m-[1rem] translate-x-[-17rem] translate-y-[-3.2rem]
-      border-solid border-4 rounded-full border-c07 
-      z-20">
+    <div id="photo" class="photo float-left overflow-hidden 
+      !w-[20rem] m-[1rem] -translate-x-[2.5%] -translate-y-[2.5%]
+      ">
       <img class="relative top-[-2rem]" src="/images/mhs-photo.png" />
     </div>
-    <div class="float-left w-[14rem] h-[25rem]"></div>
     <p>
       I’m <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.linkedin.com/in/martihomssoler/">
         Martí Homs Soler</a> — a Software Engineer,
@@ -70,10 +68,13 @@
   </div>
 </div>
 <!-- Sections -->
-<div id="sections" class="text-lg font-bold">
+<div id="sections" class="absolute top-0 left-0 w-[99%] h-[99%] min-h-[1100px] text-lg font-bold">
   <!-- Right ==> Tech Articles -->
   <a href="/tech">
-    <div class="absolute h-[25vh] right-[1rem] top-0 translate-y-[200%]">
+    <div class="absolute
+        top-[50%] -translate-y-1/2
+        left-[100%] -translate-x-full
+        ">
       <div class="-rotate-90">
         <div class="text-center animate-bounce">
           <h3 class="rotate-90">
@@ -84,13 +85,17 @@
       </div>
     </div>
   </a>
+  <!-- Left ==> RPG Blog -->
   <a href="/blog">
-    <div class="absolute h-[25vh] left-[1rem] top-0 translate-y-[200%]">
+    <div class="absolute
+        top-[50%] -translate-y-1/2
+        right-[99%] translate-x-full
+        ">
       <div class="rotate-90">
-        <div class="flex flex-col text-center animate-bounce">
+        <div class="text-center animate-bounce">
           <h3 class="-rotate-90">
-            <i class="fa-solid fa-chevron-left text-c0e text-4xl font-extrabold translate-y-[0.5rem]"></i>
             RPG Blog
+            <i class="fa-solid fa-chevron-left text-c0e text-4xl font-extrabold translate-y-[0.5rem]"></i>
           </h3>
         </div>
       </div>
