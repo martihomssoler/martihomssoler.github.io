@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/reset.css">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c00 border-solid border-b-4 border-c07 h-[4.5rem]">
+      <!-- Navbar -->
+      <div id="navbar" class="flex flex-row justify-center items-center p-[1rem]">
+        <!-- Theme -->
+        <button class="flex items-center w-[5rem] h-[2.5rem] rounded-full 
+          bg-c05 text-c00 
+          transition duration-[250ms] focus:outline-none shadow" onclick="theme_switch()">
+          <div id="theme-switcher" class="relative text-[1.5rem] mx-[0.6rem] transition duration-[250ms]">
+            <i class="fa-solid fa-moon"></i>
+          </div>
+        </button>
+        <!-- Breadcrumbs -->
+        <div class="grow">
+          <div class="flex flex-row items-center justify-center space-x-[0.2rem]">
+            
+<a class="text-c0d font-bold underline" href="/">Home</a>
+
+
+
+<p class="text-c0d font-bold"> / </p>
+<a class="text-c0d font-bold underline" href="&#x2F;tech"> Tech </a>
+
+
+
+          </div>
+        </div>
+        <!-- Language -->
+        <div class="w-[5rem]"> </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+<div class="flex flex-col items-center text-center pt-[8rem] pb-[4rem] space-y-4">
+  <h1 class="text-5xl font-extrabold w-4/5 max-w-[75rem]">
+    Tech Posts
+  </h1>
+  <p class="text-xl font-mono w-4/5 max-w-[75rem]"> Here you can find all kinds of tech post of technologies I&#x27;m exploring. For now it&#x27;s pretty empty, and mainly about Rust and Split-Keyboards, but in the future I plan on having more diverse topics and some small projects. </p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-[2rem] px-[6rem] py-[2rem]">
+  <!-- If you are using pagination, section.pages will be empty.
+       You need to use the paginator object -->
+  
+  <a class="flex flex-col
+      p-[1rem] rounded-xl 
+      bg-c01 border-solid border-[4px] border-c04 
+      hover:bg-c02 hover:border-c0d hover:scale-[1.05]
+      duration-[200ms]
+    " href="https://martihomssoler.github.io/tech/nix-shell-aliases-problem/">
+    <!-- Article Cover Image -->
+    <div class="rounded-xl overflow-hidden
+        bg-c00 border-solid border-[2px] border-c04 
+      ">
+      <img class="
+          h-[16rem] w-full
+          object-cover" src="https://martihomssoler.github.io/tech/nix-shell-aliases-problem/image.jpg" />
+      <!-- <img class="" src="https:&#x2F;&#x2F;martihomssoler.github.io&#x2F;tech&#x2F;nix-shell-aliases-problem&#x2F;image.jpg" /> -->
+    </div>
+    <!-- Article Info -->
+    <div class="space-y-[1rem] pt-[1rem]">
+      <p class="text-base text-center text-xl font-bold"> Aliases problems with `nix-shell`+ `direnv` </p>
+      <!-- Publishing Date -->
+      <p class="grow font-mono text-left text-center text-sm">
+        <i class="fa-solid fa-calendar pr-[0.75rem] "></i>
+        Wednesday 30 April 2025
+      </p>
+      <!-- Word Cound and Reading Time -->
+      <div class="flex flex-row">
+        <p class="grow font-mono text-left text-sm">
+          <i class="fa-solid fa-pencil pr-[0.3rem]"></i>
+          886 words
+        </p>
+        <p class="grow font-mono text-right text-sm">
+          <i class="fa-regular fa-clock pr-[0.3rem]"></i>
+          5 min
+        </p>
+      </div>
+      <!-- Content Preview -->
+      <p class="text-justify"> When working in reproducible development environments, nix-shell and direnv form a powerful duo — more precisely nix-direnv. Combined, they allow per-project environments to be automatically loaded when entering a directory — no manual shenanigans needed. Nonetheless, one recurring pain point is the frustrating interaction between nix-shell, direnv, and Bash aliases.
+While developing this personal blog using Zola, I had some scripts that I wanted to run on the background in an easy way — namely … </p>
+    </div>
+  </a>
+  
+  <a class="flex flex-col
+      p-[1rem] rounded-xl 
+      bg-c01 border-solid border-[4px] border-c04 
+      hover:bg-c02 hover:border-c0d hover:scale-[1.05]
+      duration-[200ms]
+    " href="https://martihomssoler.github.io/tech/custom-keyboard-layout/">
+    <!-- Article Cover Image -->
+    <div class="rounded-xl overflow-hidden
+        bg-c00 border-solid border-[2px] border-c04 
+      ">
+      <img class="
+          h-[16rem] w-full
+          object-cover" src="https://martihomssoler.github.io/tech/custom-keyboard-layout/image.svg" />
+      <!-- <img class="" src="https:&#x2F;&#x2F;martihomssoler.github.io&#x2F;tech&#x2F;custom-keyboard-layout&#x2F;image.jpg" /> -->
+    </div>
+    <!-- Article Info -->
+    <div class="space-y-[1rem] pt-[1rem]">
+      <p class="text-base text-center text-xl font-bold"> TwoOfUs - My Custom Keyboard &amp; Layout </p>
+      <!-- Publishing Date -->
+      <p class="grow font-mono text-left text-center text-sm">
+        <i class="fa-solid fa-calendar pr-[0.75rem] "></i>
+        Wednesday 23 April 2025
+      </p>
+      <!-- Word Cound and Reading Time -->
+      <div class="flex flex-row">
+        <p class="grow font-mono text-left text-sm">
+          <i class="fa-solid fa-pencil pr-[0.3rem]"></i>
+          2157 words
+        </p>
+        <p class="grow font-mono text-right text-sm">
+          <i class="fa-regular fa-clock pr-[0.3rem]"></i>
+          11 min
+        </p>
+      </div>
+      <!-- Content Preview -->
+      <p class="text-justify"> Recently. I’ve been dabbling once again into the ergo-split keyboard development&#x2F;building rabbit hole and it came to
+mind that I haven’t written about the keyboard+layout that I’ve been using.
+My current keyboard needs have changed, and I started looking for interesting new avenues to pursue, like the 5-way switches
+I discovered when I stumbled upon this keyboard named Fulcrum and the amazing
+one-hand 2x4 keyboard ARTSEY which is built on top of combos.
+It’s been over a year since I’ve had my ke… </p>
+    </div>
+  </a>
+  
+</div>
+
+
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[2.2rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+</body>
+
+</html>
