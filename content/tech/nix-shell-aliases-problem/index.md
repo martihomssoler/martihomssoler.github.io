@@ -1,10 +1,10 @@
 +++
-draft = true
-title = "Aliases problems with `nix-shell`+ `direnv`"
 date = "2025-04-30"
 updated = "2025-04-30"
-categories = []
-tags = []
+categories = ["NixOS"]
+tags = ["nix-shell", "direnv", "nix-direnv"]
+title = "Aliases problems with `nix-shell`+ `direnv`"
+description = "Ran into issues using Bash aliases with `nix-shell` and `direnv`. Solved it by replacing aliases via `writeShellScritpBin`. This article covers the reasons behind why it does not work and explains the workaround I am using."
 +++
 
 When working in reproducible development environments, `nix-shell` and `direnv` form a powerful duo — more precisely [nix-direnv](https://github.com/nix-community/nix-direnv). Combined, they allow per-project environments to be automatically loaded when entering a directory — no manual shenanigans needed. Nonetheless, one recurring pain point is the frustrating interaction between `nix-shell`, `direnv`, and Bash aliases.
@@ -12,6 +12,8 @@ When working in reproducible development environments, `nix-shell` and `direnv` 
 While developing this personal blog using [Zola](https://www.getzola.org/), I had some scripts that I wanted to run on the background in an easy way — namely `zola serve` and `tailwindcss` with `--watch` option. To make it easier I wanted to have a single Bash alias named `serve` that would handle everything for me, even `Ctrl+C` to stop the processes. 
 
 But... I ran into an annoying issue: my usual Bash aliases weren’t working inside my project’s `nix-shell` environment, even though I was using `direnv` to load everything automatically. After some digging, I realized this is a common pitfall when combining `nix-shell`, `direnv`, and Bash. Here’s what’s going on and how I worked around it using nix's `writeShellScriptBin`.
+
+![<: NixOS Logo :>](image.jpg)
 
 ## Why Bash Aliases Break inside `nix-shell` + `direnv`?
 

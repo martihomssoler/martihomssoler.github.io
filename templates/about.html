@@ -13,7 +13,7 @@
 
 {% block content %}
 
-<div class="flex flex-col items-center text-center pt-[5rem]">
+<div class="flex flex-col items-center text-center py-[5rem]">
   <!-- Photo -->
   <h1 class="text-5xl font-extrabold py-[2rem]">
     {{ section.title }}
@@ -66,42 +66,6 @@
       time will tell...
     </p>
   </div>
-</div>
-<!-- Sections -->
-<div id="sections" class="absolute top-0 left-0 w-[99%] h-[99%] min-h-[1100px] text-lg font-bold">
-  <!-- Right ==> Tech Articles -->
-  <a href="/tech">
-    <div class="absolute
-        top-[50%] -translate-y-1/2
-        left-[100%] -translate-x-full
-        ">
-      <div class="-rotate-90">
-        <div class="text-center animate-bounce">
-          <h3 class="rotate-90">
-            Tech Articles
-            <i class="fa-solid fa-chevron-right text-c09 text-4xl font-extrabold translate-y-[0.5rem]"></i>
-          </h3>
-        </div>
-      </div>
-    </div>
-  </a>
-  <!-- Left ==> RPG Blog -->
-  <a href="/blog">
-    <div class="absolute
-        top-[50%] -translate-y-1/2
-        right-[99%] translate-x-full
-        ">
-      <div class="rotate-90">
-        <div class="text-center animate-bounce">
-          <h3 class="-rotate-90">
-            RPG Blog
-            <i class="fa-solid fa-chevron-left text-c0e text-4xl font-extrabold translate-y-[0.5rem]"></i>
-          </h3>
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
 </div>
 
 {% endblock content %}

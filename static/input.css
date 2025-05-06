@@ -47,11 +47,15 @@ html {
 }
 
 .photo {
-  @apply overflow-hidden aspect-[1/1.25] w-auto h-auto max-h-[28rem] md:max-h-[40rem] md:min-h-[28rem] border-solid border-4 rounded-full border-c07 z-20;
+  @apply overflow-hidden aspect-[1/1.25] w-auto h-auto max-h-[28rem] md:max-h-[40rem] md:min-h-[28rem] border-solid border-4 rounded-full border-c07;
+}
+
+.sidebar {
+  @apply invisible xl:visible xl:sticky xl:top-[50%] h-0 xl:h-full xl:p-[1rem]
 }
 
 .prose {
-  @apply p-8 m-auto w-4/5 max-w-[65rem] border-solid border-2 rounded-3xl border-c07 z-[999];
+  @apply p-8 m-auto w-[80%] max-w-[65rem] border-solid border-2 rounded-3xl border-c07;
 
   h1 {
     @apply text-5xl font-extrabold underline;
@@ -95,7 +99,7 @@ html {
   }
 
   pre {
-    @apply !bg-c02 px-2 py-4 mb-[1rem] border-solid border-2 rounded-lg border-c04;
+    @apply !bg-c02 px-2 py-4 mb-[1rem] border-solid border-2 rounded-lg border-c04 overflow-x-scroll;
 
     code {
       @apply font-firaCode text-c07 bg-c02 font-normal;

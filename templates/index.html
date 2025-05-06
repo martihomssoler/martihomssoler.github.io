@@ -2,9 +2,9 @@
 
 {% block content %}
 <!-- Spash Screen -->
-<div class="flex flex-row items-center justify-center h-full">
+<div class="flex flex-col items-center justify-center h-full">
   <div class="flex flex-col items-center text-center justify-center space-y-[1rem] 
-    w-2/3 h-2/3
+    w-4/5 h-4/5
     ">
     <!-- Photo -->
     <div id="photo" class="photo">
@@ -48,9 +48,30 @@
         <i class="fa-brands fa-github-alt fa-2x"></i>
       </a>
     </div>
+    <!-- Sections if screen is too small -->
+    <div id="sections" class="
+      visible xl:invisible
+      flex flex-row items-center justify-center font-bold text-2xl
+      space-x-32 text-2xl pt-[2rem]
+      ">
+      <a class="text-c09" href="/blog">
+        <h3>RPG</h3>
+        <h3>Blog</h3>
+      </a>
+      <a class="text-c0d" href="/about">
+        <h3 class="">About</h3>
+      </a>
+      <a class="text-c0e" href="/tech">
+        <h3>Tech </h3>
+        <h3>Articles</h3>
+      </a>
+    </div>
   </div>
   <!-- Sections -->
-  <div id="sections" class="absolute top-0 left-0 w-[99%] h-[99%] min-h-[1100px] text-lg font-bold">
+  <div id="sections" class="
+    invisible xl:visible
+    absolute top-0 left-0 w-[99%] h-[99%] text-lg font-bold
+    ">
     <!-- Down ==> About -->
     <a href="/about">
       <div class="absolute

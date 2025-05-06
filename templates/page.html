@@ -11,36 +11,57 @@
 {% endblock breadcrumbs %}
 
 {% block content %}
+
 <div class="flex flex-col items-center text-center pt-[8rem] pb-[2rem] space-y-4">
-  <h1 class="text-5xl font-extrabold w-4/5 max-w-[75rem] ">
+  <h1 class="text-5xl font-extrabold w-[4/5] max-w-[75rem] ">
     {{ page.title }}
   </h1>
   <p class="text-xl font-mono w-4/5 max-w-[75rem]"> [ {{ page.date }} ] </p>
 </div>
-<div class="prose">
-  {{ page.content | safe }}
-</div>
-
-{% if page.lower or page.higher %}
-<!-- Previous/Next Article -->
-<div id="page-navbar" class="sticky bottom-[25%] -z-[999]">
-  <div class="flex flex-row items-center w-screen h-min">
+<div class="xl:flex xl:flex-row">
+  <!-- Previous Article -->
+  <div class="sidebar">
     {% if page.higher %}
-    <a class="flex items-center text-sm w-[12rem] p-[2rem] space-x-[1rem]" href="{{ page.higher.permalink | safe }}">
+    <a class="flex flex-col items-center text-sm space-x-[0.25rem]" href="{{ page.higher.permalink | safe }}">
+      <p class="text-sm pb-[1rem]">Previous</p>
       <i class="fa-solid fa-chevron-left text-c0d font-extrabold text-4xl"></i>
-      <p>{{ page.higher.title }}</p>
     </a>
     {% endif %}
-
-    <div class="grow"> </div>
-
+  </div>
+  <!-- Article Content -->
+  <div class="prose">
+    {{ page.content | safe }}
+  </div>
+  <!-- Next Article -->
+  <div class="sidebar">
     {% if page.lower %}
-    <a class="flex items-center text-sm w-[12rem] p-[2rem] space-x-[1rem]" href="{{ page.lower.permalink | safe }}">
-      <p>{{ page.lower.title }}</p>
+    <a class="flex flex-col items-center text-sm space-x-[0.25rem]" href="{{ page.lower.permalink | safe }}">
+      <p class="text-sm pb-[1rem]">Next</p>
       <i class="fa-solid fa-chevron-right text-c0e font-extrabold text-4xl"></i>
     </a>
     {% endif %}
   </div>
 </div>
-{% endif %}
+<div class="xl:invisible flex flex-row">
+  <!-- Previous Article -->
+  <div class="pl-[8rem] py-[1rem] xl:p-0">
+    {% if page.higher %}
+    <a class="flex items-center text-sm space-x-[0.25rem]" href="{{ page.higher.permalink | safe }}">
+      <i class="fa-solid fa-chevron-left text-c0d font-extrabold text-4xl"></i>
+      <p class="text-sm">{{ page.higher.title }}</p>
+    </a>
+    {% endif %}
+  </div>
+  <div class="flex-grow">
+  </div>
+  <!-- Next Article -->
+  <div class="pr-[8rem] py-[1rem] xl:p-0">
+    {% if page.lower %}
+    <a class="flex items-center text-sm space-x-[0.25rem]" href="{{ page.lower.permalink | safe }}">
+      <p class="text-sm">{{ page.lower.title }}</p>
+      <i class="fa-solid fa-chevron-right text-c0e font-extrabold text-4xl"></i>
+    </a>
+    {% endif %}
+  </div>
+</div>
 {% endblock content %}

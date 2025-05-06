@@ -24,34 +24,50 @@
   <p class="text-lg font-mono text-c04"> For now, it's pretty empty... </p>
 </div>
 {% else %}
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[2rem] px-[6rem] py-[2rem]">
+<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-[2rem] px-[6rem] py-[2rem]">
   <!-- If you are using pagination, section.pages will be empty.
        You need to use the paginator object -->
   {% for page in section.pages %}
-  <a href="{{ page.permalink | safe }}">
-    <div class="p-[1rem] rounded-xl space-y-[1rem] text-sm h-[29rem]
+  <a class="flex flex-col
+      p-[1rem] rounded-xl 
       bg-c01 border-solid border-[4px] border-c04 
       hover:bg-c02 hover:border-c0d hover:scale-[1.05]
-      duration-[200ms]">
-      <p class="text-base text-center h-[4rem]"> {{ page.title }} </p>
+      duration-[200ms]
+    " href="{{ page.permalink | safe }}">
+    <!-- Article Cover Image -->
+    <div class="rounded-xl overflow-hidden
+        bg-c00 border-solid border-[2px] border-c04 
+      ">
+      {% for asset in page.assets -%}
+      {%- if asset is matching("image[.](jpg|svg|svg)$") -%}
+      <img class="
+          h-[16rem] w-full
+          object-cover" src="{{ get_url(path=asset) }}" />
+      {%- endif %}
+      {%- endfor %}
+      <!-- <img class="" src="{{page.permalink}}image.jpg" /> -->
+    </div>
+    <!-- Article Info -->
+    <div class="space-y-[1rem] pt-[1rem]">
+      <p class="text-base text-center text-xl font-bold"> {{ page.title }} </p>
       <!-- Publishing Date -->
-      <p class="grow font-mono text-left text-center">
+      <p class="grow font-mono text-left text-center text-sm">
         <i class="fa-solid fa-calendar pr-[0.75rem] "></i>
         {{ page.date | date(format="%A %-d %B %Y", timezone="Europe/Berlin") }}
       </p>
       <!-- Word Cound and Reading Time -->
       <div class="flex flex-row">
-        <p class="grow font-mono text-left">
+        <p class="grow font-mono text-left text-sm">
           <i class="fa-solid fa-pencil pr-[0.3rem]"></i>
           {{ page.word_count }} words
         </p>
-        <p class="grow font-mono text-right">
+        <p class="grow font-mono text-right text-sm">
           <i class="fa-regular fa-clock pr-[0.3rem]"></i>
           {{ page.reading_time }} min
         </p>
       </div>
       <!-- Content Preview -->
-      <p class="text-justify"> "{{ page.content | striptags | truncate(length=500)}}" </p>
+      <p class="text-justify"> {{ page.content | striptags | truncate(length=500) }} </p>
     </div>
   </a>
   {% endfor %}

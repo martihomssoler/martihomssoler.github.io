@@ -13,7 +13,12 @@ let
     (writeShellScriptBin "rl" ''
       sync_path=${builtins.readFile ./.sync-path}
 
+      # finds and removes everything except '_index.md'
+      find ./content/tech/* -type d -not -name '_index.md' | xargs rm -r &>/dev/null
       cp -r $sync_path/tech/* ./content/tech/
+
+      # finds and removes everything except '_index.md'
+      find ./content/blog/* -type d -not -name '_index.md' | xargs rm -r &>/dev/null
       cp -r $sync_path/blog/* ./content/blog/
     '')
   ];
