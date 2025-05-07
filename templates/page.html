@@ -20,12 +20,13 @@
 </div>
 <div class="xl:flex xl:flex-row">
   <!-- Previous Article -->
-  <div class="sidebar">
+  <div class="sidebar text-left">
     {% if page.higher %}
-    <a class="flex flex-col items-center text-sm space-x-[0.25rem]" href="{{ page.higher.permalink | safe }}">
+    <a class="flex flex-col items-center w-[4rem] text-sm" href="{{ page.higher.permalink | safe }}">
       <p class="text-sm pb-[1rem]">Previous</p>
       <i class="fa-solid fa-chevron-left text-c0d font-extrabold text-4xl"></i>
     </a>
+    <div class="flex-grow"> </div>
     {% endif %}
   </div>
   <!-- Article Content -->
@@ -33,15 +34,17 @@
     {{ page.content | safe }}
   </div>
   <!-- Next Article -->
-  <div class="sidebar">
+  <div class="sidebar text-right">
     {% if page.lower %}
-    <a class="flex flex-col items-center text-sm space-x-[0.25rem]" href="{{ page.lower.permalink | safe }}">
+    <div class="flex-grow"> </div>
+    <a class="flex flex-col items-center w-[4rem] text-sm" href="{{ page.lower.permalink | safe }}">
       <p class="text-sm pb-[1rem]">Next</p>
       <i class="fa-solid fa-chevron-right text-c0e font-extrabold text-4xl"></i>
     </a>
     {% endif %}
   </div>
 </div>
+<!-- Article Navigation Footer -->
 <div class="xl:invisible flex flex-row">
   <!-- Previous Article -->
   <div class="pl-[8rem] py-[1rem] xl:p-0">

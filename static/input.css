@@ -51,11 +51,11 @@ html {
 }
 
 .sidebar {
-  @apply invisible xl:visible xl:sticky xl:top-[50%] h-0 xl:h-full xl:p-[1rem]
+  @apply flex flex-row w-[8%] invisible xl:visible xl:sticky xl:top-[50%] h-0 xl:h-full xl:p-[1rem]
 }
 
 .prose {
-  @apply p-8 m-auto w-[80%] max-w-[65rem] border-solid border-2 rounded-3xl border-c07;
+  @apply p-8 m-auto w-[80%] max-w-[75rem] border-solid border-2 rounded-3xl border-c07;
 
   h1 {
     @apply text-5xl font-extrabold underline;
