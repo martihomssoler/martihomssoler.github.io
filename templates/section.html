@@ -39,7 +39,7 @@
         bg-c00 border-solid border-[2px] border-c04 
       ">
       {% for asset in page.assets -%}
-      {%- if asset is matching("image[.](jpg|svg|svg)$") -%}
+      {%- if asset is matching("image[.](jpg|svg|svg|webp)$") -%}
       <img class="
           h-[16rem] w-full
           object-cover" src="{{ get_url(path=asset) }}" />

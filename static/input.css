@@ -110,6 +110,18 @@ html {
     @apply font-firaCode text-c07 bg-c02 px-[4px] py-[1px] rounded font-bold;
   }
 
+  li {
+    @apply ml-[1rem] pl-[0.5rem];
+  }
+
+  blockquote {
+    @apply !bg-c02 px-[1rem] py-[1rem] mx-[2rem] mb-[1rem];
+
+    p {
+      @apply !mb-[0rem] text-justify;
+    }
+  }
+
   em {
     @apply italic font-light;
   }
