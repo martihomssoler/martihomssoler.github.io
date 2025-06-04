@@ -1,12 +1,33 @@
 +++
+date = "2025-05-07"
+updated = "2025-05-07"
+categories = ["Itreas", "Gygax 75"]
+tags = ["worldbuilding", "itreas"]
+title = "Itreas Gate - Gygax 75 - Part 2"
 draft = true
-title = ""
-date = "2025-04-30"
-updated = "2025-04-30"
-categories = []
-tags = []
 +++
 
+# Week 2 - Surrounding Area
+
+Took the advise regarding scale. They recommended 23x14 hexes with a scale of 1 mile to 1 hex. Ofc, I changed the miles to kilometers, because 'uropean, and ended up with a 38x22km approx. 
+
+This means the area is roughly 836 squared kilometers. As always, this means nothing to my brain so I jumped to Wikipedia to find a more familiar mental image that I could understand. My go-to for areas is to look at the Comarques of Catalonia (my homeland). [Comarques of Catalonia - Wikipedia](https://en.wikipedia.org/wiki/Comarques_of_Catalonia)
+I sorted the "List of Comarques" table by Area and looked for some area similar to 836, and low-and-behold I found [Ribera d'Ebre - Wikipedia](https://en.wikipedia.org/wiki/Ribera_d%27Ebre). After finding a geographic map on the internet, I honestly fell in love with it, it has everything I want on my initial map (given some huge liberties that I took). 
+
+![il\_fullxfull.3508326424\_kt1v.jpg|480](https://trobart.cat/cdn/shop/products/il_fullxfull.3508326424_kt1v.jpg?v=1697632545&width=1100)
+[RIBERA D'EBRE. Mapa topográfico. – Trobart Maps](https://trobart.cat/products/ribera-debre-mapa-topografic-en-color)
+
+It has a huge river running through it. A mountain range splitting the map in two. A very mysteriously looking isolated blob of mountains to the bottom-right... I mean, I changed a lot of it, but the overall structure is there. 
+
+[FOTO OF MY MAP]
+
+## Random Tables
+
+Not completed, tbh
+
+# Week 3 - The Dungeon
+
+Just the main floor, and in a point-crawl style. 
 # Spark Tables
 
 I made some Spark tables that I intend to use in the future to help me come up with new ideas that are grounded on my concept for Itreas. The idea is to have a pair of d6 tables per pitch/inspiration point.

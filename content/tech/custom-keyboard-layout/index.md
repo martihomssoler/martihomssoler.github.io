@@ -1,10 +1,9 @@
 +++
 date = "2025-04-23"
-updated = "2025-04-25"
+updated = "2025-04-23"
 categories = ["Keyboard", "Layout"]
 tags = ["split-keyboard", "keyboard-layout"]
 title = "TwoOfUs - My Custom Keyboard & Layout"
-description = "Built a custom Ferris Sweep layout for typing in English, Spanish, Catalan, and German. Focused on letter frequency, comfort, and minimal finger travel. Includes home row mods, combos, and optimized symbols for programming. This article covers what worked, what didn’t, and what’s next."
 +++
 
 Recently. I've been dabbling once again into the *ergo-split keyboard* development/building rabbit hole and it came to

@@ -111,7 +111,7 @@ html {
   }
 
   li {
-    @apply ml-[1rem] pl-[0.5rem];
+    @apply ml-[1rem] mb-[0.25rem] pl-[0.5rem];
   }
 
   blockquote {
