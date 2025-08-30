@@ -102,12 +102,20 @@ html {
     @apply !bg-c02 px-2 py-4 mb-[1rem] border-solid border-2 rounded-lg border-c04 overflow-x-scroll;
 
     code {
-      @apply font-firaCode text-c07 bg-c02 font-normal;
+      @apply font-firaCode !text-c05 bg-c02 font-normal;
+
+      span {
+        @apply font-firaCode !text-c05 bg-c02 font-normal;
+      }
     }
   }
 
   code {
-    @apply font-firaCode text-c07 bg-c02 px-[4px] py-[1px] rounded font-bold;
+    @apply font-firaCode !text-c05 bg-c02 font-normal;
+
+    span {
+      @apply font-firaCode !text-c05 bg-c02 font-normal;
+    }
   }
 
   li {
