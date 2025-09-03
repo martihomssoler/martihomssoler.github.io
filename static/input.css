@@ -47,7 +47,7 @@ html {
 }
 
 .photo {
-  @apply overflow-hidden aspect-[1/1.25] w-auto h-auto max-h-[26rem] md:max-h-[36rem] min-h-[18rem] border-solid border-4 rounded-full border-c07;
+  @apply overflow-hidden aspect-[1/1.25] w-auto h-[16rem] max-w-[28rem] max-h-[28rem] min-w-[12rem] min-h-[12rem] border-solid border-4 rounded-full border-c07;
 }
 
 .sidebar {
@@ -55,7 +55,7 @@ html {
 }
 
 .prose {
-  @apply p-8 m-auto w-[80%] max-w-[75rem] border-solid border-2 rounded-3xl border-c07;
+  @apply pt-[1.5rem] pb-[0.5rem] pr-[1.5rem] pl-[1.5rem] m-auto w-[80%] max-w-[75rem] border-solid border-2 rounded-3xl border-c07;
 
   h1 {
     @apply text-5xl font-extrabold underline;

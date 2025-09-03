@@ -2,71 +2,77 @@
 
 {% block content %}
 <!-- Spash Screen -->
-<div class="flex flex-col items-center justify-center h-full">
-  <div class="flex flex-col items-center text-center justify-center space-y-[1rem] 
-    w-4/5 h-4/5
-    ">
-    <!-- Photo -->
-    <div id="photo" class="photo">
-      <img class="relative top-[-2rem]" src="images/mhs-photo.png" />
-    </div>
-    <!-- Name-->
-    <div id="name" class="flex flex-col xl:flex-row space-x-8 text-8xl">
-      <h1 class="font-bold"> Martí </h1>
-      <div class="flex flex-row font-extrabold">
-        <h1 class="text-c08"> H </h1>
-        <h1 class="text-c09"> O </h1>
-        <h1 class="text-c0a"> M </h1>
-        <h1 class="text-c0b"> S </h1>
-        <h1> &nbsp; </h1>
-        <h1 class="text-c0b"> S </h1>
-        <h1 class="text-c0c"> O </h1>
-        <h1 class="text-c0d"> L </h1>
-        <h1 class="text-c0e"> E </h1>
-        <h1 class="text-c0f"> R </h1>
+<div class="flex flex-row w-4/5 h-full m-auto">
+  <div class="flex flex-col items-center space-y-[1rem] m-auto pt-[6rem] pb-[4rem] space-y-[2rem]">
+    <!-- Intro -->
+    <div id="intro" class="flex flex-row items-center space-x-[2rem]">
+      <!-- Photo -->
+      <div id="photo" class="photo">
+        <img class="relative top-[-1.5rem]" src="images/mhs-photo.png" />
+      </div>
+      <!-- Info -->
+      <div id="info" class="flex flex-col items-center space-y-[2rem]">
+        <!-- Name-->
+        <div class="flex flex-row text-6xl space-x-[1rem]">
+          <h1 class="font-bold"> Martí </h1>
+          <div class="flex flex-row font-extrabold">
+            <h1 class="text-c08"> H </h1>
+            <h1 class="text-c09"> O </h1>
+            <h1 class="text-c0a"> M </h1>
+            <h1 class="text-c0b"> S </h1>
+            <h1> &nbsp; </h1>
+            <h1 class="text-c0b"> S </h1>
+            <h1 class="text-c0c"> O </h1>
+            <h1 class="text-c0d"> L </h1>
+            <h1 class="text-c0e"> E </h1>
+            <h1 class="text-c0f"> R </h1>
+          </div>
+        </div>
+        <!-- Links -->
+        <div id="links" class="flex flex-row space-x-32 text-2xl">
+          <a class="text-c09" href="mailto:martihomssoler@gmail.com">
+            <i class="fa-solid fa-envelope fa-2x"></i>
+          </a>
+          <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
+            <i class="fa-brands fa-linkedin fa-2x"></i>
+          </a>
+          <a class="text-c0e" href="https://github.com/martihomssoler">
+            <i class="fa-brands fa-github-alt fa-2x"></i>
+          </a>
+        </div>
       </div>
     </div>
-    <!-- Interests -->
-    <!-- <div id="interests" class="space-y-[0.25rem] text-2xl font-bold"> -->
-    <div id="interests" class="grid grid-cols-2 lg:grid-cols-3 gap-[0.75rem] text-2xl font-bold">
-      <h2> 🏢 Co-Founder @ Histolution </h2>
-      <h2> 🦀 Rust Developer </h2>
-      <h2> ⌨️ Ergo-Split Keyboard Snob </h2>
-      <h2> 🎲 Forever GM </h2>
-      <h2> ❄️ I use NixOS BTW</h2>
-      <h2> 💀 OSR Enthusiast </h2>
+    <div id="about" class="prose !w-auto !w-max-auto">
+      <p>
+        My name is Martí Homs Soler. I'm a Software Engineer, entrepeneur, tinkerer and writer.
+      </p>
+      <p>
+        This blog is my personal space, where I write mostly for myself to explain what I’m learning, clarify
+        ideas, or document rabbit holes I fall into.
+      </p>
+      <p>
+        You can find interesting tech stuff under <a rel="" href="/tech"> Tech Articles </a>. It is mainly about
+        personal software projects, NixOS, ergo-split keyboards and homelabbing, with the ocassional random note on
+        here and there.
+      </p>
+      <p>
+        You can find some weird D&D-like OSR-adjacent stuff under <a rel="" href="/blog"> RPG Posts </a>. Here is
+        where I post about tabletop RPG mechanics, world-building, and random storytelling experiments.
+      </p>
     </div>
-    <!-- Links -->
-    <div id="links" class="flex flex-row space-x-32 text-2xl pt-[2rem]">
-      <a class="text-c09" href="mailto:martihomssoler@gmail.com">
-        <i class="fa-solid fa-envelope fa-2x"></i>
-      </a>
-      <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
-        <i class="fa-brands fa-linkedin fa-2x"></i>
-      </a>
-      <a class="text-c0e" href="https://github.com/martihomssoler">
-        <i class="fa-brands fa-github-alt fa-2x"></i>
-      </a>
-    </div>
-    <!-- Sections if screen is too small -->
-    <div id="sections" class="
-      visible xl:invisible
-      flex flex-row items-center justify-center font-bold text-2xl
-      space-x-32 text-2xl pt-[2rem]
-      ">
-      <a class="text-c09" href="/blog">
+    <!-- Sections -->
+    <div id="sections" class="flex flex-row items-center justify-center font-bold text-2xl space-x-[12rem]">
+      <a class="flex flex-col items-center text-c09" href="/blog">
         <h3>RPG</h3>
         <h3>Blog</h3>
       </a>
-      <a class="text-c0d" href="/about">
-        <h3 class="">About</h3>
-      </a>
-      <a class="text-c0e" href="/tech">
+      <a class="flex flex-col items-center text-c0e" href="/tech">
         <h3>Tech </h3>
         <h3>Articles</h3>
       </a>
     </div>
   </div>
+<<<<<<< HEAD
   <!-- Sections -->
   <div id="sections" class="
     invisible xl:visible
@@ -121,6 +127,8 @@
       </div>
     </a>
   </div>
+=======
+>>>>>>> 775fcdd (remove about page)
 </div>
 
 <!-- Language -->
