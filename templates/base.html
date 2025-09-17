@@ -19,27 +19,33 @@
 <body class="w-screen h-screen">
   <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
   <section id="section-navbar" class="fixed top-0 z-[999]">
-    <div class="absolute w-screen bg-c00 border-solid border-b-4 border-c07 h-[4.5rem]">
+    <div class="absolute w-screen bg-c01 border-b border-c04 h-16">
       <!-- Navbar -->
-      <div id="navbar" class="flex flex-row justify-center items-center p-[1rem]">
-        <!-- Theme -->
-        <button class="flex items-center w-[5rem] h-[2.5rem] rounded-full 
-          bg-c05 text-c00 
-          transition duration-[250ms] focus:outline-none shadow" onclick="theme_switch()">
-          <div id="theme-switcher" class="relative text-[1.5rem] mx-[0.6rem] transition duration-[250ms]">
-            <i class="fa-solid fa-moon"></i>
-          </div>
-        </button>
-        <!-- Breadcrumbs -->
-        <div class="grow">
-          <div class="flex flex-row items-center justify-center space-x-[0.2rem]">
-            {% block breadcrumbs %}
-            <a class="text-c0d font-bold underline" href="/">Home</a>
-            {% endblock %}
-          </div>
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/" class="text-xl font-bold text-c07 hover:text-c0d transition-colors duration-200">
+            Martí Homs Soler
+          </a>
         </div>
-        <!-- Language -->
-        <div class="w-[5rem]"> </div>
+
+        <!-- Main Navigation (Centered) -->
+        <div class="flex items-center justify-center space-x-6">
+          <a href="/blog" class="text-c06 hover:text-c0d transition-colors duration-200 font-medium">Blog</a>
+          <a href="/tech" class="text-c06 hover:text-c0d transition-colors duration-200 font-medium">Tech</a>
+        </div>
+
+        <!-- Theme Switcher -->
+        <div class="flex items-center justify-end">
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -58,14 +64,14 @@
           localStorage.theme = "light",
           document.documentElement.classList.remove("dark"),
           document.documentElement.classList.add("light"),
-          theme_switcher.classList.add('translate-x-[2.2rem]'),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
           setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
         ) :
         (
           localStorage.theme = "dark",
           document.documentElement.classList.add("dark"),
           document.documentElement.classList.remove("light"),
-          theme_switcher.classList.remove('translate-x-[2.2rem]'),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
           setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
         )
     }
