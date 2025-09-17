@@ -14,7 +14,7 @@ In my earlier campaign, I had ideas to test new systems and mechanics, but I tho
 
 **But this is where things change.** I intend to make good on my word and take you along the journey. **Welcome to Itreas Gate.**
 
-![<: Itreas Gate :>](image.webp)
+<img src="image.webp" width="640">
 _I am pretty sure I grabbed this image from google and I believe the artist is Mihail Topalov._
 
 # But... Why Now?

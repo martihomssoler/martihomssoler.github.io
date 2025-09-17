@@ -22,6 +22,7 @@ I sorted the list table by area and looked for some comarca whose area was somew
 Here is the topographic image I found [online](https://trobart.cat/products/ribera-debre-mapa-topografic-en-color). 
 
 <img src="ribera-debre-topographic.webp" width="640">
+
 ## Populating the Map
 
 The map above has virtually everything I needed to have for the first map: 

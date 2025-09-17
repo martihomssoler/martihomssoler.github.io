@@ -13,7 +13,7 @@ While developing this personal blog using [Zola](https://www.getzola.org/), I ha
 
 But... I ran into an annoying issue: my usual Bash aliases weren’t working inside my project’s `nix-shell` environment, even though I was using `direnv` to load everything automatically. After some digging, I realized this is a common pitfall when combining `nix-shell`, `direnv`, and Bash. Here’s what’s going on and how I worked around it using nix's `writeShellScriptBin`.
 
-![<: NixOS Logo :>](image.jpg)
+<img src="image.jpg" width="640">
 
 ## Why Bash Aliases Break inside `nix-shell` + `direnv`?
 
