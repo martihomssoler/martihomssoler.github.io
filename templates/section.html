@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block breadcrumbs %}
-<a class="text-c09 font-bold underline" href="/">Home</a>
+<a class="text-c0d font-medium hover:underline" href="/">Home</a>
 {% set_global path = "" %}
 {% for ancestor in section.components %}
 {% set_global path = path ~ "/" ~ ancestor %}
-<p class="text-c09 font-bold"> / </p>
+<span class="text-c05"> / </span>
+{% set title = ancestor | replace(from="-", to=" ") | title %}
 {% if loop.last %}
-<a class="text-c0d font-bold underline" href="{{path}}"> {{ancestor | replace(from="-", to=" ") | title}} </a>
+<a class="text-c0d font-medium hover:underline" href="{{path}}/">{{ title | truncate(length=12) }}</a>
 {% else %}
-<a class="text-c09 font-bold underline" href="{{path}}"> {{ancestor | replace(from="-", to=" ") | title}} </a>
+<a class="text-c0d font-medium hover:underline" href="{{path}}/">{{ title | truncate(length=12) }}</a>
 {% endif %}
 {% endfor %}
 {% endblock breadcrumbs %}
