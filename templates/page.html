@@ -1,20 +1,5 @@
 {% extends "base.html" %}
 
-{% block breadcrumbs %}
-<a class="text-c0d font-medium hover:underline" href="/">Home</a>
-{% set_global path = "" %}
-{% for ancestor in page.components %}
-{% set_global path = path ~ "/" ~ ancestor %}
-<span class="text-c05"> / </span>
-{% set title = ancestor | replace(from="-", to=" ") | title %}
-{% if loop.last %}
-<a class="text-c0d font-medium hover:underline" href="{{path}}/">{{ title | truncate(length=12) }}</a>
-{% else %}
-<a class="text-c0d font-medium hover:underline" href="{{path}}/">{{ title | truncate(length=12) }}</a>
-{% endif %}
-{% endfor %}
-{% endblock breadcrumbs %}
-
 {% block content %}
 
 <header class="flex flex-col items-center text-center pt-24 pb-8 space-y-6">

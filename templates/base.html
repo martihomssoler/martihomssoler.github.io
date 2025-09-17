@@ -14,6 +14,8 @@
   <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
 </head>
 
 <body class="w-screen h-screen">
@@ -29,12 +31,22 @@
           </a>
         </div>
 
-        <!-- Breadcrumbs -->
-        <div class="flex items-center justify-center">
-          <div class="flex items-center space-x-1 text-sm">
-            {% block breadcrumbs %}
-            <a class="text-c0d font-medium hover:underline" href="/">Home</a>
-            {% endblock %}
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-96 
+                   bg-c01 border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
           </div>
         </div>
 
@@ -82,6 +94,8 @@
     }
     theme_set();
   </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
 </body>
 
 </html>

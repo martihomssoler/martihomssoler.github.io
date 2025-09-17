@@ -4,6 +4,12 @@ base_url = "https://martihomssoler.github.io/"
 compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
+# The default language; used in feeds.
+default_language = "en"
+
+[search]
+# Use elasticlunr for client-side search functionality
+index_format = "elasticlunr_json"
 
 [markdown]
 highlight_code = true
