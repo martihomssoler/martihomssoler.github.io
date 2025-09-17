@@ -29,14 +29,19 @@
           </a>
         </div>
 
-        <!-- Main Navigation (Centered) -->
-        <div class="flex items-center justify-center space-x-6">
-          <a href="/blog" class="text-c06 hover:text-c0d transition-colors duration-200 font-medium">Blog</a>
-          <a href="/tech" class="text-c06 hover:text-c0d transition-colors duration-200 font-medium">Tech</a>
+        <!-- Breadcrumbs -->
+        <div class="flex items-center justify-center">
+          <div class="flex items-center space-x-1 text-sm">
+            {% block breadcrumbs %}
+            <a class="text-c0d font-medium hover:underline" href="/">Home</a>
+            {% endblock %}
+          </div>
         </div>
 
-        <!-- Theme Switcher -->
-        <div class="flex items-center justify-end">
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog" class="text-c06 hover:text-c0d transition-colors duration-200 font-medium">Blog</a>
+          <a href="/tech" class="text-c06 hover:text-c0d transition-colors duration-200 font-medium">Tech</a>
           <button class="flex items-center w-12 h-6 rounded-full 
             bg-c04 relative
             transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
