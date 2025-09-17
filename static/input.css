@@ -20,6 +20,10 @@
   --c0e: from #c678dd r g b;
   --c0f: from #be5046 r g b;
 
+  /* Section accent colors */
+  --accent-color: var(--c0d); /* Default blue */
+  --accent-hover-color: var(--c0d);
+
   @apply bg-c00 text-c07;
 }
 
@@ -234,4 +238,38 @@ html {
 
 #search-results::-webkit-scrollbar-thumb:hover {
   background: rgba(var(--c05));
+}
+
+/* Section-specific accent colors */
+.section-blog {
+  --accent-color: var(--c0e); /* Purple */
+  --accent-hover-color: var(--c0e);
+}
+
+.section-tech {
+  --accent-color: var(--c0d); /* Blue */
+  --accent-hover-color: var(--c0d);
+}
+
+/* Future sections can easily be added */
+.section-projects {
+  --accent-color: var(--c0c); /* Cyan */
+  --accent-hover-color: var(--c0c);
+}
+
+/* Utility classes using the CSS variables */
+.accent-text {
+  color: rgba(var(--accent-color));
+}
+
+.accent-border {
+  border-color: rgba(var(--accent-color));
+}
+
+.accent-hover-text:hover {
+  color: rgba(var(--accent-hover-color));
+}
+
+.accent-hover-border:hover {
+  border-color: rgba(var(--accent-hover-color));
 }
