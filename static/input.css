@@ -60,11 +60,13 @@ html {
 
 .prose {
   @apply pt-[2rem] pb-[1rem] pr-[2rem] pl-[2rem] m-auto w-[85%] max-w-[55rem] bg-c01 border-solid border-2 rounded-3xl border-c04;
-  line-height: 1.8; /* Improved line height for better readability */
+  line-height: 1.8;
+  /* Improved line height for better readability */
 
   h1 {
     @apply text-4xl font-bold mt-[2rem] mb-[1.5rem] text-c07;
-    border-bottom: 3px solid rgba(var(--accent-color)); /* Use accent color for borders */
+    border-bottom: 3px solid rgba(var(--accent-color));
+    /* Use accent color for borders */
     padding-bottom: 0.75rem;
   }
 
@@ -88,25 +90,31 @@ html {
   }
 
   p {
-    @apply mb-[1.5rem] leading-relaxed text-c06; /* Better text color and spacing */
+    @apply mb-[1.5rem] leading-relaxed text-c06;
+    /* Better text color and spacing */
   }
 
   img {
-    @apply block mx-auto bg-c00 rounded-xl mb-[2rem] mt-[2rem] border border-c04; /* Enhanced image styling */
+    @apply block mx-auto bg-c00 rounded-xl mb-[2rem] mt-[2rem] border border-c04;
+    /* Enhanced image styling */
     max-width: 100%;
     height: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Subtle shadow */
   }
 
   /* Enhanced code blocks with better contrast */
   pre {
-    @apply !bg-c00 px-6 py-4 mb-[2rem] mt-[2rem] border-2 border-c04 rounded-xl overflow-x-auto;
-    font-size: 0.875em;
+    @apply font-firaCode !bg-c00 px-6 py-4 mb-[2rem] mt-[2rem] border-2 border-c04 rounded-xl overflow-x-auto;
+
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 
     code {
       @apply font-firaCode !text-c07 bg-transparent font-normal;
-      font-size: 0.9em;
+
+      * {
+        @apply bg-transparent;
+      }
 
       span {
         @apply font-firaCode !text-c07 bg-transparent font-normal;
@@ -116,7 +124,7 @@ html {
 
   /* Enhanced inline code with accent colors */
   code {
-    @apply font-firaCode bg-c02 px-2 py-1 rounded-md font-normal text-sm border border-c04;
+    @apply font-firaCode bg-c00 px-2 py-1 rounded-md font-bold text-sm border border-c04;
     color: rgba(var(--accent-color));
     font-size: 0.85em;
 
