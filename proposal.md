@@ -1,7 +1,7 @@
 # Visual Improvement Implementation Task: Section and Page Templates
 
 ## Context
-You are working on a Zola static site blog with a Base16 One Dark theme. The blog uses Tailwind CSS and has both section pages (article listings) and individual page templates (article content). The goal is to improve the visual design while maintaining the existing Base16 color scheme and technical foundation.
+You are working on a Zola static site blog with a Base16 One Dark theme. The blog uses Tailwind CSS v3 and has both section pages (article listings) and individual page templates (article content). The goal is to improve the visual design while maintaining the existing Base16 color scheme and technical foundation.
 
 ## Current File Structure
 - `templates/section.html` - Article listing pages (blog index, tech index)

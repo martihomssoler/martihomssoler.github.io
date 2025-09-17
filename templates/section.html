@@ -27,52 +27,61 @@
   <p class="text-lg font-mono text-c04"> For now, it's pretty empty... </p>
 </div>
 {% else %}
-<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-[2rem] px-[6rem] py-[2rem]">
-  <!-- If you are using pagination, section.pages will be empty.
-       You need to use the paginator object -->
+<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-6 px-8 py-8 min-w-4xl mx-auto">
   {% for page in section.pages %}
-  <a class="flex flex-col
-      p-[1rem] rounded-xl 
-      bg-c01 border-solid border-[4px] border-c04 
-      hover:bg-c02 hover:border-c0d hover:scale-[1.05]
-      duration-[200ms]
-    " href="{{ page.permalink | safe }}">
-    <!-- Article Cover Image -->
-    <div class="rounded-xl overflow-hidden
-        bg-c00 border-solid border-[2px] border-c04 
-      ">
-      {% for asset in page.assets -%}
-      {%- if asset is matching("image[.](jpg|svg|svg|webp)$") -%}
-      <img class="
-          h-[16rem] w-full
-          object-cover" src="{{ get_url(path=asset) }}" />
-      {%- endif %}
-      {%- endfor %}
-      <!-- <img class="" src="{{page.permalink}}image.jpg" /> -->
-    </div>
-    <!-- Article Info -->
-    <div class="space-y-[1rem] pt-[1rem]">
-      <p class="text-base text-center text-xl font-bold"> {{ page.title }} </p>
-      <!-- Publishing Date -->
-      <p class="grow font-mono text-left text-center text-sm">
-        <i class="fa-solid fa-calendar pr-[0.75rem] "></i>
-        {{ page.date | date(format="%A %-d %B %Y", timezone="Europe/Berlin") }}
-      </p>
-      <!-- Word Cound and Reading Time -->
-      <div class="flex flex-row">
-        <p class="grow font-mono text-left text-sm">
-          <i class="fa-solid fa-pencil pr-[0.3rem]"></i>
-          {{ page.word_count }} words
-        </p>
-        <p class="grow font-mono text-right text-sm">
-          <i class="fa-regular fa-clock pr-[0.3rem]"></i>
-          {{ page.reading_time }} min
-        </p>
+  <article class="group flex flex-col
+      p-6 rounded-xl 
+      bg-c01 border border-c04 shadow-sm
+      hover:bg-c02 hover:border-c0d hover:-translate-y-1 hover:shadow-lg
+      transition-all duration-300 ease-out
+    ">
+    <a href="{{ page.permalink | safe }}" class="block">
+      <!-- Article Cover Image -->
+      <div class="rounded-lg overflow-hidden
+          bg-c00 border border-c04 mb-4 
+        ">
+        {% for asset in page.assets -%}
+        {%- if asset is matching("image[.](jpg|svg|svg|webp)$") -%}
+        <img class="
+            h-64 w-full
+            object-cover group-hover:scale-[1.02] transition-transform duration-300" src="{{ get_url(path=asset) }}" />
+        {%- endif %}
+        {%- endfor %}
       </div>
-      <!-- Content Preview -->
-      <p class="text-justify"> {{ page.content | striptags | truncate(length=500) }} </p>
-    </div>
-  </a>
+
+      <!-- Article Info -->
+      <div class="space-y-4 flex-grow">
+        <h3 class="text-xl font-bold leading-tight group-hover:text-c0d transition-colors duration-200">
+          {{ page.title }}
+        </h3>
+
+        <!-- Publishing Date -->
+        <div class="flex items-center justify-center text-sm text-c05">
+          <i class="fa-solid fa-calendar w-4 h-4 mr-2 text-c09"></i>
+          <time datetime="{{ page.date }}">
+            {{ page.date | date(format="%b %-d, %Y", timezone="Europe/Berlin") }}
+          </time>
+        </div>
+
+        <!-- Content Preview -->
+        <p class="text-sm text-c06 leading-relaxed">
+          {{ page.content | striptags | truncate(length=400) }}
+        </p>
+
+        <!-- Metadata -->
+        <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+          <span class="flex items-center">
+            <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+            {{ page.word_count }} words
+          </span>
+          <span class="flex items-center">
+            <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+            {{ page.reading_time }} min read
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
   {% endfor %}
 </div>
 {% endif %}
