@@ -110,6 +110,130 @@ function makeTeaser(body, terms) {
   return teaser.join("");
 }
 
+// Basic fuzzy matching helper function
+function fuzzyMatch(term, text) {
+  if (!term || !text) return false;
+  const MAX_MISSED_CHARS = 3;
+  const PERCENT_MISSED_CHARS = 0.3;
+  
+  var termLower = term.toLowerCase();
+  var textLower = text.toLowerCase();
+  
+  // Direct substring match - most reliable
+  if (textLower.includes(termLower)) {
+    return true;
+  }
+  
+  // Simple character-by-character tolerance
+  var termChars = termLower.split('');
+  var textWords = textLower.split(' ');
+  
+  // Check each word in the text
+  for (var i = 0; i < textWords.length; i++) {
+    var word = textWords[i];
+    var matchCount = 0;
+    
+    // Count matching characters in order
+    var wordPos = 0;
+    for (var j = 0; j < termChars.length && wordPos < word.length; j++) {
+      if (word.indexOf(termChars[j], wordPos) !== -1) {
+        wordPos = word.indexOf(termChars[j], wordPos) + 1;
+        matchCount++;
+      }
+    }
+    
+    // If most characters match, consider it a fuzzy match
+    if (matchCount >= Math.max(MAX_MISSED_CHARS, Math.floor(termChars.length * PERCENT_MISSED_CHARS))) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+// Simple string similarity scoring (0-1 scale)
+function getSimilarityScore(term, text) {
+  if (!term || !text) return 0;
+  
+  var termLower = term.toLowerCase();
+  var textLower = text.toLowerCase();
+  
+  // Perfect substring match gets highest score
+  if (textLower.includes(termLower)) {
+    return 1.0;
+  }
+  
+  // Check similarity against each word in the text
+  var textWords = textLower.split(' ');
+  var bestScore = 0;
+  
+  for (var i = 0; i < textWords.length; i++) {
+    var word = textWords[i];
+    var score = getWordSimilarity(termLower, word);
+    if (score > bestScore) {
+      bestScore = score;
+    }
+  }
+  
+  return bestScore;
+}
+
+// Calculate similarity between two words
+function getWordSimilarity(term, word) {
+  if (term === word) return 1.0;
+  if (word.includes(term)) return 0.9;
+  if (term.includes(word)) return 0.8;
+  
+  // Count matching characters in sequence
+  var matchCount = 0;
+  var termPos = 0;
+  
+  for (var i = 0; i < word.length && termPos < term.length; i++) {
+    if (word[i] === term[termPos]) {
+      matchCount++;
+      termPos++;
+    }
+  }
+  
+  // Score based on how many characters matched
+  var maxLength = Math.max(term.length, word.length);
+  return matchCount / maxLength;
+}
+
+// Fallback fuzzy search when elasticlunr returns no results
+function performFallbackSearch(term, searchIndex, maxResults) {
+  if (!searchIndex || !searchIndex.documentStore) return [];
+  
+  var results = [];
+  var docs = searchIndex.documentStore.docs;
+  var minScore = 0.5; // Only return matches with decent similarity
+  
+  // Search through all documents
+  for (var docId in docs) {
+    var doc = docs[docId];
+    
+    // Check title and body for fuzzy matches
+    var titleScore = getSimilarityScore(term, doc.title) * 2; // Boost title matches
+    var bodyScore = getSimilarityScore(term, doc.body);
+    
+    var maxScore = Math.max(titleScore, bodyScore);
+    
+    if (maxScore >= minScore) {
+      results.push({
+        ref: docId,
+        score: maxScore,
+        doc: doc
+      });
+    }
+  }
+  
+  // Sort by score (highest first)
+  results.sort(function(a, b) { return b.score - a.score; });
+  
+  // Limit results
+  return results.slice(0, maxResults);
+}
+
 function formatSearchResultItem(index, item, terms) {
   var ref = item.ref;
   item = index.documentStore.getDoc(ref);
@@ -170,6 +294,21 @@ function initSearch() {
     console.log(JSON.stringify(index));
     console.log(JSON.stringify(results));
     if (results.length === 0) {
+      // Try fuzzy search as fallback
+      var fuzzyResults = performFallbackSearch(term, index, MAX_ITEMS);
+      
+      if (fuzzyResults.length > 0) {
+        // Display fuzzy results
+        for (var j = 0; j < fuzzyResults.length; j++) {
+          var fuzzyItem = document.createElement("li");
+          var fuzzyHtml = formatSearchResultItem(index, { ref: fuzzyResults[j].ref }, term.split(" "));
+          fuzzyItem.innerHTML = fuzzyHtml;
+          $searchResultsItems.appendChild(fuzzyItem);
+        }
+        return;
+      }
+      
+      // If fuzzy search also found nothing, show no results message
       $searchResultsItems.innerHTML = `<div class="p-4 text-center text-c05">`
         + `<i class="fa-solid fa-search text-xl mb-2 block"></i>`
         + `No results found for "${term}"`
