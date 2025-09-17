@@ -1,81 +1,94 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Section detection logic (same as section.html) -->
+{% if page.permalink is containing("/blog/") %}
+{% set section_class = "section-blog" %}
+{% elif page.permalink is containing("/tech/") %}
+{% set section_class = "section-tech" %}
+{% elif page.permalink is containing("/project/") %}
+{% set section_class = "section-project" %}
+{% else %}
+{% set section_class = "" %}
+{% endif %}
 
-<header class="flex flex-col items-center text-center pt-24 pb-8 space-y-6">
-  <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight">
-    {{ page.title }}
-  </h1>
-  <div class="flex items-center space-x-2 text-lg text-c05">
-    <i class="fa-solid fa-calendar w-4 h-4 text-c09"></i>
-    <time datetime="{{ page.date }}" class="font-medium">
-      {{ page.date | date(format="%B %-d, %Y", timezone="Europe/Berlin") }}
-    </time>
-  </div>
-</header>
-<div class="xl:flex xl:flex-row">
-  <!-- Previous Article -->
-  <div class="sidebar text-left">
-    {% if page.higher %}
-    <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
-      href="{{ page.higher.permalink | safe }}">
-      <span class="text-xs text-c05 pb-2 group-hover:text-c07">Previous</span>
-      <i
-        class="fa-solid fa-chevron-left text-c0d font-bold text-3xl group-hover:text-c0d group-hover:scale-110 transition-all duration-200"></i>
-    </a>
-    <div class="flex-grow"></div>
-    {% endif %}
-  </div>
-  <!-- Article Content -->
-  <div class="prose">
-    {{ page.content | safe }}
-  </div>
-  <!-- Next Article -->
-  <div class="sidebar text-right">
-    {% if page.lower %}
-    <div class="flex-grow"></div>
-    <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
-      href="{{ page.lower.permalink | safe }}">
-      <span class="text-xs text-c05 pb-2 group-hover:text-c07">Next</span>
-      <i
-        class="fa-solid fa-chevron-right text-c0d font-bold text-3xl group-hover:text-c0d group-hover:scale-110 transition-all duration-200"></i>
-    </a>
-    {% endif %}
-  </div>
-</div>
-<!-- Article Navigation Footer -->
-<nav class="xl:hidden border-t border-c04 pt-4 pb-4">
-  <div class="flex justify-between items-center px-4 gap-4">
+<div class="{{ section_class }}">
+  <header class="group flex flex-col items-center text-center pt-24 pb-8 space-y-6">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      {{ page.title }}
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="{{ page.date }}" class="font-medium">
+        {{ page.date | date(format="%B %-d, %Y", timezone="Europe/Berlin") }}
+      </time>
+    </div>
+  </header>
+  <div class="xl:flex xl:flex-row">
     <!-- Previous Article -->
-    {% if page.higher %}
-    <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
-      href="{{ page.higher.permalink | safe }}">
-      <i class="fa-solid fa-chevron-left text-c0d text-2xl group-hover:scale-110 transition-transform duration-200"></i>
-      <div class="flex-1 text-left">
-        <span class="text-xs text-c05 block">Previous</span>
-        <span class="text-sm font-medium text-c07 group-hover:text-c0d transition-colors duration-200 line-clamp-2">{{
-          page.higher.title }}</span>
-      </div>
-    </a>
-    {% else %}
-    <div class="flex-1"></div>
-    {% endif %}
-
+    <div class="sidebar text-left">
+      {% if page.higher %}
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="{{ page.higher.permalink | safe }}">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Previous</span>
+        <i
+          class="fa-solid fa-chevron-left accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      <div class="flex-grow"></div>
+      {% endif %}
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      {{ page.content | safe }}
+    </div>
     <!-- Next Article -->
-    {% if page.lower %}
-    <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
-      href="{{ page.lower.permalink | safe }}">
-      <div class="flex-1 text-right">
-        <span class="text-xs text-c05 block">Next</span>
-        <span class="text-sm font-medium text-c07 group-hover:text-c0d transition-colors duration-200 line-clamp-2">{{
-          page.lower.title }}</span>
-      </div>
-      <i
-        class="fa-solid fa-chevron-right text-c0d text-2xl group-hover:scale-110 transition-transform duration-200"></i>
-    </a>
-    {% else %}
-    <div class="flex-1"></div>
-    {% endif %}
+    <div class="sidebar text-right">
+      {% if page.lower %}
+      <div class="flex-grow"></div>
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="{{ page.lower.permalink | safe }}">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Next</span>
+        <i
+          class="fa-solid fa-chevron-right accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      {% endif %}
+    </div>
   </div>
-</nav>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      {% if page.higher %}
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="{{ page.higher.permalink | safe }}">
+        <i
+          class="fa-solid fa-chevron-left accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+        <div class="flex-1 text-left">
+          <span class="text-xs text-c05 block">Previous</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">{{
+            page.higher.title }}</span>
+        </div>
+      </a>
+      {% else %}
+      <div class="flex-1"></div>
+      {% endif %}
+
+      <!-- Next Article -->
+      {% if page.lower %}
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="{{ page.lower.permalink | safe }}">
+        <div class="flex-1 text-right">
+          <span class="text-xs text-c05 block">Next</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">{{
+            page.lower.title }}</span>
+        </div>
+        <i
+          class="fa-solid fa-chevron-right accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+      </a>
+      {% else %}
+      <div class="flex-1"></div>
+      {% endif %}
+    </div>
+  </nav>
+</div>
 {% endblock content %}

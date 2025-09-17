@@ -97,7 +97,7 @@ function makeTeaser(body, terms) {
 
     // add <b/> around search terms
     if (word[1] === TERM_WEIGHT) {
-      teaser.push('<mark class="bg-c0d text-c00 px-1 rounded text-xs">');
+      teaser.push('<mark class="search-result-highlight">');
     }
     startIndex = word[2] + word[0].length;
     teaser.push(body.substring(word[2], startIndex));
@@ -171,18 +171,20 @@ function getSimilarityScore(term, text) {
     var word = textWords[i];
     var score = getWordSimilarity(termLower, word);
     if (score > bestScore) {
+  console.log(term + " | " + word + " = " + score);
       bestScore = score;
     }
   }
   
+  console.log(term + " | " + word + " = " + bestScore);
   return bestScore;
 }
 
 // Calculate similarity between two words
 function getWordSimilarity(term, word) {
   if (term === word) return 1.0;
-  if (word.includes(term)) return 0.9;
-  if (term.includes(word)) return 0.8;
+  if (word.includes(term)) return 0.9 * (term.length / word.length);
+  if (term.includes(word)) return 0.8 * (word.length / term.length);
   
   // Count matching characters in sequence
   var matchCount = 0;
@@ -213,7 +215,7 @@ function performFallbackSearch(term, searchIndex, maxResults) {
     var doc = docs[docId];
     
     // Check title and body for fuzzy matches
-    var titleScore = getSimilarityScore(term, doc.title) * 2; // Boost title matches
+    var titleScore = getSimilarityScore(term, doc.title) * 1.5; // Boost title matches
     var bodyScore = getSimilarityScore(term, doc.body);
     
     var maxScore = Math.max(titleScore, bodyScore);
@@ -229,6 +231,8 @@ function performFallbackSearch(term, searchIndex, maxResults) {
   
   // Sort by score (highest first)
   results.sort(function(a, b) { return b.score - a.score; });
+
+  console.log(results);
   
   // Limit results
   return results.slice(0, maxResults);
@@ -238,11 +242,10 @@ function formatSearchResultItem(index, item, terms) {
   var ref = item.ref;
   item = index.documentStore.getDoc(ref);
   if (item === null || item === undefined) return '';
-  console.log(JSON.stringify(ref) + "\n\n" + JSON.stringify(item));
   
-  return `<a href="${ref}" class="block p-4 hover:bg-c02 transition-colors duration-200 border-t border-c04 first:border-t-0">`
-      + `<div class="font-medium text-c07 mb-1">${item.title}</div>`
-      + `<div class="text-sm text-c05 leading-relaxed">${makeTeaser(item.body, terms)}</div>`
+  return `<a href="${ref}" class="search-result-item">`
+      + `<div class="search-result-item-title">${item.title}</div>`
+      + `<div class="search-result-item-body">${makeTeaser(item.body, terms)}</div>`
       + `</a>`;
 }
 
@@ -291,8 +294,6 @@ function initSearch() {
     }
 
     var results = (await initIndex()).search(term, options);
-    console.log(JSON.stringify(index));
-    console.log(JSON.stringify(results));
     if (results.length === 0) {
       // Try fuzzy search as fallback
       var fuzzyResults = performFallbackSearch(term, index, MAX_ITEMS);
@@ -319,7 +320,6 @@ function initSearch() {
     for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
       var item = document.createElement("li");
       var _html = formatSearchResultItem(index, results[i], term.split(" "));
-      console.log(_html);
       item.innerHTML = _html;
       $searchResultsItems.appendChild(item);
     }

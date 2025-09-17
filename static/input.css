@@ -21,7 +21,7 @@
   --c0f: from #be5046 r g b;
 
   /* Section accent colors */
-  --accent-color: var(--c0d); /* Default blue */
+  --accent-color: var(--c0d);
   --accent-hover-color: var(--c0d);
 
   @apply bg-c00 text-c07;
@@ -59,17 +59,19 @@ html {
 }
 
 .prose {
-  @apply pt-[2rem] pb-[1rem] pr-[2rem] pl-[2rem] m-auto w-[85%] max-w-[55rem] border-solid border-2 rounded-3xl border-c07;
+  @apply pt-[2rem] pb-[1rem] pr-[2rem] pl-[2rem] m-auto w-[85%] max-w-[55rem] bg-c01 border-solid border-2 rounded-3xl border-c04;
   line-height: 1.7;
 
   h1 {
     @apply text-4xl font-bold mt-[2rem] mb-[1.5rem];
+    border-style: solid;
     border-bottom: 2px solid rgba(var(--c07));
     padding-bottom: 0.5rem;
   }
 
   h2 {
     @apply text-2xl font-bold mt-[2rem] mb-[1rem];
+    border-style: solid;
     border-bottom: 1px solid rgba(var(--c05));
     padding-bottom: 0.25rem;
   }
@@ -214,7 +216,7 @@ html {
 }
 
 /* Search input focus states */
-#search-input:focus + #search-results {
+#search-input:focus+#search-results {
   display: block !important;
 }
 
@@ -242,19 +244,20 @@ html {
 
 /* Section-specific accent colors */
 .section-blog {
-  --accent-color: var(--c0e); /* Purple */
-  --accent-hover-color: var(--c0e);
+  --accent-color: var(--c09);
+  --accent-hover-color: var(--c09);
 }
 
 .section-tech {
-  --accent-color: var(--c0d); /* Blue */
-  --accent-hover-color: var(--c0d);
+  --accent-color: var(--c0e);
+  /* Blue */
+  --accent-hover-color: var(--c0e);
 }
 
 /* Future sections can easily be added */
 .section-projects {
-  --accent-color: var(--c0c); /* Cyan */
-  --accent-hover-color: var(--c0c);
+  --accent-color: var(--c0d);
+  --accent-hover-color: var(--c0d);
 }
 
 /* Utility classes using the CSS variables */
@@ -272,4 +275,34 @@ html {
 
 .accent-hover-border:hover {
   border-color: rgba(var(--accent-hover-color));
+}
+
+/* Add group-based hover for article cards */
+.group:hover .group-accent-hover-text {
+  color: rgba(var(--accent-hover-color));
+}
+
+.group:hover .group-accent-hover-border {
+  border-color: rgba(var(--accent-hover-color));
+}
+
+.search-results {
+  @apply bg-c0d text-c00 px-1 rounded text-xs;
+}
+
+.search-result-item {
+  @apply block p-4 hover:bg-c02 transition-colors duration-200 border-solid border-2 border-c04 first:border-t-0;
+}
+
+.search-result-item-title {
+  @apply font-medium text-c07 mb-1;
+}
+
+.search-result-item-body {
+  @apply text-sm text-c05 leading-relaxed;
+}
+
+.search-results-highlight {
+  @apply text-c00 px-1 rounded text-xs;
+  background-color: rgba(var(--accent-color));
 }
