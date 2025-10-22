@@ -42,7 +42,7 @@
       '')
       # reload the blog content, synching it with my local obsidian vault
       (writeShellScriptBin "rl" ''
-        sync_path=${builtins.readFile ./.sync-path}
+        sync_path=${builtins.readFile "${builtins.getEnv "PWD"}/.sync-path"}
 
         # finds and removes everything except '_index.md'
         find ./content/tech/* -type d -not -name '_index.md' | xargs rm -r &>/dev/null
