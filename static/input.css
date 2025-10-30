@@ -51,7 +51,8 @@ html {
 }
 
 .photo {
-  @apply overflow-hidden aspect-[1/1.25] w-auto h-[16rem] max-w-[28rem] max-h-[28rem] min-w-[12rem] min-h-[12rem] border-solid border-4 rounded-full border-c07;
+  @apply overflow-hidden aspect-[1/1.25] w-auto h-[16rem] max-w-[28rem] max-h-[28rem] min-w-[12rem] min-h-[12rem];
+  @apply border-solid border-4 rounded-full border-c07;
 }
 
 .sidebar {
@@ -59,43 +60,49 @@ html {
 }
 
 .prose {
-  @apply pt-[2rem] pb-[1rem] pr-[2rem] pl-[2rem] m-auto w-[85%] max-w-[55rem] bg-c01 border-solid border-2 rounded-3xl border-c04;
-  line-height: 1.8;
-  /* Improved line height for better readability */
+  @apply pt-[2rem] pb-[1rem] pr-[2rem] pl-[2rem];
+  @apply m-auto w-[85%] max-w-[55rem];
+  @apply bg-c01 border-solid border-2 rounded-3xl border-c04;
+  @apply text-c07;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold mt-[2rem] mb-[0.5rem] pb-[0.5rem];
+  }
 
   h1 {
-    @apply text-4xl font-bold mt-[2rem] mb-[1.5rem] text-c07;
+    @apply text-4xl;
     border-bottom: 3px solid rgba(var(--accent-color));
-    /* Use accent color for borders */
-    padding-bottom: 0.75rem;
   }
 
   h2 {
-    @apply text-2xl font-bold mt-[2rem] mb-[1rem] text-c07;
-    border-bottom: 2px solid rgba(var(--c05));
-    padding-bottom: 0.5rem;
+    @apply text-2xl;
+    border-bottom: 2px solid rgba(var(--accent-color));
   }
 
   h3 {
-    @apply text-xl font-semibold mt-[1.5rem] mb-[0.75rem] text-c07;
+    @apply text-xl;
   }
 
   h4 {
-    @apply text-lg font-semibold mt-[1.25rem] mb-[0.5rem] text-c06;
+    @apply text-lg;
   }
 
   h5,
   h6 {
-    @apply text-base font-semibold mt-[1rem] mb-[0.5rem] text-c06;
+    @apply text-base;
   }
 
   p {
-    @apply mb-[1.5rem] leading-relaxed text-c06;
-    /* Better text color and spacing */
+    @apply text-base mb-[1.0rem];
   }
 
   img {
-    @apply block mx-auto bg-c00 rounded-xl mb-[2rem] mt-[2rem] border border-c04;
+    @apply block mx-auto !bg-c00 rounded-xl mb-[2rem] mt-[2rem] border border-c04;
     /* Enhanced image styling */
     max-width: 100%;
     height: auto;
@@ -103,34 +110,20 @@ html {
     /* Subtle shadow */
   }
 
-  /* Enhanced code blocks with better contrast */
-  pre {
-    @apply font-firaCode !bg-c00 px-6 py-4 mb-[2rem] mt-[2rem] border-2 border-c04 rounded-xl overflow-x-auto;
-
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    code {
-      @apply font-firaCode !text-c07 bg-transparent font-normal;
-
-      * {
-        @apply bg-transparent;
-      }
-
-      span {
-        @apply font-firaCode !text-c07 bg-transparent font-normal;
-      }
-    }
-  }
-
   /* Enhanced inline code with accent colors */
   code {
-    @apply font-firaCode bg-c00 px-2 py-1 rounded-md font-bold text-sm border border-c04;
+    @apply font-firaCode bg-c00 px-2 py-1 rounded-md font-bold text-sm border-0;
     color: rgba(var(--accent-color));
-    font-size: 0.85em;
+  }
 
-    span {
-      @apply font-firaCode bg-c02 font-normal;
-      color: rgba(var(--accent-color));
+  /* Enhanced code blocks with better contrast */
+  pre {
+    @apply px-6 py-4 mb-[2rem] mt-[2rem];
+    @apply !bg-c00 !border-2 !border-c04 !rounded-xl overflow-x-auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    * {
+      @apply font-firaCode font-normal;
     }
   }
 
@@ -155,19 +148,12 @@ html {
   /* Enhanced blockquotes with accent colors and better contrast */
   blockquote {
     @apply !bg-c02 px-[2rem] py-[1.5rem] mx-[1rem] mb-[2rem] mt-[2rem] rounded-xl border-l-4;
+    @apply italic;
     border-left-color: rgba(var(--accent-color));
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-style: italic;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
     p {
-      @apply !mb-[0.75rem] leading-relaxed text-c06;
-      font-size: 1.05em;
-    }
-
-    /* Quote attribution styling */
-    cite {
-      @apply block text-right text-sm mt-2 font-medium;
-      color: rgba(var(--accent-color));
+      @apply block text-left text-sm mt-2;
     }
   }
 
@@ -184,10 +170,6 @@ html {
     @apply no-underline hover:underline transition-all duration-200;
     color: rgba(var(--accent-color));
     text-decoration-color: rgba(var(--accent-color));
-  }
-
-  a:hover {
-    color: rgba(var(--c07));
   }
 
   /* Enhanced Table of Contents styling */
@@ -236,7 +218,7 @@ html {
 }
 
 #links a {
-  @apply border-solid border-[3px] rounded-full w-[5rem] h-[5rem] flex flex-col items-center justify-center;
+  @apply border-solid border-[2px] rounded-full w-[5rem] h-[5rem] flex flex-col items-center justify-center;
   @apply hover:scale-125 hover:rotate-[15deg] duration-[150ms] ease-in-out;
 }
 
