@@ -71,7 +71,7 @@ html {
   h4,
   h5,
   h6 {
-    @apply font-bold mt-[2rem] mb-[0.5rem] pb-[0.5rem];
+    @apply font-bold mt-[2rem] mb-[1rem] pb-[0.5rem];
   }
 
   h1 {
@@ -97,8 +97,8 @@ html {
     @apply text-base;
   }
 
-  p {
-    @apply text-base mb-[1.0rem];
+  p+p {
+    @apply text-base mt-[1.0rem];
   }
 
   img {
@@ -153,7 +153,7 @@ html {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
     p {
-      @apply block text-left text-sm mt-2;
+      @apply block text-left text-sm;
     }
   }
 
@@ -292,20 +292,19 @@ html {
 
 /* Section-specific accent colors */
 .section-blog {
-  --accent-color: var(--c09);
-  --accent-hover-color: var(--c09);
+  --accent-color: var(--c0d);
+  --accent-hover-color: var(--c0d);
 }
 
 .section-tech {
   --accent-color: var(--c0e);
-  /* Blue */
   --accent-hover-color: var(--c0e);
 }
 
 /* Future sections can easily be added */
-.section-projects {
-  --accent-color: var(--c0d);
-  --accent-hover-color: var(--c0d);
+.section-rpg {
+  --accent-color: var(--c09);
+  --accent-hover-color: var(--c09);
 }
 
 /* Utility classes using the CSS variables */

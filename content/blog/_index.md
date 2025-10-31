@@ -1,6 +1,6 @@
 +++
-title = "RPG Blog"
-description = "Here you can find all kinds of RPG related post of games or sessions I've played. For now it's pretty empty, and mainly about OSR-adjacent systems and silly house rules for my own sytem, but in the future I plan on having more diverse topics and some small series."
+title = "Blog"
+description = "Random thoughts and snippets of ideas in no particular order and with to other objective than just existing."
 sort_by = "date"
 template = "section.html"
 page_template = "page.html"

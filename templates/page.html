@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Section detection logic (same as section.html) -->
 {% if page.permalink is containing("/blog/") %}
 {% set section_class = "section-blog" %}
 {% elif page.permalink is containing("/tech/") %}
 {% set section_class = "section-tech" %}
-{% elif page.permalink is containing("/project/") %}
-{% set section_class = "section-project" %}
+{% elif page.permalink is containing("/rpg/") %}
+{% set section_class = "section-rpg" %}
 {% else %}
 {% set section_class = "" %}
 {% endif %}
@@ -23,6 +22,9 @@
         {{ page.date | date(format="%B %-d, %Y", timezone="Europe/Berlin") }}
       </time>
     </div>
+    {% if page.draft %}
+    <div class="flex items-center space-x-2 text-3xl text-c08 font-bold">Draft</div>
+    {% endif %}
   </header>
   <div class="xl:flex xl:flex-row">
     <!-- Previous Article -->
