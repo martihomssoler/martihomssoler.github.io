@@ -164,11 +164,11 @@ html {
   }
 
   em {
-    @apply italic text-c06;
+    @apply italic;
   }
 
   strong {
-    @apply font-semibold text-c07;
+    @apply font-semibold;
   }
 
   /* Enhanced links with accent colors */

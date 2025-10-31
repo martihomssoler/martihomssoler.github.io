@@ -2,66 +2,87 @@
 
 {% block content %}
 <!-- Spash Screen -->
-<div class="flex flex-row w-4/5 h-full m-auto">
-  <div class="flex flex-col items-center space-y-[1rem] m-auto pt-[6rem] pb-[4rem] space-y-[2rem]">
-    <!-- Intro -->
-    <div id="intro" class="flex flex-col sm:flex-row
+<div class="flex flex-col w-full h-full">
+  <div class="flex flex-row w-4/5 h-full m-auto">
+    <div class="flex flex-col items-center space-y-[1rem] m-auto pt-[6rem] pb-[2rem] space-y-[2rem]">
+      <!-- Intro -->
+      <div id="intro" class="flex flex-col sm:flex-row
              items-center space-x-[2rem]">
-      <!-- Photo -->
-      <div id="photo" class="photo mb-[2rem] sm:mb-[0rem] ">
-        <img class="relative top-[-1.5rem]" src="images/mhs-photo.png" />
-      </div>
-      <!-- Info -->
-      <div id="info" class="flex flex-col items-center space-y-[2rem]">
-        <!-- Name-->
-        <div class="flex flex-row text-6xl space-x-[1rem]">
-          <h1 class="font-bold"> Martí </h1>
-          <div class="flex flex-row font-extrabold">
-            <h1 class="text-c08"> H </h1>
-            <h1 class="text-c09"> O </h1>
-            <h1 class="text-c0a"> M </h1>
-            <h1 class="text-c0b"> S </h1>
-            <h1> &nbsp; </h1>
-            <h1 class="text-c0b"> S </h1>
-            <h1 class="text-c0c"> O </h1>
-            <h1 class="text-c0d"> L </h1>
-            <h1 class="text-c0e"> E </h1>
-            <h1 class="text-c0f"> R </h1>
+        <!-- Photo -->
+        <div id="photo" class="photo mb-[2rem] sm:mb-[0rem] ">
+          <img class="relative top-[-1.5rem]" src="images/mhs-photo.png" />
+        </div>
+        <!-- Info -->
+        <div id="info" class="flex flex-col items-center space-y-[2rem]">
+          <!-- Name-->
+          <div class="flex flex-row text-6xl space-x-[1rem]">
+            <h1 class="font-bold"> Martí </h1>
+            <div class="flex flex-row font-extrabold">
+              <h1 class="text-c08"> H </h1>
+              <h1 class="text-c09"> O </h1>
+              <h1 class="text-c0a"> M </h1>
+              <h1 class="text-c0b"> S </h1>
+              <h1> &nbsp; </h1>
+              <h1 class="text-c0b"> S </h1>
+              <h1 class="text-c0c"> O </h1>
+              <h1 class="text-c0d"> L </h1>
+              <h1 class="text-c0e"> E </h1>
+              <h1 class="text-c0f"> R </h1>
+            </div>
+          </div>
+          <!-- Links -->
+          <div id="links" class="flex flex-row space-x-32 text-2xl">
+            <a class="text-c09" href="mailto:martihomssoler@gmail.com">
+              <i class="fa-solid fa-envelope fa-2x"></i>
+            </a>
+            <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
+              <i class="fa-brands fa-linkedin fa-2x"></i>
+            </a>
+            <a class="text-c0e" href="https://github.com/martihomssoler">
+              <i class="fa-brands fa-github-alt fa-2x"></i>
+            </a>
           </div>
         </div>
-        <!-- Links -->
-        <div id="links" class="flex flex-row space-x-32 text-2xl">
-          <a class="text-c09" href="mailto:martihomssoler@gmail.com">
-            <i class="fa-solid fa-envelope fa-2x"></i>
-          </a>
-          <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
-            <i class="fa-brands fa-linkedin fa-2x"></i>
-          </a>
-          <a class="text-c0e" href="https://github.com/martihomssoler">
-            <i class="fa-brands fa-github-alt fa-2x"></i>
-          </a>
-        </div>
+      </div>
+      <div id="about" class="prose !w-auto !w-max-auto">
+        <p>
+          Hi! My name is Martí Homs Soler. I'm a Software Engineer, entrepeneur, tinkerer and writer.
+        </p>
+        <p>
+          This blog is my personal space, where I write mostly for myself to explain what I’m learning, clarify
+          ideas, or document rabbit holes I fall into. You can find random thoughts and snippets of ideas under
+          <a rel="" href="/blog">Blog</a>.
+        </p>
+        <p>
+          You can find interesting tech stuff under <a rel="" href="/tech">Tech</a>. It is
+          mainly about personal software projects, NixOS, ergo-split keyboards and homelabbing, with the ocassional
+          random
+          note on here and there.
+        </p>
+        <p>
+          You can find some weird D&D-like OSR-adjacent stuff under <a rel="" href="/rpg">RPG</a>. Here is
+          where I post about tabletop RPG mechanics, world-building, and random storytelling experiments.
+        </p>
+        <p>
+          Or just look around. You can finds some of my recent entries below.
+        </p>
       </div>
     </div>
-    <div id="about" class="prose !w-auto !w-max-auto">
-      <p>
-        Hi! My name is Martí Homs Soler. I'm a Software Engineer, entrepeneur, tinkerer and writer.
-      </p>
-      <p>
-        This blog is my personal space, where I write mostly for myself to explain what I’m learning, clarify
-        ideas, or document rabbit holes I fall into. You can find random thoughts and snippets of ideas under
-        <a rel="" href="/blog">Blog</a>.
-      </p>
-      <p>
-        You can find interesting tech stuff under <a rel="" href="/tech">Tech</a>. It is
-        mainly about personal software projects, NixOS, ergo-split keyboards and homelabbing, with the ocassional random
-        note on here and there.
-      </p>
-      <p>
-        You can find some weird D&D-like OSR-adjacent stuff under <a rel="" href="/rpg">RPG</a>. Here is
-        where I post about tabletop RPG mechanics, world-building, and random storytelling experiments.
-      </p>
-    </div>
+  </div>
+  <div class="flex flex-row flex-wrap
+    items-center justify-center
+    gap-[1rem] px-[1rem] pb-[2rem] mx-auto">
+    {# gather pages from sections #}
+    {% set blog = get_section(path='blog/_index.md') %}
+    {% set tech = get_section(path='tech/_index.md') %}
+    {% set rpg = get_section(path='rpg/_index.md') %}
+
+    {% set top_posts = blog.pages | concat(with=tech.pages) | concat(with=rpg.pages) | slice(end=8) |
+    sort(attribute="date") | reverse %}
+
+    {% for page in top_posts %}
+    {% include "components/article_card.html" %}
+    {% endfor %}
   </div>
 </div>
 

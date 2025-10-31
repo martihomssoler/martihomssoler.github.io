@@ -1,0 +1,76 @@
+{# expects: page #}
+
+{% if page.permalink is containing("/blog/") %}
+{% set section_class = "section-blog" %}
+{% elif page.permalink is containing("/tech/") %}
+{% set section_class = "section-tech" %}
+{% elif page.permalink is containing("/rpg/") %}
+{% set section_class = "section-rpg" %}
+{% else %}
+{% set section_class = "" %}
+{% endif %}
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        {{ section_class }}
+      ">
+  <a href="{{ page.permalink | safe }}" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      {% for asset in page.assets -%}
+      {% if asset is matching("image[.](jpg|svg|svg|webp)$") %}
+      {% if page.extra is defined and page.extra['image-y'] is defined %}
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300"
+        style="top: {{page.extra['image-y']}}px;" src="{{ get_url(path=asset) }}" />
+      {% else %}
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300 h-[18rem] w-full"
+        src="{{ get_url(path=asset) }}" />
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        {{ page.title }}
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="{{ page.date }}">
+          {{ page.date | date(format="%b %-d, %Y", timezone="Europe/Berlin") }}
+        </time>
+      </div>
+
+      <!-- Draft -->
+      {% if page.draft %}
+      <div class="text-center text-3xl text-c08 font-bold">Draft</div>
+      {% endif %}
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        {{ page.content | striptags | truncate(length=400) }}
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        {{ page.word_count }} words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        {{ page.reading_time }} min read
+      </span>
+    </div>
+  </a>
+</article>
