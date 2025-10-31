@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+
+<div class="section-tech">
+  <header class="group flex flex-col items-center text-center pt-[7.5rem] pb-[1.5rem] space-y-[1rem]">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      My new Flakes + Just setup
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="2025-10-22" class="font-medium">
+        October 22, 2025
+      </time>
+    </div>
+    
+    <!-- Last update if any -->
+    
+  </header>
+  <div class="xl:flex xl:flex-row">
+    <!-- Previous Article -->
+    <div class="sidebar text-left">
+      
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="https://martihomssoler.github.io/tech/nix-shell-aliases-problem/">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Previous</span>
+        <i
+          class="fa-solid fa-chevron-left accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      <div class="flex-grow"></div>
+      
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      <p>It has been a hot while since I wrote an entry in this blog., but I’ve been quite busy with some very interesting side-projects. And today I wanted to revise my <code>nix</code> project setup, and show what I’m using to develop <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/martihomssoler/goburin">Goburin</a>, my hobby programming language. I’ll explain more in a future article and explain why I’m starting by bootstrapping it in assembly and then in Forth… But <strong>now on the actual topic</strong> of this entry: My <code>flakes.nix</code> + <code>just</code> setup.</p>
+<p>As I was saying, some months ago I wrote about using <code>nix-shell</code> and aliases to define per-project commands via <code>writeShellScriptBin</code>. That worked… mostly. Aliases were a bit tricky to get them working right, hence the aforementioned write-up, and it always felt a bit fragile: they depended on shell quirks, and I found myself re-evaluating my <code>shell.nix</code> file <strong>waaaay too often</strong>. The whole workflow was very squeaky and, after stomaching it for a while, I decided I needed something different. That’s why I decided on finally taking a look at <code>just</code>.</p>
+<p>As stated in their <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/casey/just">github repo</a>, <code>just</code> is <strong>just a command runner</strong>, nothing else. It does come with some goodies and cool party tricks, but at the end of the day it just runs commands and let’s you define them in a very easy-to-understand manner. For me, it removed the need to re-evaluate my <code>.nix</code> files, allowing me to monkey around with the command until I found exactly what I wanted.</p>
+<p>To give you an idea of the minimal setup I use in <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/martihomssoler/goburin">Goburin</a> here are my <code>flake.nix</code> and <code>justfile</code>:</p>
+<pre data-lang="nix" style="background-color:#2b303b;color:#6c7079;" class="language-nix "><code class="language-nix" data-lang="nix"><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">  </span><span style="color:#db9d63;">inputs </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#db9d63;">nixpkgs</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">url </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;nixpkgs/nixos-unstable&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    </span><span style="color:#db9d63;">flake-utils</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">url </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;github:numtide/flake-utils&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  };
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#db9d63;">outputs </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">{ </span><span style="color:#adb7c9;">nixpkgs, flake-utils, ... </span><span style="color:#db9d63;">}</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">flake-utils</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">lib</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">eachDefaultSystem </span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">    </span><span style="color:#adb7c9;">system</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">let
+</span><span style="color:#abb2bf;">       </span><span style="color:#db9d63;">pkgs </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">(</span><span style="color:#5ebfcc;">import </span><span style="color:#eb6772;">nixpkgs </span><span style="color:#abb2bf;">{ </span><span style="color:#cd74e8;">inherit </span><span style="color:#db9d63;">system</span><span style="color:#abb2bf;">; });
+</span><span style="color:#abb2bf;">       </span><span style="color:#db9d63;">nativeBuildInputs </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">with </span><span style="color:#eb6772;">pkgs</span><span style="color:#abb2bf;">; [  ];
+</span><span style="color:#abb2bf;">       </span><span style="color:#db9d63;">buildInputs       </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">with </span><span style="color:#eb6772;">pkgs</span><span style="color:#abb2bf;">; [  ];
+</span><span style="color:#abb2bf;">       </span><span style="color:#db9d63;">devInputs         </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">with </span><span style="color:#eb6772;">pkgs</span><span style="color:#abb2bf;">; [  ];
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">in
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">devShells</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">default </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">pkgs</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">mkShell </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">        </span><span style="color:#db9d63;">nativeBuildInputs </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">nativeBuildInputs </span><span style="color:#adb7c9;">++ </span><span style="color:#eb6772;">devInputs</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">        </span><span style="color:#db9d63;">buildInputs </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">buildInputs </span><span style="color:#adb7c9;">++ </span><span style="color:#eb6772;">devInputs</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">        </span><span style="color:#db9d63;">shellHook </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;&#39;
+</span><span style="color:#9acc76;">          export WORKSPACE_DIR=$(pwd)
+</span><span style="color:#9acc76;">        &#39;&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">        
+</span><span style="color:#abb2bf;">        ...
+</span><span style="color:#abb2bf;">      };
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">  );
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<pre data-lang="just" style="background-color:#2b303b;color:#6c7079;" class="language-just "><code class="language-just" data-lang="just"><span style="color:#abb2bf;">set export
+</span><span style="color:#abb2bf;">set shell := [&quot;fish&quot;, &quot;-c&quot;]
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">@build: setup
+</span><span style="color:#abb2bf;">    ...
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">@run: build
+</span><span style="color:#abb2bf;">    ...
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">@verify: run
+</span><span style="color:#abb2bf;">    ...
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"># ---------------------------------------------
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">wbuild:
+</span><span style="color:#abb2bf;">    watchexec -c -e asm -r -- just build 
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">wrun:
+</span><span style="color:#abb2bf;">    watchexec -c -e asm -r -- just run
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">wverify:
+</span><span style="color:#abb2bf;">    watchexec -c -e asm -e forth -r -- just verify   
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"># ---------------------------------------------
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">[private]
+</span><span style="color:#abb2bf;">@setup:
+</span><span style="color:#abb2bf;">    ...
+</span><span style="color:#abb2bf;">
+</span></code></pre>
+<h3 id="about-the-flake-nix">About the <code>flake.nix</code><a class="zola-anchor" href="#about-the-flake-nix" aria-label="Anchor link for: about-the-flake-nix">🔗</a></h3>
+<p>The <code>flake.nix</code> file is <strong>intentionally thin</strong>, just enough for the current project (bootstrapping a compiler in assembly), but you can imagine it growing with dependencies as needed. Currently, I’m using <code>flake-utils</code>… I know I know, I should do better, but in my defense I will state that I do it mostly out of habit; it’s the first tool I learned to make multi-system flakes manageable and for the simple system in hand it is comfortable enough.  That said, I’m aware that <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/hercules-ci/flake-parts"><code>flake-parts</code></a> has become the preferred way to organize more complex flakes and some day I should take a deeper look into. For now, the setup works. And that’s what I care at the moment.</p>
+<h3 id="about-the-justfile">About the <code>justfile</code><a class="zola-anchor" href="#about-the-justfile" aria-label="Anchor link for: about-the-justfile">🔗</a></h3>
+<p>This is <strong>not intended to be a <code>just</code> tutorial/deep-dive</strong>, but I’ll do my best to quickly explain what it does, although I can assume you already have a good idea.</p>
+<p>Each recipe, this is how the call the commands, is given an appropriate name (want to bet what <code>test</code> does?). For convenience I also define some “watch” variants using <code>watchexec</code> to get the “cargo watch” experience at home. (I seriously spent too much time trying to make a suitable <a rel="noopener nofollow noreferrer" target="_blank" href="https://knowyourmeme.com/memes/we-have-food-at-home">meme</a> about this but I guess all the creative juices have been taken by Itreas…). But now for real, <code>watchexec</code> is a hell of a tool, I really recommend it.</p>
+<p>Recipes can have dependencies. Look at the <code>build</code> recipe, which depends on <code>setup</code>. It’s a simple, readable way to define a dependency graph of sorts that makes the project’s workflow almost self-documenting as long as you know how to read justfiles. Of course, <code>just</code> allows you to define if the dependencies should run on every execution of the recipe or not, but I’ll leave that as homework for the reader, since I did not do them myself.</p>
+<p>Overall, <code>just</code> is a quite simple and elegant way to define commands, and it does exactly what I want and it does not force me to jump any hoops, which I appreciate.</p>
+<h3 id="about-the-envrc">About the <code>.envrc</code><a class="zola-anchor" href="#about-the-envrc" aria-label="Anchor link for: about-the-envrc">🔗</a></h3>
+<p>The glue that I almost forgot to tell you about: the <code>.envrc</code> file, or <code>direnv</code>. Here it is in its entirety:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">use flake . --impure
+</span></code></pre>
+<p>I know… <strong>quite underwhelming</strong>, but it gets the job done. I’ll also leave the details of how this works to the reader, <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/nix-community/nix-direnv">here</a> you can find the github repo, but I will explain that with this setup the <code>flake.nix</code> file gets <strong>automatically loaded</strong> when navigating into the directory <strong>and unloaded</strong> when we navigate out of it.</p>
+<p>I will not discuss the use of <code>--impure</code>, which I will be the first one to agree that it is ugly, but as I said it does work and for now it is not more than what I need. Nonetheless, it is not an insurmountable issue, and I believe it could be fixed with some work.</p>
+<h1 id="conclusions">Conclusions<a class="zola-anchor" href="#conclusions" aria-label="Anchor link for: conclusions">🔗</a></h1>
+<p>After spending time juggling aliases and scripts, <code>just</code> turned out to be the missing piece. It’s declarative, consistent, and fits perfectly inside my Nix-based setup.</p>
+<p>Like most good tools, it fades into the background. I just run <code>just wbuild</code> and move on.</p>
+<p>There’s a couple of thing that I need to iron out, like including local files into the <code>flake.nix</code> file, hence the horrible <code>--impure</code> flag. But this just gives me the perfect excuse to write another entry in the future, so I’m not complaining too much.</p>
+<p><strong>Links</strong></p>
+<ul>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/casey/just">Just - just a command runner - Github</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/watchexec/watchexec">Watchexec - Executes commands in response to file modifications - Github</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/nix-community/nix-direnv">Nix-Direnv - A fast, persistent use_nix/use_flake implementation for direnv - Github</a></li>
+<li><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/martihomssoler/goburin">Goburin - My personal hobby “goblin” programming language - Github</a></li>
+</ul>
+
+    </div>
+    <!-- Next Article -->
+    <div class="sidebar text-right">
+      
+    </div>
+  </div>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="https://martihomssoler.github.io/tech/nix-shell-aliases-problem/">
+        <i
+          class="fa-solid fa-chevron-left accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+        <div class="flex-1 text-left">
+          <span class="text-xs text-c05 block">Previous</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">Aliases problems with `nix-shell`+ `direnv`</span>
+        </div>
+      </a>
+      
+
+      <!-- Next Article -->
+      
+      <div class="flex-1"></div>
+      
+    </div>
+  </nav>
+</div>
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>

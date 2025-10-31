@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+
+<div class="section-blog">
+  <header class="group flex flex-col items-center text-center pt-[7.5rem] pb-[1.5rem] space-y-[1rem]">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      The Importance of Building Square Wheels
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="2025-10-31" class="font-medium">
+        October 31, 2025
+      </time>
+    </div>
+    
+    <!-- Last update if any -->
+    
+  </header>
+  <div class="xl:flex xl:flex-row">
+    <!-- Previous Article -->
+    <div class="sidebar text-left">
+      
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      <p>Inspired by <strong><a rel="noopener nofollow noreferrer" target="_blank" href="https://www.youtube.com/@sphaerophoria">Sphaerophoria</a></strong>’s channel description, <strong><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/tsoding">Tsoding</a></strong>’s recreational programming and some of my own projects, but specially <strong><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/martihomssoler/goburin">Goburin</a></strong> as of late, this post is about something that is frowned upon in the sofware industry and, frankly, sounds counterintuitive: re-inventing the wheel.</p>
+<p>In this topic about “useless work” I want to focus on an area that I believe is often barren and even more “useless” (for whatever metric you want to use). More specifically I want to talk about <strong>building Square Wheels</strong>.</p>
+<blockquote>
+<p>“Building square wheels to better appreciate the round ones.”</p>
+<p>— Sphaerophoria’s Youtube channel description</p>
+</blockquote>
+<img src="image.jpg" width="640">
+<p><em>If anyone knows who the original author of the sketch is please let me know, I would love to credit them.</em></p>
+<h2 id="what-do-i-mean-by-square-wheels">What do I mean by Square Wheels?<a class="zola-anchor" href="#what-do-i-mean-by-square-wheels" aria-label="Anchor link for: what-do-i-mean-by-square-wheels">🔗</a></h2>
+<p>When people talk about reinventing the wheel in software, it’s usually a warning: <strong>don’t waste time solving problems that others have already solved</strong>. And in most cases, that is <strong>actually very good advice</strong>. At the end of the day, we, humanity, are were we are today because we are <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants"><strong>standing on the shoulders of giants</strong></a>. But sometimes, you don’t reinvent the wheel to be productive; you reinvent it to <strong>learn</strong>, and maybe, <em>maybe</em> to <strong>re-discover</strong>.</p>
+<p>I’ve always been the kind of person who needs to experience something to truly remember it and understand it. Back in school, I couldn’t just read textbooks and expect to memorize the info in them. Instead, I had to rewrite the material, summarize it, read it back again and rewrite it as many times as necessary until… it just stuck (this was my “hack”, specially for history). I suspect that is why maths and science were easier for me; the text books already came with dozens and dozens of exercices that were ever-so-slightly different from the ones before. It was almost like baked-in <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Spaced_repetition">Spaced Repetition</a>.</p>
+<p>Fast forward to today: I’m a software engineer and that same learning pattern persists. I can read about software architecture, design patterns, and documentation aaall day long, but theory, and text, alone don’t give me the visceral understanding of <strong>why</strong> something is designed the way it is and <strong>how</strong> it looks like. I still put a lot of value in good documentation, and do read it, but I need to <strong>feel</strong> the constraints in order to <strong>understand</strong> the trade-offs. <strong>And that’s why I build Square Wheels</strong>.</p>
+<h3 id="feeling-the-design-line">Feeling the Design Line<a class="zola-anchor" href="#feeling-the-design-line" aria-label="Anchor link for: feeling-the-design-line">🔗</a></h3>
+<p>When I build something from scratch, even something that already exists, like a UI framework or a programming language, I’m not doing it to compete with the world’s most polished, roundest wheels. I’m doing it to understand where the design lines were drawn, to put myself for a moment in the shoes of the designers and ask myself: Where do constraints end and personal choices begin? What trade-offs forced those seemingly weird architectural decisions? What would be different if I had different constraints and objectives?</p>
+<p>You can’t fully appreciate <strong>all those points</strong> until you try answering them for yourself. By struggling with Square Wheels, I develop a deeper intuition for <strong>why</strong> round wheels feel and look the way they do. It’s about empathy with the original builders, not hubris to replace them, but also a healthy dose of skepticism (what used to be called <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Critical_thinking">critical thinking</a>) paired with a drive to explore.</p>
+<h2 id="the-spaghetti-wall-my-personal-approach">The Spaghetti Wall - My Personal Approach<a class="zola-anchor" href="#the-spaghetti-wall-my-personal-approach" aria-label="Anchor link for: the-spaghetti-wall-my-personal-approach">🔗</a></h2>
+<p>This mindset of skepticism and exploration also defines how I approach projects. I have, what I call, a <strong>Spaghetti Wall</strong> methodology: keep throwing ideas at a wall and see what sticks, adjust accordingly. Just like cooking spaghetti, if they stick to a wall after being thrown, it probably means they are cooked (<em>I actually do not suggest cooking real pasta this way… I also acknowledge the fact that I’m not the inventor of such a method, I’m just a follower of this process</em>).</p>
+<p>I write code freely, experiment with it, and then reflect on what worked and, <strong>most importantly</strong> what didn’t. When a piece of code feels right and proves itself useful in different contexts, I extract it into a small library. That way, I’m not constantly reinventing <strong>everything</strong>, I’m refining and understanding <strong>what are my trade-offs</strong>. Over time, I accumulate a toolkit of Square ones that are actually quite useful <strong>to me</strong>.</p>
+<h3 id="questioning-the-status-quo">Questioning the Status Quo<a class="zola-anchor" href="#questioning-the-status-quo" aria-label="Anchor link for: questioning-the-status-quo">🔗</a></h3>
+<p>This approach also has another purpose: to <strong>radically question the status quo</strong>. Not in a “I can do better” kind of way, but more in a curious, almost archeological sense, <strong>is this really the best solution, or did we forget something along the way?</strong></p>
+<p>I often spelunk through software forums, reading technical articles that propose something seemingly new, only to find comments saying, <em>“we had this in the 70s”</em>. It’s both humbling and frustrating. It feels like the industry has an allergy to reinventing wheels, yet ends up doing exactly that, <strong>producing carbon copies written in newer languages</strong>.</p>
+<p>But what’s missing is the genuine act of <strong>questioning</strong>. Why were those decisions made back then? What constraints shaped them? Could we, with our modern context and different priorities, stumble upon a <strong>better trade-off</strong> for today’s use cases? Or even just for <strong>my</strong> use case? That’s what Square Wheels are for: not just to relive history, but to probe it, modify it, and see if it still fits.</p>
+<blockquote>
+<p>We, developers, often have a very scientific / technical approach to programming, hence why we name ourselves Computer Scientists or Software Engineers. But I would argue that <strong>our field changes constantly</strong>, differing from traditional sciences. In them, you can establish some axioms or ground laws and as a result build on top of it.</p>
+<p>You “never” question those assumptions and, as a result, are able to engineer buildings, craft spaceships and develop new vaccines. (<em>I put never in quotes because never say never, amiright?</em>). But for software development the tools and culture of today is much a work of understanding the trade-offs and real, battle-tested improvements as it is marketing. The language-wars are a <strong>clear</strong> indicator of that. Languages are tools, there are tools better than others but in a grand-view they exist only to be used. Maybe it is my shallow understanding of how science work, but I do not see scientists on a daily basis discussing if R or Matlab is better, they are just tools and they use them to drive their <strong>real objective</strong> which is to do quality research and development.</p>
+<p>Sometime along the way, we just forgot to view programming languages and frameworks as tools and ended up confusing them for the real deal. I argue that we need more Square Wheels, more stupid questions and more understanding of what our tools are really capable of doing. The end goal, at least mine, in to build quality software. I agree that given a set of constraints and needs, there are tools that are better than others, but that’s how much I will contribute to the language wars.</p>
+</blockquote>
+<h2 id="the-productive-side-of-building-bad-software">The Productive Side of Building Bad Software<a class="zola-anchor" href="#the-productive-side-of-building-bad-software" aria-label="Anchor link for: the-productive-side-of-building-bad-software">🔗</a></h2>
+<p>There’s a kind of pain that comes from working on these projects. Starting yet another UI framework or a new programming language often feels absurd. <strong>Why would I do this when there are dozens out there already?</strong> But that discomfort is part of the process. It’s that friction paired with reflection that teaches you. There is more to a UI framework than just the UI-specific parts, maybe there is an idea in those that you can extrapolate and save in your brain to be used in later projects.</p>
+<p>Building Square Wheels is not about being inefficient. It’s about making inefficiency a <strong>tool</strong>. It’s the difference between knowing that something is hard, and knowing <strong>why</strong> it’s hard. It’s about not being afraid of asking stupid questions and feeling even worse when the aswer is the same that that the one everyone keeps repeating. That is also why I think it is important to <strong>never stop having fun</strong>.</p>
+<p>This is a segue to <strong>Recreational Programming</strong>, which in my personal opinion <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/tsoding">Tsoding</a> is a very good example of what it is. If you approach this challanges in a playful manner, the output gets exponentially better. You no longer fear feeling stupid, you are just exploring like in a videogame. I’m sure if you played some games in your life, there was a moment when you did an extremly obviously stupid choice just to regret it seconds later (<em>like wondering if falling thousands of meters would kill your character… guess what? It did. Surprising? Not really…</em>). But you learned, or I hope so. Otherwise you can <strong>repeat it again until you understand</strong>. And that is the beauty of learning in a recreational way, you trumping fear of failure with fun (<em>More on that on a future blog</em>).</p>
+<h2 id="final-thoughts">Final Thoughts<a class="zola-anchor" href="#final-thoughts" aria-label="Anchor link for: final-thoughts">🔗</a></h2>
+<p>I’m not advocating that everyone should <strong>always</strong> build <strong>everything</strong> from scratch. That would be pointless and painful. But I do believe every developer should occasionally build their own Square Wheels. The experience grounds you. It gives you a tangible sense of where the boundaries of good design and personal taste intersect.</p>
+<p>In the end, Square Wheels aren’t meant to roll far. They’re meant to <strong>teach you how to make better ones</strong>.</p>
+<p>If you are interested in giving it a shot, there is a very cool GitHub repo called <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/codecrafters-io/build-your-own-x">Build Your Own X</a> by CodeCrafters. I’m not affiliated whatsoever, but it is a good place to find step-by-step guides. Just because you are exploring and tinkering around does not mean you have to do it blindly.</p>
+
+    </div>
+    <!-- Next Article -->
+    <div class="sidebar text-right">
+      
+    </div>
+  </div>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      
+      <div class="flex-1"></div>
+      
+
+      <!-- Next Article -->
+      
+      <div class="flex-1"></div>
+      
+    </div>
+  </nav>
+</div>
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>

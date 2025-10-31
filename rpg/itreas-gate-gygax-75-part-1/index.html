@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+
+<div class="section-rpg">
+  <header class="group flex flex-col items-center text-center pt-[7.5rem] pb-[1.5rem] space-y-[1rem]">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      Itreas Gate - Gygax 75 - Part 1
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="2025-06-04" class="font-medium">
+        June 4, 2025
+      </time>
+    </div>
+    
+    <!-- Last update if any -->
+    
+    <!-- <div class="prose !mb-[1rem] !pt-[1rem] !pb-[1rem] !w-[50%] !max-w-[35rem]"> -->
+    <div class="update-notice">
+      <p class="accent-text font-bold text-xl">Last Updated on July 2,
+        2025</p>
+    </div>
+    
+  </header>
+  <div class="xl:flex xl:flex-row">
+    <!-- Previous Article -->
+    <div class="sidebar text-left">
+      
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      <p>This project comes from a huge mix of ideas that have been bouncing around in my head, pushing me to finally dive in and create <strong>another</strong> world, but this time put as much of the process I can into writing. The blog posts may come sparsely and thin, I’ll try to update them as I write further, but keep in mind that I am aiming these posts to be <em><strong>for me by me</strong></em>.</p>
+<p>I’m re-imagining an existing world—called <em>Itreas Gate</em>—that I previously used to run a once-west-marches now-single-group campaign. A group of friends helped me test my own TTRPG system, for now called <em>LMNTS</em> (pronounced <em>elements</em>, because I’m cool like that). <strong>I’ll be reusing existing maps</strong>, but the core concepts—pitch and inspiration—have changed significantly.</p>
+<p>In my earlier campaign, I had ideas to test new systems and mechanics, but I thought it was too much to test everything at once. To pay it safe, I populated the old version of Itreas with D&amp;D-style monsters, cultures, and magic items. This made DMing a <strong>lot</strong> easier but resulted in a  “kitchen-sink” style world that was not to my liking.</p>
+<p><strong>But this is where things change.</strong> I intend to make good on my word and take you along the journey. <strong>Welcome to Itreas Gate.</strong></p>
+<img src="image.webp" width="640">
+_I am pretty sure I grabbed this image from google and I believe the artist is Mihail Topalov._
+<h1 id="but-why-now">But… Why Now?<a class="zola-anchor" href="#but-why-now" aria-label="Anchor link for: but-why-now">🔗</a></h1>
+<p>As I said before, I’ve had this idea floating around in my mind for a while, but recently, I stumbled upon some <strong>excellent</strong> content online—mostly published books, booklets, and blog posts—that inspired me to start sharing some of my own stuff, even if the quality may not be of my liking all the time. Here’s a small, non-extensive list of inspirations that <strong>actually</strong> motivated me to pull the trigger on this project.</p>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://goblinpunch.blogspot.com/">Goblin Punch</a> completely changed my perspective on darkness, portraying it as a <strong>living and relentless force</strong>. The concept of the “Hungering Dark” stuck with me—an unstoppable entity that chases adventurers and is only briefly held back by light. That idea made something click and was the spark of this project. <a rel="noopener nofollow noreferrer" target="_blank" href="https://goblinpunch.blogspot.com/2025/03/the-hungering-dark.html">Here</a> is said article.</p>
+<blockquote>
+<p>When I first read the article, I thought to myself—<strong>OMG I’m so gonna YOINK that SHIT!</strong>. And being totally honest, I feel this way at least every third article from <strong>Goblin Punch</strong>. I’ll be looking into future articles to see what I can adapt to my own world.</p>
+</blockquote>
+<p><strong>Into the Wyrd and Wild</strong> brings the wilderness to life in a way that’s both beautiful and terrifying. The Wyrd—force that drives unchecked natural growth—got me thinking about how chaotic magic and nature are unpredictable and dangerous. I have used the <strong>wilderness dungeon procedure</strong> extensively in my west-marches campaign and I loved it. So, when I saw that there was a new book for city adventure in a <strong>Bundle of Holding</strong> bundle… it really got the creative side of my brain running. <a rel="noopener nofollow noreferrer" target="_blank" href="https://feral-indie-studios.itch.io/into-the-wyrd-and-wild">Here</a> and <a rel="noopener nofollow noreferrer" target="_blank" href="https://feral-indie-studios.itch.io/into-the-cess-and-citadel">here</a> are non-affiliated links to the books if you are interested or just visit <a rel="noopener nofollow noreferrer" target="_blank" href="https://feral-indie-studios.itch.io/">Feral Indie Studios</a> Itch.io’s website. And do yourself a favor and look into <a rel="noopener nofollow noreferrer" target="_blank" href="https://bundleofholding.com">Bundle of Holding</a>.</p>
+<blockquote>
+<p>Once again, “yoinking-me” ready to go. I will dive deeper into the procedures and what I like (and don’t like) later in the series. But just to reiterate. I believe that <strong>dice dropping</strong> is one of the most efficient ways to get into creative flow—it really works wonders on me.</p>
+</blockquote>
+<p>Talking about creativity… <strong><a rel="noopener nofollow noreferrer" target="_blank" href="https://lostpages.co.uk/">Lost Pages</a>!</strong>. If I had to summarize it with just one word it would be <strong>FLAVOR</strong>. Cannot describe them better than what they have in their website: <em>Old School Games, made with 100% pure tantrums“</em>.  Their content has a distinct—often unsettling—flavor that motivates me to delve into the darker, more enigmatic and moldy facets of world-building. It also set me to the task of wanting to <strong>explain typical clichés with in-world diegetic lore</strong>. If you want distilled flavor, look into their Grimoires: Wonder &amp; Wickedness, Marvels &amp; Malisons and Book of Gaub—brilliant.</p>
+<blockquote>
+<p>I have some rough ideas as to what I want to do with everything that Lost Pages provides, but for now nothing concrete. Jut the feeling that I will use it in the future or at least be heavily inspired by how they <strong>blend game mechanics with raw diegetic lore</strong>.</p>
+</blockquote>
+<p><strong>ICON</strong> by <a rel="noopener nofollow noreferrer" target="_blank" href="https://massifpress.com/">Massif Press</a> mixes classic mythic fantasy with anime and video game elements. I love how it blends narrative-driven play with tactical combat, giving me ideas for balancing story and strategy in my own game. To my limited knowledge, it is the first game that has a clear separation—and distinct rules—between tactical, aka combat, and narrative play. No more “intelligent warrior” being useless because strength is not maxxed out. It hit a spot I did not know I had before…</p>
+<blockquote>
+<p>My main idea from a game-design perspective is to have <strong>“mini-games”</strong>—or small groups of recurring actions inside the world—defined by their own rules, giving a sorta modular game system where every table can pick and choose what areas are they interested to include in their game. Of course, there’s <strong>no free lunch</strong>. Said rules would be rather minimal and have sparse interaction between them, but, hopefully, I can turn this limitations into strengths..</p>
+</blockquote>
+<p>And finally, <strong>Gygax 75 Challenge</strong>. This challenge turned the huge task of <strong>actually</strong> start world-building into something manageable. Breaking things down into weekly goals has helped me shape scattered ideas into something solid and playable. <a rel="noopener nofollow noreferrer" target="_blank" href="https://plundergrounds.itch.io/gygax75">Here</a> is the link to the PDF.</p>
+<blockquote>
+<p>Although the main “challenge” is supposed to be done in a weekly fashion, for me it will be <strong>more like monthly</strong>—if not every two months. Unfortunately, I cannot invest too much time on an average week, but hope to gather enough for a full post every once in a while. I’ll make sure to sprinkle some of my design ideas in-between if I can find the time for it.</p>
+</blockquote>
+<h1 id="week-1-the-concept">Week 1 - The Concept<a class="zola-anchor" href="#week-1-the-concept" aria-label="Anchor link for: week-1-the-concept">🔗</a></h1>
+<p>In the first part of this project—I will start calling it project since I am not challenging nor being challenged by anything, only my lack of creativity—I need to focus on shaping the core concepts and ideas behind my fantasy world. The PDF advises to get a notebook and start by writing your <strong>pitch and inspirations</strong>.</p>
+<h2 id="the-pitch">The Pitch<a class="zola-anchor" href="#the-pitch" aria-label="Anchor link for: the-pitch">🔗</a></h2>
+<p><strong>The Pitch</strong> is supposed to be a compelling list of 3 to 7 concise points that capture the essence, excitement, and tone of my world. I tried my best to put here my ideas and also provide a small explanation as to where they come from and how I intend to use them:</p>
+<ol>
+<li><em><strong>Iron is antithetical to magic</strong></em>. Wearing it interferes with magical powers, spells and rituals. Gold, silver, copper, and some other rarer metals can absorb and store magic to later be used as foci of spells and rituals. Vows made on iron are soul-binding and breaking an <strong>Iron Vow</strong> incurs <strong>Woe</strong> from the universe.</li>
+</ol>
+<blockquote>
+<p>Actually this is taken directly from the Gygax 75 Challenge, but I loved it so much I could not stop myself. Unlike Mistborn, I do not plan on focusing on the different properties of each metal. The ideas is that a knight with full armor is almost impervious from a multitude of magic spells. Which, hopefully, introduces drama on the relationship between mages and warriors, bridging the “power-gap” found in other fantasy systems. I took the Iron Vows from Ironsworn because they offer instant flavor and a clear diegetic way of marking character progress.</p>
+</blockquote>
+<ol start="2">
+<li><em><strong>The Dungeon is sentient.</strong></em> The planet itself is a prison, holding an ancient, unworldly entity captive at its core. <strong>The Dungeon</strong> is the physical manifestation of the being’s struggle to break free. Like bubbles rising from the depths of the ocean, entrances to The Dungeon emerge sporadically. If left unsealed, these openings burst, pouring waves of darkness and corruption on the surface world.</li>
+</ol>
+<blockquote>
+<p>Heavily inspired by the Wheel of Time. What can I say? It’s a banger. I haven’t finished the series so far, so hopefully I’m not spoiling anything on my own, but the main point of this idea is that the Gods sealed some <strong>thing</strong> long ago, and used Earth’s rich metal core to contain this entity. This is the reason why iron is antithetical to magic.</p>
+</blockquote>
+<ol start="3">
+<li>Fallen stars contain the <em><strong>Flame of Divinity</strong></em>. Unlike iron, which repels magic, <strong>Starforged Iron</strong>—found withing these celestial remnants—is one of the only substances capable of containing divine energy for a long time. In some fallen stars, the very <strong>Flame of Divinity</strong> still burns inside, waiting to be awakened. In this world, gods were once mortals who ascended, their journey marked by fate and transformed by the celestial spark.</li>
+</ol>
+<blockquote>
+<p>Cannot think of a single source of inspiration, but the general idea comes from <strong>BECMI</strong>, where characters start as normal folk but their journeys can bring them to immortality and godhood. I thought it could be good to have some reason in-world that could make this sort of journey a possibility for my players, although a very long one.</p>
+</blockquote>
+<ol start="4">
+<li><em><strong>Law vs Chaos</strong></em>. The archetypal struggle of the universe. Government is largely tribal, dominated by warlords and sprawling city-states vying for control. Civilization itself is divided, with towering city-states serving as bastions of order while nomadic cultures roam the wilds, adapting to the ever-shifting chaos. The chaotic nature of <strong>The Dungeon</strong> makes extremely dangerous for society to populate a large span of wilderness.</li>
+</ol>
+<blockquote>
+<p>My own answer to the <em>“unexplored wilds but highly advanced society”</em> dilemma. I am eager to explore how good of a fit it is for my table, but I find it an elegant solution to offer rich city intrigue and also vast mysterious wilds. Cannot guarantee anything, but will inform of my findings. I want to make use of The Dungeon entrances to shape the surrounding wilderness by changing already explored but not populated hexes, which would mean that a lot of play could be derived from a smaller map size.</p>
+</blockquote>
+<ol start="5">
+<li>The world is in a constant struggle for light. (Typical light vs darkness and law vs chaos struggle, but materialized. Haven’t thought of it too much yet)</li>
+</ol>
+<blockquote>
+<p>What can I say… I am a sucker for these epic-style conflicts. I really like the <strong>law vs chaos</strong> angle, but I wanted to materialize it in a more souls-like way, hence the use of <strong>light vs darkness</strong>. Once I read The “Hungering Dark” from Goblin Punch I knew I wanted to put it inside my dungeons and as the unworldly entity captive in the earth’s core. Also, this idea got woven with the “bubbles of evil” from Wheel of Time, giving a very evocative enemy/entity.</p>
+</blockquote>
+<h2 id="the-inspirations">The Inspirations<a class="zola-anchor" href="#the-inspirations" aria-label="Anchor link for: the-inspirations">🔗</a></h2>
+<p><strong>The Inspirations</strong> are books, games, TV series, movies, books—anything really—that inspire me and that evoke “<strong>Itreas</strong>” in my head. Here are they in no particular order.</p>
+<ol>
+<li><em><strong>Dark Souls</strong></em> series by FromSoftware, directed by Hidetaka Miyazaki. These games offer a moldy, entropic atmosphere and a storytelling method rooted in implication not only on narration. The sense of rot, ambiguity, and ruin is a direct influence on the tone and aesthetic that I want to capture.</li>
+<li><em><strong>Delicious in Dungeon</strong></em> by Ryoko Kui and <em><strong>ICON</strong></em> by Massif Press. These two bring a sense of grounded fantasy and strong internal logic to the world—where magic, ecology, and economy create a very credible and realistic world. ICON’s minimalistic clarity, heavy asian culture influence and heterogeneous/non-humanoid cultures pairs well with Dungeon Meshi’s richly integrated worldbuilding and character-focused storytelling. I want to tell epic stories about humanity, and some non-human races embody certain traits better than others.</li>
+<li><em><strong>Jean Giraud “Moebius”</strong></em> and <em><strong>classic/OSR D&amp;D art by Erol Otus, Russ Nicholson, etc</strong></em>. The juxtaposition between Moebius’ crisp alien dreams and the rough-handed sketchiness of old D&amp;D zines helps differentiate the common from the alien. Both sides of the coin are essential. I intend on using them both together. Picture this: a destroyed mossy chapel accentuated by rough and thick lines on the paper, but at the center of the room, a clean-lined crystal rod rests on top of the altar, untouched by the dust.</li>
+<li><em><strong>Folklore traditions from Japan and Europe</strong></em>. These serve as a creative spark, offering creatures, motifs, and narrative rhythms that feel ancient and uncanny. A cultural wellspring for monsters, ruins, and fairy logic. Coming from Europe myself, I’ve been inspired since childhood by dragons, castles and knights, hence the need to populate my world with them, but I also feel a burning love with Japanese folklore, aesthetic and myths, which I believe can pair very well in Itreas.</li>
+<li><em><strong>The Witcher</strong></em> series (books by Andrzej Sapkowski, games by CD Projekt Red), <em><strong>Monster Hunter</strong></em> by Capcom, and <strong>Roguelike games</strong> such as <em>Darkest Dungeon</em> or <em>Caves of Qud</em>. These influence the brutal ecology of monsters—things are hungry, huge, and dangerous. The lone hunter versus massive beasts is central to the tone alongside the traditional permadeath mechanic of the roguelikes. Itreas is not a typical Epic Fantasy setting, although I want to be able to tell epic stories. The real struggle is surviving evil, winning against evil. Here is a quote from Andrzej Sapkowski:</li>
+</ol>
+<blockquote>
+<p>“Evil is evil. Lesser, greater, middling… makes no difference. The degree is arbitrary. The definition’s blurred. If I’m to choose between one evil and another, I’d rather not choose at all.”<br />
+— Geralt of Rivia, in “The Lesser Evil”</p>
+</blockquote>
+<ol start="6">
+<li><em><strong>Warhammer Fantasy</strong></em> (primarily the old world aesthetic). Its decayed, baroque grandeur and grotesque interpretations of classic fantasy races made me fall in love with orcs and goblins, which I want to give a resemblance of justice in Itreas.</li>
+<li><em><strong>“Titanic Ruins”</strong></em> – A non-textual theme seen in games like <em>Shadow of the Colossus</em>, <em>Elden Ring</em>, and some heavy metal album covers. The idea of massive structures built atop long-dead colossi captures the sublime scale of the setting. A guiding principle: size matters—big ruins, big bones, big mysteries.</li>
+</ol>
+<h1 id="wrapping-up">Wrapping Up<a class="zola-anchor" href="#wrapping-up" aria-label="Anchor link for: wrapping-up">🔗</a></h1>
+<p>So that’s Week 1. The <strong>big soup of ideas</strong>. Honestly, this might’ve been more a brain-dump than a cohesive blog post, but I needed to get this stuff out there and create some scaffolding I can hang actual design on.</p>
+<p>This post might feel dense, but that’s kinda the point: it’s a ritual of crystallization. A necessary first step before I start refining, trimming, expanding, etc. There are still tons of loose threads I didn’t tug on. But all that <em>is</em> coming… <strong>eventually</strong>.</p>
+<p>Thanks for reading—if you did. <strong>Even better</strong>, to all the <strong>brilliant minds</strong> behind <strong>Goblin Punch</strong>, <strong>Feral Indie Studios</strong>, <strong>Lost Pages</strong>, <strong>Massif Press</strong>, and all the <strong>other blogs</strong> I read, to all the <strong>artists</strong>, <strong>designers</strong>, and <strong>writers</strong> whose weird, moldy, fantastic magical lit a fire under me—<em><strong>thank you</strong></em>. Your blogs, booklets, and busted-up worlds keep dragging me back into the deep dark dungeon that is our hobby. And I appreciate it from the bottom of my heart.</p>
+<p><strong>Next up:</strong> Week 2 of Gygax 75, where I take all these murky concepts and start carving out a small home base. A town, a settlement, a place that clings to the edge of dark. Hopefully with a tavern, a god, and a reason to care about those two.</p>
+<p>Until then—</p>
+<p><em><strong>Stay weird, write often, delve deep.</strong></em></p>
+<p><em><strong>The dark doesn’t wait.</strong></em></p>
+<p>—MHS</p>
+
+    </div>
+    <!-- Next Article -->
+    <div class="sidebar text-right">
+      
+      <div class="flex-grow"></div>
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-2/">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Next</span>
+        <i
+          class="fa-solid fa-chevron-right accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      
+    </div>
+  </div>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      
+      <div class="flex-1"></div>
+      
+
+      <!-- Next Article -->
+      
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-2/">
+        <div class="flex-1 text-right">
+          <span class="text-xs text-c05 block">Next</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">Itreas Gate - Gygax 75 - Part 2</span>
+        </div>
+        <i
+          class="fa-solid fa-chevron-right accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+      </a>
+      
+    </div>
+  </nav>
+</div>
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+
+<div class="section-tech">
+  <header class="group flex flex-col items-center text-center pt-[7.5rem] pb-[1.5rem] space-y-[1rem]">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      Aliases problems with `nix-shell`+ `direnv`
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="2025-04-30" class="font-medium">
+        April 30, 2025
+      </time>
+    </div>
+    
+    <!-- Last update if any -->
+    
+  </header>
+  <div class="xl:flex xl:flex-row">
+    <!-- Previous Article -->
+    <div class="sidebar text-left">
+      
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="https://martihomssoler.github.io/tech/custom-keyboard-layout/">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Previous</span>
+        <i
+          class="fa-solid fa-chevron-left accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      <div class="flex-grow"></div>
+      
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      <p>When working in reproducible development environments, <code>nix-shell</code> and <code>direnv</code> form a powerful duo — more precisely <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/nix-community/nix-direnv">nix-direnv</a>. Combined, they allow per-project environments to be automatically loaded when entering a directory — no manual shenanigans needed. Nonetheless, one recurring pain point is the frustrating interaction between <code>nix-shell</code>, <code>direnv</code>, and Bash aliases.</p>
+<p>While developing this personal blog using <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.getzola.org/">Zola</a>, I had some scripts that I wanted to run on the background in an easy way — namely <code>zola serve</code> and <code>tailwindcss</code> with <code>--watch</code> option. To make it easier I wanted to have a single Bash alias named <code>serve</code> that would handle everything for me, even <code>Ctrl+C</code> to stop the processes.</p>
+<p>But… I ran into an annoying issue: my usual Bash aliases weren’t working inside my project’s <code>nix-shell</code> environment, even though I was using <code>direnv</code> to load everything automatically. After some digging, I realized this is a common pitfall when combining <code>nix-shell</code>, <code>direnv</code>, and Bash. Here’s what’s going on and how I worked around it using nix’s <code>writeShellScriptBin</code>.</p>
+<img src="image.jpg" width="640">
+<h2 id="why-bash-aliases-break-inside-nix-shell-direnv">Why Bash Aliases Break inside <code>nix-shell</code> + <code>direnv</code>?<a class="zola-anchor" href="#why-bash-aliases-break-inside-nix-shell-direnv" aria-label="Anchor link for: why-bash-aliases-break-inside-nix-shell-direnv">🔗</a></h2>
+<p><strong>TLDR: <code>direnv</code> doesn’t source <code>.bashrc</code> or similar files in interactive shells</strong>.</p>
+<p>If you are interested <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/direnv/direnv/issues/73">here</a> and <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/nix-community/nix-direnv/issues/245">here</a> are <code>.direnv</code> Github issues, and <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/NixOS/nix/issues/1598">here</a> the <code>nix-shell</code> Github issue.</p>
+<h3 id="understanding-the-issue">Understanding the Issue<a class="zola-anchor" href="#understanding-the-issue" aria-label="Anchor link for: understanding-the-issue">🔗</a></h3>
+<p>Bash aliases are typically defined in interactive shell sessions, such as those initiated by <code>.bashrc</code>. When you define an alias like:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">λ</span><span style="color:#abb2bf;"> -</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;"> alias gs=</span><span style="color:#9acc76;">&#39;git status&#39;
+</span></code></pre>
+<p>That alias exists <strong>only in the interactive shell session</strong>, like when you open a terminal.</p>
+<p>If a script or tool spawns a <em>non-interactive</em> Bash shell, your aliases won’t be there. This means that, when entering a <code>nix-shell</code> environment, especially when managed by <code>direnv</code>, these aliases may not be available.​</p>
+<p>The root of the problem lies in how <code>direnv</code> and <code>nix-shell</code> operate.</p>
+<h4 id="direnv-behavior"><code>direnv</code> Behavior<a class="zola-anchor" href="#direnv-behavior" aria-label="Anchor link for: direnv-behavior">🔗</a></h4>
+<p><code>direnv</code> watches for <code>.envrc</code> and re-evaluates it when you enter a directory — modifying the environment of the current shell session. This part works great.</p>
+<p>However,  <code>direnv</code> <strong>does not start a new shell</strong>, and therefore, any aliases defined within <code>shellHook</code> in <code>shell.nix</code> are not propagated to the current shell and you will find that your previously <code>gs</code> command is suddenly undefined.</p>
+<p>Even if you define aliases directly inside <code>.envrc</code>, they might not propagate into the spawned <code>nix-shell</code> depending on the context and timing. So definitively not reproducible.</p>
+<h4 id="nix-shell-behavior"><code>nix-shell</code> Behavior<a class="zola-anchor" href="#nix-shell-behavior" aria-label="Anchor link for: nix-shell-behavior">🔗</a></h4>
+<p>While <code>nix-shell</code> does start an interactive shell by default, aliases defined in <code>shellHook</code> may not persist in certain scenarios, such as when using <code>nix-shell --run</code>. ​</p>
+<p>These behaviors lead to inconsistencies in the availability of aliases, causing frustration for users who rely on them for their workflows — that was me.​</p>
+<h2 id="the-workaround-using-writeshellscriptbin">The Workaround: Using <code>writeShellScriptBin</code><a class="zola-anchor" href="#the-workaround-using-writeshellscriptbin" aria-label="Anchor link for: the-workaround-using-writeshellscriptbin">🔗</a></h2>
+<p>To circumvent the limitations with aliases, a practical solution is to convert aliases into executable scripts using Nix’s <code>writeShellScriptBin</code> function. This approach ensures that the desired commands are available in the environment’s <code>$PATH</code>, regardless of how the shell is initiated.​</p>
+<h3 id="setup-nix-direnv">Setup <code>nix-direnv</code><a class="zola-anchor" href="#setup-nix-direnv" aria-label="Anchor link for: setup-nix-direnv">🔗</a></h3>
+<p>I’m assuming you already have <code>nix-direnv</code> in your system. Otherwise, You can find all the info on how to install it in <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/nix-community/nix-direnv#Installation">here</a>.</p>
+<p>For completeness sake, this is how I have it setup using <code>home-manager</code> and <code>fish</code> as my terminal:</p>
+<pre data-lang="nix" style="background-color:#2b303b;color:#6c7079;" class="language-nix "><code class="language-nix" data-lang="nix"><span style="font-style:italic;color:#5f697a;"># ... import pgks ...
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">	</span><span style="font-style:italic;color:#5f697a;"># ... other config ...
+</span><span style="color:#abb2bf;">    </span><span style="color:#db9d63;">programs</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">direnv </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">enable </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">enableFishIntegration </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">nix-direnv</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">enable </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    };
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<p>Once you have <code>nix-direnv</code> you need to make it available in your system and folder. Just run the following commands:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#eb6772;">λ</span><span style="color:#abb2bf;"> -</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;"> echo </span><span style="color:#9acc76;">&quot;use nix&quot; </span><span style="color:#adb7c9;">&gt;&gt;</span><span style="color:#abb2bf;"> .envrc
+</span><span style="color:#eb6772;">λ</span><span style="color:#abb2bf;"> -</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;"> direnv allow
+</span></code></pre>
+<h3 id="define-the-script-in-shell-nix">Define the Script in shell.nix<a class="zola-anchor" href="#define-the-script-in-shell-nix" aria-label="Anchor link for: define-the-script-in-shell-nix">🔗</a></h3>
+<p>This is how I have defined the <code>shell.nix</code> in my <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/martihomssoler/martihomssoler.github.io/blob/main/shell.nix">repo</a>. Make sure the name of the file is either <code>shell.nix</code> or <code>default.nix</code> as per the <a rel="noopener nofollow noreferrer" target="_blank" href="https://nix.dev/manual/nix/2.28/command-ref/nix-shell.html#description">Nix documentation</a></p>
+<pre data-lang="nix" style="background-color:#2b303b;color:#6c7079;" class="language-nix "><code class="language-nix" data-lang="nix"><span style="color:#db9d63;">{ </span><span style="color:#adb7c9;">pkgs ? </span><span style="color:#5ebfcc;">import </span><span style="color:#9acc76;">&lt;nixpkgs&gt; </span><span style="color:#abb2bf;">{} </span><span style="color:#db9d63;">}</span><span style="color:#abb2bf;">:
+</span><span style="color:#cd74e8;">let
+</span><span style="color:#abb2bf;">  </span><span style="color:#db9d63;">scripts </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">[
+</span><span style="color:#abb2bf;">    (</span><span style="color:#eb6772;">pkgs</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">writeShellScriptBin </span><span style="color:#9acc76;">&quot;serve&quot; &#39;&#39;
+</span><span style="color:#9acc76;">      trap &#39;kill 0&#39; SIGINT; zola serve &amp; tailwindcss -i static/input.css -o public/output.css --watch
+</span><span style="color:#9acc76;">    &#39;&#39;</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">  ];
+</span><span style="color:#cd74e8;">in
+</span><span style="color:#eb6772;">pkgs</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">mkShell </span><span style="color:#cd74e8;">rec </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">  </span><span style="color:#db9d63;">buildInputs </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">with </span><span style="color:#eb6772;">pkgs</span><span style="color:#abb2bf;">; [
+</span><span style="color:#abb2bf;">    </span><span style="font-style:italic;color:#5f697a;"># all needed packages -- removed for clarity --
+</span><span style="color:#abb2bf;">  ] </span><span style="color:#adb7c9;">++ </span><span style="color:#eb6772;">scripts</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<p>Note that I’m using…</p>
+<ul>
+<li><code>writeShellScriptBin</code> to create an executable script — in this case named <code>serve</code>. I put said script in the <code>scripts</code> array that then I make available through the <code>buildInputs</code> so I can call it inside the new <code>nix-shell</code>.</li>
+<li><code>trap 'kill 0' SIGINT;</code> to create a group and send the <code>SIGTERM</code> signal to all processes in the current process group when I press <code>Ctrl+C</code>. This ensures that all background processes started by the script are terminated when the script is interrupted.</li>
+<li><code>zola serve</code> <strong>first</strong> and then <code>tailwindcss ... --watch</code>. Otherwise the <code>.css</code> file <strong>will not be loaded properly</strong>. I honestly spent too much time on this small issue…</li>
+</ul>
+<p>This setup is particularly useful for development workflows where you want to simultaneously watch for CSS changes and serve your site locally. Of course, the script can be easily updated to run multiple background processes — just add another <code>&amp; ...</code> inside the <code>trap</code> group.</p>
+<h1 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">🔗</a></h1>
+<p>Aliases in <code>nix-shell</code> with <code>direnv</code> don’t work well, especially when defined in <code>shellHook</code>. They’re not reliable. Using <code>writeShellScriptBin</code> to create real scripts is a simple fix — it’s consistent, works across shells, and avoids alias issues.</p>
+<p>I really like this solution. It allows me to stay fully within Nix, keep things reproducible, and still have flexibility. The only downside is needing to reload <code>nix-shell</code> if I update a script, but that doesn’t come up often. Usually I discover patterns in my commands while working, then consolidate them later. I don’t try to predict them up front.</p>
+
+    </div>
+    <!-- Next Article -->
+    <div class="sidebar text-right">
+      
+      <div class="flex-grow"></div>
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="https://martihomssoler.github.io/tech/my-new-nix-flakes-project-setup/">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Next</span>
+        <i
+          class="fa-solid fa-chevron-right accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      
+    </div>
+  </div>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="https://martihomssoler.github.io/tech/custom-keyboard-layout/">
+        <i
+          class="fa-solid fa-chevron-left accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+        <div class="flex-1 text-left">
+          <span class="text-xs text-c05 block">Previous</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">TwoOfUs - My Custom Keyboard &amp; Layout</span>
+        </div>
+      </a>
+      
+
+      <!-- Next Article -->
+      
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="https://martihomssoler.github.io/tech/my-new-nix-flakes-project-setup/">
+        <div class="flex-1 text-right">
+          <span class="text-xs text-c05 block">Next</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">My new Flakes + Just setup</span>
+        </div>
+        <i
+          class="fa-solid fa-chevron-right accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+      </a>
+      
+    </div>
+  </nav>
+</div>
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>

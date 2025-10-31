@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+<!-- Set section class for CSS variable scoping -->
+
+<div class="section-blog">
+  <div class="group flex flex-col items-center text-center pt-[8rem] pb-[4rem] space-y-4">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-[75rem] group-accent-hover-text">
+      Blog
+    </h1>
+    <p class="text-xl font-mono w-4/5 max-w-[75rem]"> Random thoughts and snippets of ideas in no particular order and with to other objective than just existing. </p>
+  </div>
+  
+  <!-- grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 -->
+  <div class="flex flex-row flex-wrap
+    items-center justify-center
+    gap-[1rem] px-[1rem] pt-[1rem] pb-[2rem] mx-auto">
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-blog
+      ">
+  <a href="https://martihomssoler.github.io/blog/the-importance-of-square-wheels/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300 h-[18rem] w-full"
+        src="https://martihomssoler.github.io/blog/the-importance-of-square-wheels/image.jpg" />
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        The Importance of Building Square Wheels
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-10-31">
+          Oct 31, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        Inspired by Sphaerophoria’s channel description, Tsoding’s recreational programming and some of my own projects, but specially Goburin as of late, this post is about something that is frowned upon in the sofware industry and, frankly, sounds counterintuitive: re-inventing the wheel.
+In this topic about “useless work” I want to focus on an area that I believe is often barren and even more “useless”…
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        1626 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        9 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+  </div>
+  
+</div>
+
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>

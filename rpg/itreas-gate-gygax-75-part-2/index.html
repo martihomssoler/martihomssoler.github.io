@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+
+<div class="section-rpg">
+  <header class="group flex flex-col items-center text-center pt-[7.5rem] pb-[1.5rem] space-y-[1rem]">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      Itreas Gate - Gygax 75 - Part 2
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="2025-07-02" class="font-medium">
+        July 2, 2025
+      </time>
+    </div>
+    
+    <!-- Last update if any -->
+    
+    <!-- <div class="prose !mb-[1rem] !pt-[1rem] !pb-[1rem] !w-[50%] !max-w-[35rem]"> -->
+    <div class="update-notice">
+      <p class="accent-text font-bold text-xl">Last Updated on October 31,
+        2025</p>
+    </div>
+    
+  </header>
+  <div class="xl:flex xl:flex-row">
+    <!-- Previous Article -->
+    <div class="sidebar text-left">
+      
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-1/">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Previous</span>
+        <i
+          class="fa-solid fa-chevron-left accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      <div class="flex-grow"></div>
+      
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      <p>Welcome back to the <strong>Gygax 75 Challenge</strong> series, this blog will covers Week 2 of the challenge. If you want to take a look at the previous post, you can find it <a href="../itreas-gate-gygax-75-part-1/">here</a>.</p>
+<p>As described in the challenge, we will be drawing a map and start populating it with at least one large settlement, two other kinds of settlement, one major terrain feature, a mysterious site to be explored and one dungeon. It is also recommended to do it in a sheet of hex paper—on the software equivalent—but I will start with some rough sketches and then transfer my map to hex-map in the next blog post.</p>
+<h1 id="week-2-surrounding-area">Week 2 - Surrounding Area<a class="zola-anchor" href="#week-2-surrounding-area" aria-label="Anchor link for: week-2-surrounding-area">🔗</a></h1>
+<p>I took the advise regarding scale. The author recommended 23x14 hexes with a scale of 1 mile to 1 hex which in my opinion is a decent chunk of land. <a rel="noopener nofollow noreferrer" target="_blank" href="https://steamtunnel.blogspot.com/2011/09/how-much-adventure-in-one-6-mile-hex.html">Here</a> I share a blog post where the author shows that the <strong>entire</strong> Elder Scrolls V Skyrim map fits inside a single 6-mile hex, but I digress. Of course, before I could continue ahead, I had changed the miles to kilometers, because <em>’uropean</em>, and ended up with a 38x22km approx (roughly 10 6-mile hexes or 10 Skyrim maps).</p>
+<p>This means the area is roughly 836 squared kilometers. As always, this means nothing to my brain so I jumped to Wikipedia to find a more familiar mental image that I could understand. My go-to pages when I try to make sense of actually <em>“how big an area is”</em> is to look at the <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Comarques_of_Catalonia">Comarques of Catalonia</a> (my homeland).</p>
+<p>I sorted the list table by area and looked for some comarca whose area was somewhat similar to 836, and, low-and-behold, I found <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Ribera_d%27Ebre">Ribera d’Ebre</a> has an area of roughly 827km², not bad. After finding a geographic map on the internet, I honestly <strong>fell in love with it</strong>, it has everything I want in my initial map and I decided I would use it as my backbone inspiration.</p>
+<p>Here is the topographic image I found <a rel="noopener nofollow noreferrer" target="_blank" href="https://trobart.cat/products/ribera-debre-mapa-topografic-en-color">online</a>.</p>
+<img src="ribera-debre-topographic.webp" width="640">
+<h2 id="populating-the-map">Populating the Map<a class="zola-anchor" href="#populating-the-map" aria-label="Anchor link for: populating-the-map">🔗</a></h2>
+<p>The map above has virtually everything I needed to have for the first map:</p>
+<ul>
+<li>a huge river running through it</li>
+<li>a mountain range splitting the map in two.</li>
+<li>a very mysteriously looking isolated blob of mountains to the bottom-right</li>
+<li>good ration of mountainous terrain and lowland terrain</li>
+<li>…</li>
+</ul>
+<p>I mean, I wanted to change a lot of things, but the overall structure is undeniably there. So I took out my notebook and started sketching the rough topographical outline and then sprinkling some locations with placeholder names. After some time I had this (I added some keys to facilitate explaining it later).</p>
+<img src="rough-map-keyed.jpg" width="640">
+<p>You certainly noticed that the bottom half is quite empty, and there is a reason for that. I intend to <em><strong>worldbuild by playing</strong></em>, meaning that I want to develop just the essentials for an area and then solo-play in it to develop it further. This way I can let my ideas simmer for a while before making them canon.</p>
+<p>With that out of the way, here is <strong>what’s in the map</strong> and some ideas I have of what I would like there to be in the bottom half.</p>
+<ul>
+<li><strong>Older Roots(1)</strong> is the huge north-west forest. It makes the traversal up-river virtually impossible, which is their main function in the map. The forest is home to my version of wood-elves, which I’m still pondering over. Folks from the region know that they live there, but since the elves seek to contact they leave them alone. It is said that powerful witches live there. <em>Is there something or someone upriver worth discovering?</em></li>
+<li><strong>Death Roots(2)</strong> is the second huge forest south of <strong>Older Roots</strong>. The river that runs though it has its source inside a cavern. The <strong>Cavern (3)</strong> is a known and very old entrance to The Dungeon that remains unsealed. Evil and decay seep out of the entrance into the forest, altering the wildlife and harboring monsters. <em>Is it true that there are untold riches inside the Cavernous Entrance?</em></li>
+<li><strong>Quiet Plains(4)</strong> and <strong>High Keep(4)</strong> are the core of population in the top half of the map. As the name implies, little happens in the plains and everyone—except miners, watchmen and hunters—resides in <strong>High Keep</strong>. The city is built with concentric rings and high walls. It is designed to hold siege for long periods of time and expands a large surface with some indoor fields to produce food. The <strong>Quiet Plains</strong> have several smaller villages with small keeps belonging to the nobles in the region. These keeps act as fortifications and first line of defense. <em>How’s the political scene like in the region?</em> <em>Which faction has the power and which factions are maneuvering to take control?</em></li>
+<li>Surrounding the city, the <strong>Three Towers(5)</strong> watch the wilderness for newly surfaced entrances to The Dungeon. At a given time, the towers and surrounding buildings can house a couple hundred soldiers. Very recently one of the towers spotted a <strong>new entrance(6)</strong> north of the map. <em>What monsters will seep from it if not sealed?</em></li>
+<li><strong>Barrows(7)</strong> are a clear inspiration from Barrowmaze. An ancient resting place, overrun with ghouls and other undead creatures by day and hunted by ghosts and banshees by night, or so say the locals. <em>What is true and what is not?</em> <em>Is there anything of value in the barrows?</em></li>
+<li><strong>Hunter’s Fort</strong> is a long standing trading fort. Merchant caravans do come every season from the south to trade with the <strong>Quiet Plains</strong>. It also acts as a defense structure against the beasts from the <strong>Death Roots</strong> that come from time to time.</li>
+<li><strong>Twin Keeps(9)</strong> is an abandoned twin dwarven keep. It is my idea of “low-level” mega dungeon. The keep is ancient and huge, but a good portion of the easy to access floors have been mostly cleaned of any meaningful treasure. Nonetheless, monsters inhabit the deeper parts of the keeps and do want to take control of the upper floors.</li>
+</ul>
+<h2 id="random-tables">Random Tables<a class="zola-anchor" href="#random-tables" aria-label="Anchor link for: random-tables">🔗</a></h2>
+<p><strong>Not done</strong>, to be honest. I’ve been postponing this step for months and I decided to publish this page for now. In the future I will “patch” this section. At the moment I’m working on <strong>Spark Tables</strong>, so hopefully I can write a post in the upcomming weeks about this topic and finish my random tables.</p>
+
+    </div>
+    <!-- Next Article -->
+    <div class="sidebar text-right">
+      
+    </div>
+  </div>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-1/">
+        <i
+          class="fa-solid fa-chevron-left accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+        <div class="flex-1 text-left">
+          <span class="text-xs text-c05 block">Previous</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">Itreas Gate - Gygax 75 - Part 1</span>
+        </div>
+      </a>
+      
+
+      <!-- Next Article -->
+      
+      <div class="flex-1"></div>
+      
+    </div>
+  </nav>
+</div>
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>

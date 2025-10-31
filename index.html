@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+<!-- Spash Screen -->
+<div class="flex flex-col w-full h-full">
+  <div class="flex flex-row w-4/5 h-full m-auto">
+    <div class="flex flex-col items-center space-y-[1rem] m-auto pt-[6rem] pb-[2rem] space-y-[2rem]">
+      <!-- Intro -->
+      <div id="intro" class="flex flex-col sm:flex-row
+             items-center space-x-[2rem]">
+        <!-- Photo -->
+        <div id="photo" class="photo mb-[2rem] sm:mb-[0rem] ">
+          <img class="relative top-[-1.5rem]" src="images/mhs-photo.png" />
+        </div>
+        <!-- Info -->
+        <div id="info" class="flex flex-col items-center space-y-[2rem]">
+          <!-- Name-->
+          <div class="flex flex-row text-6xl space-x-[1rem]">
+            <h1 class="font-bold"> Martí </h1>
+            <div class="flex flex-row font-extrabold">
+              <h1 class="text-c08"> H </h1>
+              <h1 class="text-c09"> O </h1>
+              <h1 class="text-c0a"> M </h1>
+              <h1 class="text-c0b"> S </h1>
+              <h1> &nbsp; </h1>
+              <h1 class="text-c0b"> S </h1>
+              <h1 class="text-c0c"> O </h1>
+              <h1 class="text-c0d"> L </h1>
+              <h1 class="text-c0e"> E </h1>
+              <h1 class="text-c0f"> R </h1>
+            </div>
+          </div>
+          <!-- Links -->
+          <div id="links" class="flex flex-row space-x-32 text-2xl">
+            <a class="text-c09" href="mailto:martihomssoler@gmail.com">
+              <i class="fa-solid fa-envelope fa-2x"></i>
+            </a>
+            <a class="text-c0d" href="https://www.linkedin.com/in/martihomssoler/">
+              <i class="fa-brands fa-linkedin fa-2x"></i>
+            </a>
+            <a class="text-c0e" href="https://github.com/martihomssoler">
+              <i class="fa-brands fa-github-alt fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="about" class="prose !w-auto !w-max-auto">
+        <p>
+          Hi! My name is Martí Homs Soler. I'm a Software Engineer, entrepeneur, tinkerer and writer.
+        </p>
+        <p>
+          This blog is my personal space, where I write mostly for myself to explain what I’m learning, clarify
+          ideas, or document rabbit holes I fall into. You can find random thoughts and snippets of ideas under
+          <a rel="" href="/blog">Blog</a>.
+        </p>
+        <p>
+          You can find interesting tech stuff under <a rel="" href="/tech">Tech</a>. It is
+          mainly about personal software projects, NixOS, ergo-split keyboards and homelabbing, with the ocassional
+          random
+          note on here and there.
+        </p>
+        <p>
+          You can find some weird D&D-like OSR-adjacent stuff under <a rel="" href="/rpg">RPG</a>. Here is
+          where I post about tabletop RPG mechanics, world-building, and random storytelling experiments.
+        </p>
+        <p>
+          Or just look around. You can finds some of my recent entries below.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap
+    items-center justify-center
+    gap-[1rem] px-[1rem] pb-[2rem] mx-auto">
+    
+    
+    
+    
+
+    
+
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-blog
+      ">
+  <a href="https://martihomssoler.github.io/blog/the-importance-of-square-wheels/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300 h-[18rem] w-full"
+        src="https://martihomssoler.github.io/blog/the-importance-of-square-wheels/image.jpg" />
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        The Importance of Building Square Wheels
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-10-31">
+          Oct 31, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        Inspired by Sphaerophoria’s channel description, Tsoding’s recreational programming and some of my own projects, but specially Goburin as of late, this post is about something that is frowned upon in the sofware industry and, frankly, sounds counterintuitive: re-inventing the wheel.
+In this topic about “useless work” I want to focus on an area that I believe is often barren and even more “useless”…
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        1626 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        9 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-tech
+      ">
+  <a href="https://martihomssoler.github.io/tech/my-new-nix-flakes-project-setup/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300 h-[18rem] w-full"
+        src="https://martihomssoler.github.io/tech/my-new-nix-flakes-project-setup/image.webp" />
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        My new Flakes + Just setup
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-10-22">
+          Oct 22, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        It has been a hot while since I wrote an entry in this blog., but I’ve been quite busy with some very interesting side-projects. And today I wanted to revise my nix project setup, and show what I’m using to develop Goburin, my hobby programming language. I’ll explain more in a future article and explain why I’m starting by bootstrapping it in assembly and then in Forth… But now on the actual topic…
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        923 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        5 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-rpg
+      ">
+  <a href="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-2/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300"
+        style="top: -70px;" src="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-2/image.jpg" />
+      
+      
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        Itreas Gate - Gygax 75 - Part 2
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-07-02">
+          Jul 2, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        Welcome back to the Gygax 75 Challenge series, this blog will covers Week 2 of the challenge. If you want to take a look at the previous post, you can find it here.
+As described in the challenge, we will be drawing a map and start populating it with at least one large settlement, two other kinds of settlement, one major terrain feature, a mysterious site to be explored and one dungeon. It is also …
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        1118 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        6 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-rpg
+      ">
+  <a href="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-1/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300"
+        style="top: -200px;" src="https://martihomssoler.github.io/rpg/itreas-gate-gygax-75-part-1/image.webp" />
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        Itreas Gate - Gygax 75 - Part 1
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-06-04">
+          Jun 4, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        This project comes from a huge mix of ideas that have been bouncing around in my head, pushing me to finally dive in and create another world, but this time put as much of the process I can into writing. The blog posts may come sparsely and thin, I’ll try to update them as I write further, but keep in mind that I am aiming these posts to be for me by me.
+I’m re-imagining an existing world—called I…
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        2642 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        14 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-tech
+      ">
+  <a href="https://martihomssoler.github.io/tech/nix-shell-aliases-problem/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300 h-[18rem] w-full"
+        src="https://martihomssoler.github.io/tech/nix-shell-aliases-problem/image.jpg" />
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        Aliases problems with `nix-shell`+ `direnv`
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-04-30">
+          Apr 30, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        When working in reproducible development environments, nix-shell and direnv form a powerful duo — more precisely nix-direnv. Combined, they allow per-project environments to be automatically loaded when entering a directory — no manual shenanigans needed. Nonetheless, one recurring pain point is the frustrating interaction between nix-shell, direnv, and Bash aliases.
+While developing this personal…
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        888 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        5 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+    
+
+
+
+
+<article class="group block
+        w-full lg:w-[34rem]
+        p-[1rem] rounded-xl 
+        bg-c01 border border-c04 shadow-sm
+        hover:bg-c02 accent-hover-border hover:-translate-y-3 hover:shadow-lg
+        transition-all duration-300 ease-out
+        section-tech
+      ">
+  <a href="https://martihomssoler.github.io/tech/custom-keyboard-layout/" class="flex flex-col h-full">
+    <!-- Article Cover Image -->
+    <div class="block rounded-lg overflow-hidden bg-c00 border border-c04 mb-[1rem] h-[18rem] w-full
+          ">
+      
+      
+      <img class="relative object-cover group-hover:scale-[1.02] transition-transform duration-300 h-[18rem] w-full"
+        src="https://martihomssoler.github.io/tech/custom-keyboard-layout/image.svg" />
+      
+      
+      
+    </div>
+
+    <!-- Article Info -->
+    <div class="space-y-4 pb-[1rem]">
+      <h3 class="text-xl text-center font-bold leading-tight group-accent-hover-text transition-colors duration-200">
+        TwoOfUs - My Custom Keyboard &amp; Layout
+      </h3>
+
+      <!-- Publishing Date -->
+      <div class="flex items-center justify-center text-sm text-c05">
+        <i class="fa-solid fa-calendar w-4 h-4 mr-2 accent-text"></i>
+        <time datetime="2025-04-23">
+          Apr 23, 2025
+        </time>
+      </div>
+
+      <!-- Draft -->
+      
+
+      <!-- Content Preview -->
+      <p class="text-md italic">
+        Recently. I’ve been dabbling once again into the ergo-split keyboard development&#x2F;building rabbit hole and it came to
+mind that I haven’t written about the keyboard+layout that I’ve been using.
+My current keyboard needs have changed, and I started looking for interesting new avenues to pursue, like the 5-way switches
+I discovered when I stumbled upon this keyboard named Fulcrum and the amazing
+one-…
+      </p>
+
+    </div>
+    <div class="flex-grow">
+    </div>
+    <!-- Metadata -->
+    <div class="flex items-center justify-between text-xs text-c05 bg-c00 rounded-lg px-3 py-2 mt-auto">
+      <span class="flex items-center">
+        <i class="fa-solid fa-pencil w-3 h-3 mr-1.5"></i>
+        2158 words
+      </span>
+      <span class="flex items-center">
+        <i class="fa-regular fa-clock w-3 h-3 mr-1.5"></i>
+        11 min read
+      </span>
+    </div>
+  </a>
+</article>
+    
+  </div>
+</div>
+
+<!-- Language -->
+<!-- <div id="language" class="w-8 h-8"> -->
+<!-- English -->
+<!-- <svg id="english" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"> -->
+<!-- <circle cx="256" cy="256" fill="#f0f0f0" r="256"></circle> -->
+<!-- <g fill="#0052b4"> -->
+<!-- <path d="m52.92 100.142c-20.109 26.163-35.272 56.318-44.101 89.077h133.178z"></path> -->
+<!-- <path d="m503.181 189.219c-8.829-32.758-23.993-62.913-44.101-89.076l-89.075 89.076z"></path> -->
+<!-- <path d="m8.819 322.784c8.83 32.758 23.993 62.913 44.101 89.075l89.074-89.075z"></path> -->
+<!-- <path d="m411.858 52.921c-26.163-20.109-56.317-35.272-89.076-44.102v133.177z"></path> -->
+<!-- <path d="m100.142 459.079c26.163 20.109 56.318 35.272 89.076 44.102v-133.176z"></path> -->
+<!-- <path d="m189.217 8.819c-32.758 8.83-62.913 23.993-89.075 44.101l89.075 89.075z"></path> -->
+<!-- <path d="m322.783 503.181c32.758-8.83 62.913-23.993 89.075-44.101l-89.075-89.075z"></path> -->
+<!-- <path d="m370.005 322.784 89.075 89.076c20.108-26.162 35.272-56.318 44.101-89.076z"></path> -->
+<!-- </g> -->
+<!-- <g fill="#d80027"> -->
+<!-- <path -->
+<!-- d="m509.833 222.609h-220.44-.001v-220.442c-10.931-1.423-22.075-2.167-33.392-2.167-11.319 0-22.461.744-33.391 2.167v220.44.001h-220.442c-1.423 10.931-2.167 22.075-2.167 33.392 0 11.319.744 22.461 2.167 33.391h220.44.001v220.442c10.931 1.423 22.073 2.167 33.392 2.167 11.317 0 22.461-.743 33.391-2.167v-220.44-.001h220.442c1.423-10.931 2.167-22.073 2.167-33.392 0-11.317-.744-22.461-2.167-33.391z"> -->
+<!-- </path> -->
+<!-- <path d="m322.783 322.784 114.236 114.236c5.254-5.252 10.266-10.743 15.048-16.435l-97.802-97.802h-31.482z"></path> -->
+<!-- <path d="m189.217 322.784h-.002l-114.235 114.235c5.252 5.254 10.743 10.266 16.435 15.048l97.802-97.804z"></path> -->
+<!-- <path d="m189.217 189.219v-.002l-114.236-114.237c-5.254 5.252-10.266 10.743-15.048 16.435l97.803 97.803h31.481z"> -->
+<!-- </path> -->
+<!-- <path d="m322.783 189.219 114.237-114.238c-5.252-5.254-10.743-10.266-16.435-15.047l-97.802 97.803z"></path> -->
+<!-- </g> -->
+<!-- </svg> -->
+<!-- Spanish -->
+<!-- <svg id="spanish" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"> -->
+<!-- <path -->
+<!-- d="m0 256c0 31.314 5.633 61.31 15.923 89.043l240.077 22.261 240.077-22.261c10.29-27.733 15.923-57.729 15.923-89.043s-5.633-61.31-15.923-89.043l-240.077-22.261-240.077 22.261c-10.29 27.733-15.923 57.729-15.923 89.043z" -->
+<!-- fill="#ffda44"></path> -->
+<!-- <g fill="#d80027"> -->
+<!-- <path d="m496.077 166.957c-36.171-97.484-130.006-166.957-240.077-166.957s-203.906 69.473-240.077 166.957z"></path> -->
+<!-- <path d="m15.923 345.043c36.171 97.484 130.006 166.957 240.077 166.957s203.906-69.473 240.077-166.957z"></path> -->
+<!-- </g> -->
+<!-- </svg> -->
+<!-- </div> -->
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>
