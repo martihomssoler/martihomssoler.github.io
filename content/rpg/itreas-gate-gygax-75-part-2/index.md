@@ -1,10 +1,11 @@
 +++
 date = "2025-07-02"
-updated = "2025-07-02"
+updated = "2025-10-31"
 categories = ["Itreas", "Gygax 75"]
 tags = ["worldbuilding", "itreas"]
 title = "Itreas Gate - Gygax 75 - Part 2"
-draft = true
+[extra]
+image-y = -70
 +++
 
 Welcome back to the **Gygax 75 Challenge** series, this blog will covers Week 2 of the challenge. If you want to take a look at the previous post, you can find it [here](../itreas-gate-gygax-75-part-1/).
@@ -49,4 +50,4 @@ With that out of the way, here is **what's in the map** and some ideas I have of
 
 ## Random Tables
 
-Not completed, tbh
+**Not done**, to be honest. I've been postponing this step for months and I decided to publish this page for now. In the future I will "patch" this section. At the moment I'm working on **Spark Tables**, so hopefully I can write a post in the upcomming weeks about this topic and finish my random tables. 

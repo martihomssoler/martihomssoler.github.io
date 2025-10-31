@@ -60,8 +60,9 @@ html {
 }
 
 .prose {
-  @apply pt-[2rem] pb-[1rem] pr-[2rem] pl-[2rem];
-  @apply m-auto w-[85%] max-w-[55rem];
+  @apply pt-[2rem] pb-[2rem] pr-[2rem] pl-[2rem];
+  @apply mb-[3rem] mt-0 mr-auto ml-auto;
+  @apply w-[85%] max-w-[55rem];
   @apply bg-c01 border-solid border-2 rounded-3xl border-c04;
   @apply text-c07;
 
@@ -129,12 +130,17 @@ html {
 
   /* Enhanced lists */
   li {
-    @apply ml-[1.5rem] mb-[0.75rem] pl-[0.5rem] leading-relaxed text-c06;
+    @apply ml-[1.5rem] pl-[0.5rem];
+
+  }
+
+  li+li {
+    @apply mt-[0.5rem];
   }
 
   ul,
   ol {
-    @apply mb-[1.5rem] mt-[0.75rem];
+    @apply mb-[0.5rem] mt-[0.5rem];
   }
 
   ul {
@@ -215,6 +221,14 @@ html {
     display: none;
   }
 
+}
+
+.update-notice {
+  @apply !bg-c02 px-[2rem] py-[1rem] rounded-xl border-l-4;
+  @apply w-[30rem] mx-auto;
+  @apply block text-center;
+  border-left-color: rgba(var(--accent-color));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 #links a {

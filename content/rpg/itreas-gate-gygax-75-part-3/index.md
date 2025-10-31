@@ -1,6 +1,6 @@
 +++
-date = "2025-07-02"
-updated = "2025-07-02"
+date = "2025-07-09"
+updated = "2025-07-09"
 categories = ["Itreas", "Gygax 75"]
 tags = ["worldbuilding", "itreas"]
 title = "Itreas Gate - Gygax 75 - Part 3"

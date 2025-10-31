@@ -4,6 +4,8 @@ updated = "2025-07-02"
 categories = ["Itreas", "Gygax 75"]
 tags = ["worldbuilding", "itreas"]
 title = "Itreas Gate - Gygax 75 - Part 1"
+[extra]
+image-y = -200
 +++
 
 This project comes from a huge mix of ideas that have been bouncing around in my head, pushing me to finally dive in and create **another** world, but this time put as much of the process I can into writing. The blog posts may come sparsely and thin, I'll try to update them as I write further, but keep in mind that I am aiming these posts to be _**for me by me**_.
