@@ -18,7 +18,6 @@ In this topic about "useless work" I want to focus on an area that I believe is 
 
 *If anyone knows who the original author of the sketch is please let me know, I would love to credit them.*
 
-
 ## What do I mean by Square Wheels?
 
 When people talk about reinventing the wheel in software, it’s usually a warning: **don’t waste time solving problems that others have already solved**. And in most cases, that is **actually very good advice**. At the end of the day, we, humanity, are were we are today because we are [**standing on the shoulders of giants**](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants). But sometimes, you don’t reinvent the wheel to be productive; you reinvent it to **learn**, and maybe, *maybe* to **re-discover**.
