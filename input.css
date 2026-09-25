@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c00: from #282c34 r g b;
+  --c01: from #353b45 r g b;
+  --c02: from #3e4451 r g b;
+  --c03: from #545862 r g b;
+  --c04: from #565c64 r g b;
+  --c05: from #abb2bf r g b;
+  --c06: from #b6bdca r g b;
+  --c07: from #c8ccd4 r g b;
+  --c08: from #e06c75 r g b;
+  --c09: from #d19a66 r g b;
+  --c0a: from #e5c07b r g b;
+  --c0b: from #98c379 r g b;
+  --c0c: from #56b6c2 r g b;
+  --c0d: from #61afef r g b;
+  --c0e: from #c678dd r g b;
+  --c0f: from #be5046 r g b;
+
+  /* Section accent colors */
+  --accent-color: var(--c0d);
+  --accent-hover-color: var(--c0d);
+
+  @apply bg-c00 text-c07;
+}
+
+.light {
+  --c00: from #fafafa r g b;
+  --c01: from #f0f0f1 r g b;
+  --c02: from #e5e5e6 r g b;
+  --c03: from #a0a1a7 r g b;
+  --c04: from #696c77 r g b;
+  --c05: from #383a42 r g b;
+  --c06: from #202227 r g b;
+  --c07: from #090a0b r g b;
+  --c08: from #e06c75 r g b;
+  --c09: from #d19a66 r g b;
+  --c0a: from #e5c07b r g b;
+  --c0b: from #98c379 r g b;
+  --c0c: from #56b6c2 r g b;
+  --c0d: from #61afef r g b;
+  --c0e: from #c678dd r g b;
+  --c0f: from #be5046 r g b;
+}
+
+html {
+  @apply text-[8px] md:text-[12px] lg:text-[16px];
+}
+
+.photo {
+  @apply overflow-hidden aspect-[1/1.25] w-auto h-[16rem] max-w-[28rem] max-h-[28rem] min-w-[12rem] min-h-[12rem];
+  @apply border-solid border-4 rounded-full border-c07;
+}
+
+.sidebar {
+  @apply flex flex-row w-[8%] invisible xl:visible xl:sticky xl:top-[50%] h-0 xl:h-full xl:p-[1rem]
+}
+
+.prose {
+  @apply pt-[2rem] pb-[2rem] pr-[2rem] pl-[2rem];
+  @apply mb-[3rem] mt-0 mr-auto ml-auto;
+  @apply w-[85%] max-w-[55rem];
+  @apply bg-c01 border-solid border-2 rounded-3xl border-c04;
+  @apply text-c07;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold mt-[2rem] mb-[1rem] pb-[0.5rem];
+  }
+
+  h1 {
+    @apply text-4xl;
+    border-bottom: 3px solid rgba(var(--accent-color));
+  }
+
+  h2 {
+    @apply text-2xl;
+    border-bottom: 2px solid rgba(var(--accent-color));
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  h5,
+  h6 {
+    @apply text-base;
+  }
+
+  p+p {
+    @apply text-base mt-[1.0rem];
+  }
+
+  img {
+    @apply block mx-auto !bg-c00 rounded-xl mb-[2rem] mt-[2rem] border border-c04;
+    /* Enhanced image styling */
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Subtle shadow */
+  }
+
+  /* Enhanced inline code with accent colors */
+  code {
+    @apply font-firaCode bg-c00 px-2 py-1 rounded-md font-bold text-sm border-0;
+    color: rgba(var(--accent-color));
+  }
+
+  /* Enhanced code blocks with better contrast */
+  pre {
+    @apply px-6 py-4 mb-[2rem] mt-[2rem];
+    @apply !bg-c00 !border-2 !border-c04 !rounded-xl overflow-x-auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    * {
+      @apply font-firaCode font-normal;
+    }
+  }
+
+  /* Enhanced lists */
+  li {
+    @apply ml-[1.5rem] pl-[0.5rem];
+
+  }
+
+  li+li {
+    @apply mt-[0.5rem];
+  }
+
+  ul,
+  ol {
+    @apply mb-[0.5rem] mt-[0.5rem];
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  /* Enhanced blockquotes with accent colors and better contrast */
+  blockquote {
+    @apply !bg-c02 px-[2rem] py-[1.5rem] mx-[1rem] mb-[2rem] mt-[2rem] rounded-xl border-l-4;
+    @apply italic;
+    border-left-color: rgba(var(--accent-color));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    p {
+      @apply block text-left text-sm;
+    }
+  }
+
+  em {
+    @apply italic;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+  /* Enhanced links with accent colors */
+  a {
+    @apply no-underline hover:underline transition-all duration-200;
+    color: rgba(var(--accent-color));
+    text-decoration-color: rgba(var(--accent-color));
+  }
+
+  /* Enhanced Table of Contents styling */
+  nav ol {
+    @apply bg-c02 p-6 rounded-xl border-2 border-c04 mb-[2rem];
+    box-shadow: 0 2px 8px rgba(var(--c00));
+  }
+
+  nav ol li {
+    @apply text-c06 hover:text-c07 transition-colors duration-200;
+  }
+
+  nav ol a {
+    color: rgba(var(--accent-color));
+  }
+
+  /* Enhanced tables */
+  table {
+    @apply w-full mb-[2rem] mt-[2rem] bg-c01 border-2 border-c04 rounded-xl overflow-hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  th {
+    @apply bg-c02 px-4 py-3 text-left font-semibold text-c07 border-b border-c04;
+  }
+
+  td {
+    @apply px-4 py-3 text-c06 border-b border-c04;
+  }
+
+  tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Enhanced horizontal rule */
+  hr {
+    @apply my-[2rem] border-0 h-px;
+    background: linear-gradient(to right, transparent, rgba(var(--accent-color)), transparent);
+  }
+
+  /* Remove external link icons from prose content */
+  :is(:not(sup))>a[rel]:after {
+    display: none;
+  }
+
+}
+
+.update-notice {
+  @apply !bg-c02 px-[2rem] py-[1rem] rounded-xl border-l-4;
+  @apply w-[30rem] mx-auto;
+  @apply block text-center;
+  border-left-color: rgba(var(--accent-color));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#links a {
+  @apply border-solid border-[2px] rounded-full w-[5rem] h-[5rem] flex flex-col items-center justify-center;
+  @apply hover:scale-125 hover:rotate-[15deg] duration-[150ms] ease-in-out;
+}
+
+/* Search Results Styling */
+#search-results {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+#search-results a {
+  @apply block p-4 hover:bg-c02 transition-colors duration-200;
+  border-top: 1px solid rgba(var(--c04));
+}
+
+#search-results a:first-child {
+  border-top: none;
+}
+
+#search-results a:hover {
+  @apply bg-c02;
+}
+
+#search-results .font-medium {
+  @apply text-c07 mb-1 leading-tight;
+}
+
+#search-results .text-sm {
+  @apply text-c05 leading-relaxed;
+}
+
+/* Search result highlighting */
+#search-results mark {
+  @apply bg-c0d text-c00 px-1 rounded text-xs font-medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* No results styling */
+#search-results .p-4.text-center {
+  @apply text-c05;
+}
+
+#search-results .fa-search {
+  @apply text-c04 mb-2;
+}
+
+/* Search input focus states */
+#search-input:focus+#search-results {
+  display: block !important;
+}
+
+/* Smooth scrolling for long result lists */
+#search-results {
+  scroll-behavior: smooth;
+}
+
+#search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+#search-results::-webkit-scrollbar-track {
+  background: rgba(var(--c02));
+}
+
+#search-results::-webkit-scrollbar-thumb {
+  background: rgba(var(--c04));
+  border-radius: 3px;
+}
+
+#search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--c05));
+}
+
+/* Section-specific accent colors */
+.section-blog {
+  --accent-color: var(--c0d);
+  --accent-hover-color: var(--c0d);
+}
+
+.section-tech {
+  --accent-color: var(--c0e);
+  --accent-hover-color: var(--c0e);
+}
+
+/* Future sections can easily be added */
+.section-rpg {
+  --accent-color: var(--c09);
+  --accent-hover-color: var(--c09);
+}
+
+/* Utility classes using the CSS variables */
+.accent-text {
+  color: rgba(var(--accent-color));
+}
+
+.accent-border {
+  border-color: rgba(var(--accent-color));
+}
+
+.accent-hover-text:hover {
+  color: rgba(var(--accent-hover-color));
+}
+
+.accent-hover-border:hover {
+  border-color: rgba(var(--accent-hover-color));
+}
+
+/* Add group-based hover for article cards */
+.group:hover .group-accent-hover-text {
+  color: rgba(var(--accent-hover-color));
+}
+
+.group:hover .group-accent-hover-border {
+  border-color: rgba(var(--accent-hover-color));
+}
+
+.search-results {
+  @apply bg-c0d text-c00 px-1 rounded text-xs;
+}
+
+.search-result-item {
+  @apply block p-4 hover:bg-c02 transition-colors duration-200 border-solid border-2 border-c04 first:border-t-0;
+}
+
+.search-result-item-title {
+  @apply font-medium text-c07 mb-1;
+}
+
+.search-result-item-body {
+  @apply text-sm text-c05 leading-relaxed;
+}
+
+.search-results-highlight {
+  @apply text-c00 px-1 rounded text-xs;
+  background-color: rgba(var(--accent-color));
+}

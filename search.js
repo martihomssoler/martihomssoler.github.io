@@ -1,0 +1,361 @@
+function debounce(func, wait) {
+  var timeout;
+  return function () {
+    var context = this;
+    var args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
+}
+
+// Adapted from mdbook - creates a teaser with highlighted terms
+function makeTeaser(body, terms) {
+  var TERM_WEIGHT = 40;
+  var NORMAL_WORD_WEIGHT = 2;
+  var FIRST_WORD_WEIGHT = 8;
+  var TEASER_MAX_WORDS = 20;
+
+  var stemmedTerms = terms.map(function (w) {
+    return elasticlunr.stemmer(w.toLowerCase());
+  });
+  var termFound = false;
+  var index = 0;
+  var weighted = []; // contains elements of ["word", weight, index_in_document]
+
+  // split in sentences, then words
+  var sentences = body.toLowerCase().split(". ");
+
+  for (var i in sentences) {
+    var words = sentences[i].split(" ");
+    var value = FIRST_WORD_WEIGHT;
+
+    for (var j in words) {
+      var word = words[j];
+
+      if (word.length > 0) {
+        for (var k in stemmedTerms) {
+          if (elasticlunr.stemmer(word).startsWith(stemmedTerms[k])) {
+            value = TERM_WEIGHT;
+            termFound = true;
+          }
+        }
+        weighted.push([word, value, index]);
+        value = NORMAL_WORD_WEIGHT;
+      }
+
+      index += word.length;
+      index += 1;  // ' ' or '.' if last word in sentence
+    }
+
+    index += 1;  // because we split at a two-char boundary '. '
+  }
+
+  if (weighted.length === 0) {
+    return body;
+  }
+
+  var windowWeights = [];
+  var windowSize = Math.min(weighted.length, TEASER_MAX_WORDS);
+  // We add a window with all the weights first
+  var curSum = 0;
+  for (var i = 0; i < windowSize; i++) {
+    curSum += weighted[i][1];
+  }
+  windowWeights.push(curSum);
+
+  for (var i = 0; i < weighted.length - windowSize; i++) {
+    curSum -= weighted[i][1];
+    curSum += weighted[i + windowSize][1];
+    windowWeights.push(curSum);
+  }
+
+  // If we didn't find the term, just pick the first window
+  var maxSumIndex = 0;
+  if (termFound) {
+    var maxFound = 0;
+    // backwards
+    for (var i = windowWeights.length - 1; i >= 0; i--) {
+      if (windowWeights[i] > maxFound) {
+        maxFound = windowWeights[i];
+        maxSumIndex = i;
+      }
+    }
+  }
+
+  var teaser = [];
+  var startIndex = weighted[maxSumIndex][2];
+  for (var i = maxSumIndex; i < maxSumIndex + windowSize; i++) {
+    var word = weighted[i];
+    if (startIndex < word[2]) {
+      // missing text from index to start of `word`
+      teaser.push(body.substring(startIndex, word[2]));
+      startIndex = word[2];
+    }
+
+    // add <b/> around search terms
+    if (word[1] === TERM_WEIGHT) {
+      teaser.push('<mark class="search-result-highlight">');
+    }
+    startIndex = word[2] + word[0].length;
+    teaser.push(body.substring(word[2], startIndex));
+
+    if (word[1] === TERM_WEIGHT) {
+      teaser.push("</mark>");
+    }
+  }
+  teaser.push("…");
+  return teaser.join("");
+}
+
+// Basic fuzzy matching helper function
+function fuzzyMatch(term, text) {
+  if (!term || !text) return false;
+  const MAX_MISSED_CHARS = 3;
+  const PERCENT_MISSED_CHARS = 0.3;
+  
+  var termLower = term.toLowerCase();
+  var textLower = text.toLowerCase();
+  
+  // Direct substring match - most reliable
+  if (textLower.includes(termLower)) {
+    return true;
+  }
+  
+  // Simple character-by-character tolerance
+  var termChars = termLower.split('');
+  var textWords = textLower.split(' ');
+  
+  // Check each word in the text
+  for (var i = 0; i < textWords.length; i++) {
+    var word = textWords[i];
+    var matchCount = 0;
+    
+    // Count matching characters in order
+    var wordPos = 0;
+    for (var j = 0; j < termChars.length && wordPos < word.length; j++) {
+      if (word.indexOf(termChars[j], wordPos) !== -1) {
+        wordPos = word.indexOf(termChars[j], wordPos) + 1;
+        matchCount++;
+      }
+    }
+    
+    // If most characters match, consider it a fuzzy match
+    if (matchCount >= Math.max(MAX_MISSED_CHARS, Math.floor(termChars.length * PERCENT_MISSED_CHARS))) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+// Simple string similarity scoring (0-1 scale)
+function getSimilarityScore(term, text) {
+  if (!term || !text) return 0;
+  
+  var termLower = term.toLowerCase();
+  var textLower = text.toLowerCase();
+  
+  // Perfect substring match gets highest score
+  if (textLower.includes(termLower)) {
+    return 1.0;
+  }
+  
+  // Check similarity against each word in the text
+  var textWords = textLower.split(' ');
+  var bestScore = 0;
+  
+  for (var i = 0; i < textWords.length; i++) {
+    var word = textWords[i];
+    var score = getWordSimilarity(termLower, word);
+    if (score > bestScore) {
+  console.log(term + " | " + word + " = " + score);
+      bestScore = score;
+    }
+  }
+  
+  console.log(term + " | " + word + " = " + bestScore);
+  return bestScore;
+}
+
+// Calculate similarity between two words
+function getWordSimilarity(term, word) {
+  if (term === word) return 1.0;
+  if (word.includes(term)) return 0.9 * (term.length / word.length);
+  if (term.includes(word)) return 0.8 * (word.length / term.length);
+  
+  // Count matching characters in sequence
+  var matchCount = 0;
+  var termPos = 0;
+  
+  for (var i = 0; i < word.length && termPos < term.length; i++) {
+    if (word[i] === term[termPos]) {
+      matchCount++;
+      termPos++;
+    }
+  }
+  
+  // Score based on how many characters matched
+  var maxLength = Math.max(term.length, word.length);
+  return matchCount / maxLength;
+}
+
+// Fallback fuzzy search when elasticlunr returns no results
+function performFallbackSearch(term, searchIndex, maxResults) {
+  if (!searchIndex || !searchIndex.documentStore) return [];
+  
+  var results = [];
+  var docs = searchIndex.documentStore.docs;
+  var minScore = 0.5; // Only return matches with decent similarity
+  
+  // Search through all documents
+  for (var docId in docs) {
+    var doc = docs[docId];
+    
+    // Check title and body for fuzzy matches
+    var titleScore = getSimilarityScore(term, doc.title) * 1.5; // Boost title matches
+    var bodyScore = getSimilarityScore(term, doc.body);
+    
+    var maxScore = Math.max(titleScore, bodyScore);
+    
+    if (maxScore >= minScore) {
+      results.push({
+        ref: docId,
+        score: maxScore,
+        doc: doc
+      });
+    }
+  }
+  
+  // Sort by score (highest first)
+  results.sort(function(a, b) { return b.score - a.score; });
+
+  console.log(results);
+  
+  // Limit results
+  return results.slice(0, maxResults);
+}
+
+function formatSearchResultItem(index, item, terms) {
+  var ref = item.ref;
+  item = index.documentStore.getDoc(ref);
+  if (item === null || item === undefined) return '';
+  
+  return `<a href="${ref}" class="search-result-item">`
+      + `<div class="search-result-item-title">${item.title}</div>`
+      + `<div class="search-result-item-body">${makeTeaser(item.body, terms)}</div>`
+      + `</a>`;
+}
+
+function initSearch() {
+  var $searchInput = document.getElementById("search");
+  var $searchResults = document.getElementById("search-results");
+  var $searchResultsItems = document.getElementById("search-results__items");
+  var MAX_ITEMS = 8;
+
+  var options = {
+    bool: "AND",
+    fields: {
+      title: {boost: 2},
+      body: {boost: 1},
+    }
+  };
+  var currentTerm = "";
+  var index;
+    
+  var initIndex = async function () {
+    if (index === undefined) {
+      index = fetch("/search_index.en.json")
+        .then(
+          async function(response) {
+            return await elasticlunr.Index.load(await response.json());
+        }
+      );
+    }
+    index = await index;
+    return index;
+  }
+
+  $searchInput.addEventListener("keyup", debounce(async function() {
+    var term = $searchInput.value.trim();
+    if (term === currentTerm) {
+      return;
+    }
+    
+    $searchResults.style.display = term === "" ? "none" : "block";
+    $searchResultsItems.innerHTML = "";
+    currentTerm = term;
+    
+    if (term === "" || term.length < 2) {
+      $searchResults.style.display = "none";
+      return;
+    }
+
+    var results = (await initIndex()).search(term, options);
+    if (results.length === 0) {
+      // Try fuzzy search as fallback
+      var fuzzyResults = performFallbackSearch(term, index, MAX_ITEMS);
+      
+      if (fuzzyResults.length > 0) {
+        // Display fuzzy results
+        for (var j = 0; j < fuzzyResults.length; j++) {
+          var fuzzyItem = document.createElement("li");
+          var fuzzyHtml = formatSearchResultItem(index, { ref: fuzzyResults[j].ref }, term.split(" "));
+          fuzzyItem.innerHTML = fuzzyHtml;
+          $searchResultsItems.appendChild(fuzzyItem);
+        }
+        return;
+      }
+      
+      // If fuzzy search also found nothing, show no results message
+      $searchResultsItems.innerHTML = `<div class="p-4 text-center text-c05">`
+        + `<i class="fa-solid fa-search text-xl mb-2 block"></i>`
+        + `No results found for "${term}"`
+        + `</div>`;
+      return;
+    }
+
+    for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
+      var item = document.createElement("li");
+      var _html = formatSearchResultItem(index, results[i], term.split(" "));
+      item.innerHTML = _html;
+      $searchResultsItems.appendChild(item);
+    }
+
+  }, 100));
+
+  // Hide results when clicking outside
+  window.addEventListener('click', function(e) {
+    if ($searchResults.style.display == "block" && !$searchResults.contains(e.target) && !$searchInput.contains(e.target)) {
+      $searchResults.style.display = "none";
+    }
+  });
+
+  // Show results when focusing on input if there's content
+  $searchInput.addEventListener('focus', function() {
+    if ($searchInput.value.trim().length >= 2) {
+      $searchResults.style.display = "block";
+    }
+  });
+
+  // ESC key to clear search
+  $searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      $searchInput.value = '';
+      $searchResults.style.display = "none";
+      $searchInput.blur();
+    }
+  });
+}
+
+if (document.readyState === "complete" ||
+    (document.readyState !== "loading" && !document.documentElement.doScroll)
+) {
+  initSearch();
+} else {
+  document.addEventListener("DOMContentLoaded", initSearch);
+}
+
+

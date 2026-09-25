@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="font-montserrat dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martí Homs Soler</title>
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/output.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Code" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <!-- ElasticLunr for search functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/elasticlunr@0.9.5/elasticlunr.min.js"></script>
+</head>
+
+<body class="w-screen h-screen">
+  <!-- Some of the iconography in the posts gets rendered on top of the navbar -->
+  <section id="section-navbar" class="fixed top-0 z-[999]">
+    <div class="absolute w-screen bg-c01 border-solid border-b border-c04 h-16">
+      <!-- Navbar -->
+      <div id="navbar" class="grid grid-cols-3 items-center px-6 h-full">
+        <!-- Site Identity -->
+        <div class="flex items-center justify-start">
+          <a href="/"
+            class="text-xl font-bold text-c07 text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">
+            Martí Homs Soler
+          </a>
+        </div>
+
+        <!-- Search -->
+        <div class="flex items-center justify-center relative">
+          <div class="relative">
+            <input id="search" type="text" placeholder="Search articles..." class="w-64 px-4 py-2 pl-10 text-sm bg-c02 border-solid border border-c04 rounded-lg 
+                     text-c07 placeholder-c05 
+                     focus:outline-none focus:ring-2 focus:ring-c0d focus:border-c0d
+                     transition-all duration-200" />
+            <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-c05"></i>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <div id="search-results" class="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-96 
+                   bg-c01 border-solid border border-c04 rounded-lg shadow-lg z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Results will be populated by JavaScript -->
+            <div id="search-results__items">
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation and Theme Switcher -->
+        <div class="flex items-center justify-end space-x-6">
+          <a href="/blog"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0d transition-colors duration-200 rounded-lg px-2">Blog</a>
+          <a href="/tech"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c0e transition-colors duration-200 rounded-lg px-2">Tech</a>
+          <a href="/rpg"
+            class="font-bold text-c06 hover:text-c00 hover:bg-c09 transition-colors duration-200 rounded-lg px-2">RPG</a>
+          <button class="flex items-center w-12 h-6 rounded-full 
+            bg-c04 relative
+            transition duration-200 focus:outline-none shadow-sm hover:shadow-md" onclick="theme_switch()">
+            <div id="theme-switcher"
+              class="absolute w-5 h-5 bg-c07 rounded-full left-0.5 flex items-center justify-center text-xs transition duration-200">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="section-content" class="w-full h-full">
+    
+
+
+
+
+<div class="section-blog">
+  <header class="group flex flex-col items-center text-center pt-[7.5rem] pb-[1.5rem] space-y-[1rem]">
+    <h1 class="text-5xl font-extrabold w-4/5 max-w-4xl leading-tight group-accent-hover-text">
+      My Plan To Become A Successful Indie Game Dev
+    </h1>
+    <div class="flex items-center space-x-2 text-lg text-c05">
+      <i class="fa-solid fa-calendar w-4 h-4 accent-text"></i>
+      <time datetime="2026-07-12" class="font-medium">
+        July 12, 2026
+      </time>
+    </div>
+    
+    <!-- Last update if any -->
+    
+    <!-- <div class="prose !mb-[1rem] !pt-[1rem] !pb-[1rem] !w-[50%] !max-w-[35rem]"> -->
+    <div class="update-notice">
+      <p class="accent-text font-bold text-xl">Last Updated on September 23,
+        2026</p>
+    </div>
+    
+  </header>
+  <div class="xl:flex xl:flex-row">
+    <!-- Previous Article -->
+    <div class="sidebar text-left">
+      
+      <a class="group flex flex-col items-center w-16 text-sm hover:bg-c01 rounded-lg p-3 transition-colors duration-200"
+        href="https://martihomssoler.github.io/blog/the-importance-of-square-wheels/">
+        <span class="text-xs text-c05 pb-2 group-hover:text-c07">Previous</span>
+        <i
+          class="fa-solid fa-chevron-left accent-text font-bold text-3xl group-hover:scale-110 transition-all duration-200 accent-hover-text"></i>
+      </a>
+      <div class="flex-grow"></div>
+      
+    </div>
+    <!-- Article Content -->
+    <div class="prose">
+      <p>The past few months have been a roller coaster. This post has been in the making for <strong>over three months</strong> (it was suppose to come out in June 2026). After some thoughts and some trial and error, I reached a decision. This post acts as my personal commitment to becoming a successful indie game developer and how my next 18 months look like.<sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup></p>
+<img src="image.jpg" width="640">
+<p>I think this post will greatly benefit to start by defining what my concepts are:</p>
+<ul>
+<li><strong>Indie Game Developer:</strong> someone who creates games solo or as part of a small game studio. In my case, it’s just me.</li>
+<li><strong>Successful:</strong> this has two branches: successful games and financially successful.
+<ul>
+<li><strong>Successful Games:</strong> consistently deliver games that receive positive reviews, engages players, motivate me to develop and keep learning, and, finally, that …</li>
+<li><strong>Financially Successful:</strong> … earn enough money to provide for me and my family: pay bills, save up, invest, and occasionally allow for new risky ideas to be tried out.</li>
+</ul>
+</li>
+<li><strong>Consistently:</strong> ideally more than once a year. ideally…</li>
+</ul>
+<p>So, these are my working definitions. Me, making games whose quality improves over time despite a flop here and there, and that generate enough money to enable me to continue making them.</p>
+<p>Now, thankfully I do not start from scratch completely. I’ve been doing games as side projects for over a decade, but that has been just for fun and those games were not really finished. The good part is that I knew I could learn how to be a <strong>good</strong> game developer. This includes coding (my strongest suit), art, music, design and marketing, just to name a few. The bad part is that I’ve had no idea how to go from good to <strong>successful</strong>. So I looked around and made a plan. A rough one.</p>
+<blockquote>
+<p>I fully wrote this post by hand with no AI assistance. I use AI, but not for this type of work. I want you, the reader, to see my genuine thoughts and personal style reflected in these posts.</p>
+</blockquote>
+<h1 id="the-approach">The Approach<a class="zola-anchor" href="#the-approach" aria-label="Anchor link for: the-approach">🔗</a></h1>
+<p>Three ideas drive my personal approach and shape my next 18 months:</p>
+<ul>
+<li>At the beginning, quantity; at the end, quality.</li>
+<li>Just do the damn “thing”.</li>
+<li>Learning from mistakes.</li>
+</ul>
+<blockquote>
+<p>It will do you some good if you grabbed a couple of Nassim Taleb’s books like Antifragile and Skin in the Game; they have had the most impact on shaping my approach to game development and played an important part in my thinking process.</p>
+</blockquote>
+<h2 id="at-the-beginning-quantity-at-the-end-quality">At the beginning, quantity; at the end, quality<a class="zola-anchor" href="#at-the-beginning-quantity-at-the-end-quality" aria-label="Anchor link for: at-the-beginning-quantity-at-the-end-quality">🔗</a></h2>
+<blockquote>
+<p><em>In theory there is no difference between theory and practice, while in practice there is.</em> – Yogi Berra</p>
+</blockquote>
+<p>Everything that involves game development is a skill, and a hard one to be honest. But skills can be learned, and one learns by doing; and doing A LOT. Whenever you start any artistic endeavor you are the victim of your own personal taste. You certainly have played some games, read books, admired art and heard songs. Whatever you produce when you start is <strong>TRASH</strong>; and that is okay. It’s okay that you <em>know</em> it to be bad. Do not let it stop you, because if you continue doing it, it will get better.</p>
+<p>Also, you are not alone in this. You can now access uncountable amounts of resources online that can help you learn faster and better. There are online communities too; join them. You will learn so much more from watching a couple of hours of how others do than what you can learn alone in a lifetime. Personally, what really helped me was watching some VODs of devs with similar inclinations as me and see their process. Like Randy and Firebelley Games. They are both coders, like me, so I wanted to know how they approach the rest of the game making process: art, sound, game design, marketing, etc. Watching how they approached it made it look more manageable for me and it gave some ideas.</p>
+<p>But <em>just</em> doing does plateau at some point, and here is where taste enters the stage once again. Now, it’s no longer <em>if</em> you can do something, because you proved already that you <strong>can</strong>. The issue is if that something you made is any <em>good</em>… but good compared to what? I have to keep consuming to hone my taste. I need to play other games to know: what is good and bad, which mechanics players grok and which don’t, what is the quality level that I’m trying to beat. This is what will bring a game from <em>good</em> to <strong>great</strong>. And I needn’t only to consume games, but consume in general.</p>
+<p>Similar to the amounts of online resources of “how to do X”, you can easily find the outcomes of countless individuals. I’m talking about games, books, movies, series, songs, paintings, … you name it. Find them and consume them. I need to learn what is out there to understand what the current definition of good is. If I want to be successful I need to understand what success look like, and I can only do that by repeatedly experiencing it; so I must make time to play games and to experience new things.</p>
+<p>This approach lets you answer the eternal question: what’s more important: the idea or the execution? The answer to me is pretty clear: at the beginnig, the execution; at the end, the idea.</p>
+<h2 id="just-do-the-damn-thing">Just do the damn “thing”<a class="zola-anchor" href="#just-do-the-damn-thing" aria-label="Anchor link for: just-do-the-damn-thing">🔗</a></h2>
+<p>This point is the one that I struggle with the most. And it’s transparently simple, yet deceivingly hard. It has already been explained: Just do the damn “thing”!</p>
+<blockquote>
+<p><em>You’re not as good as you think. You don’t have it all figured out. Stay focused. Do better.</em> – Ryan Holiday, Ego Is The Enemy</p>
+</blockquote>
+<p>I find it very easy to just work on the code. I’m a coder after all, and I really feel at home when I’m writing code. I find no such ease when it comes to art, or music and sound effects (and do NOT let me get started with marketing… uuh!). Even-though code is a fraction of what makes a game, I naturally gravitate towards it which makes me neglect other more important aspects. Nonetheless, I <strong>must</strong> do the rest, and they, as a result, are the “thing” for me, “the hard thing”.</p>
+<p>I’ve given some thought to it and I’ve reached the conclusion that my ego plays an important role in making this “things” difficult for me. Ego is my enemy. I find it quite embarrassing to put stuff out there that is just <strong>not</strong> good in an almost objective way. But I also have this urge inside me to keep pushing, to keep creating. If that is something that you are also struggling with, here is what helps me.</p>
+<blockquote>
+<p>Nothing that is worth pursuing is ever easy. You will suck. You will fail. And you will be cringy. That is the price you have to pay to get good at the things you care about. If you care more about the opinions of others, just quit. But if you find yourself unable to quit, just keep going. It will get better.</p>
+</blockquote>
+<p>And I fail more often than not. It is so much easier to give advice than to follow it. But I keep trying. And as a result I’ve grown more comfortable with my hard things (still not marketing…). Not enough to make any of this <em>easy</em>, but <strong>easier</strong>. We all have these natural inclinations, and we all must fight our comfort zone if we want to learn; to grow. If you ever find yourself in a similar position, use accountability to your advantage; it hurts but it works. Like reaching out to friends and family to hold yourself accountable. It really helps. That’s exactly what I’m doing here with this post, a friend told me to write it so I’m doing it.</p>
+<h2 id="learning-from-mistakes">Learning from Mistakes<a class="zola-anchor" href="#learning-from-mistakes" aria-label="Anchor link for: learning-from-mistakes">🔗</a></h2>
+<blockquote>
+<p><em>[The] avoidance of small mistakes makes the large ones more severe.</em> – Nicholas Taleb, Antifragile</p>
+</blockquote>
+<p>Preparation, hard work, and learning from mistakes. This is the recipe to success. At least that’s what I think. And in order to learn from mistakes, I have to make them; lots of them. Similar to doing the “thing”, making mistakes is not pleasant and it encounters the same ego problems. Nonetheless, the best medicine to mute the pain that mistakes inflict on you, is to keep making them. But now that you make them, how do you learn from them?</p>
+<p>First of all I need identify that it is, indeed, a mistake. Some are very clear, but others are harder that it looks. Similarly to how you can spot errors to somebody else playing chess but cannot do the same to you, and given that we do not have a “game oracle” that can review all our “moves” and give them an objective score, we need other people to spot the mistakes that we cannot. This is what playtests, demos and feedback rounds are for. With them you learn what bad games are made of, and hopefully we go in the opposite direction.</p>
+<p>Then we need to record the mistakes. We should NOT record the proposed solutions, because we want to learn how to fix it ourselves, and finding the solution <em>is</em> the learning part. And also because, usually, spotters are not fixers themselves. One can spot others’ mistakes, but not necessarily know how to fix them. If you run some playtests, you will rapidly see that players are <strong>always</strong> right when they express discomfort, but they are <strong>habitually wrong</strong> as to why and how to prevent it.</p>
+<p>For me, what that means is that I’ll be running short playtesting sessions, writing post-mortems on projects and also on some technical topics. Hopefully, by writing the issues and how I plan to fix them, I can improve my pattern recognition and spot these mistakes before I actually make them in the future. I will also be participating in game jams solo so I can receive varying amounts of feedback from people online. I think it’s good to not always rely on the same subset of people as playtesters.</p>
+<h1 id="the-plan">The Plan<a class="zola-anchor" href="#the-plan" aria-label="Anchor link for: the-plan">🔗</a></h1>
+<p>With my approach above in mind, the plan is surprisingly straightforward. Three parts, 6 months each, starting from June 2026 till December 2027:</p>
+<ul>
+<li>Months 1-6: Volume and Tools</li>
+<li>Months 7-12: Feedback and Exposure</li>
+<li>Months 13-16: Depth and Taste</li>
+</ul>
+<p>I’m not attaching hard numbers to any of this. No specific revenue targets, wishlist goals, view or subscriber count, none of that. I do not want to fall into a <a rel="noopener nofollow noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/McNamara_fallacy">McNamara fallacy</a> here. Those metrics will matter eventually, but right now they are a distraction. The only metric that matters to me at the moment is shipped games. Hopefully I will learn how to make them good. And from that, I’ll try to make them successful.</p>
+<h2 id="months-1-6-volume-and-tools">Months 1-6: Volume and Tools<a class="zola-anchor" href="#months-1-6-volume-and-tools" aria-label="Anchor link for: months-1-6-volume-and-tools">🔗</a></h2>
+<p>I will ship a small game every month, 6 in total.</p>
+<p>They will be bad, I’m afraid, but I’ll do it nonetheless. I will try different genres, mechanics, moods and build a routine. I will hopefully find what resonates most with me, what I feel is <em>mine</em>. The objective isn’t revenue, I will be uploading all my games for free on Itch.io, but rather to <em>understand</em> what it takes to make and finish a game. I expect lots of mistakes and half baked “interactive experiences” rather than really good games.</p>
+<p>I’m committed to failing a lot and learning from those mistakes. I’ll also devote a week or two every month to extracting the most useful bits of my last game to be repurposed and build any tools that I have an <em>actual</em> need for. If I want to succeed in the long run, I need to make my own mountain of software, and I need to grow my toolbelt at every occasion that I can find.</p>
+<h2 id="months-7-12-feedback-and-exposure">Months 7-12: Feedback and Exposure<a class="zola-anchor" href="#months-7-12-feedback-and-exposure" aria-label="Anchor link for: months-7-12-feedback-and-exposure">🔗</a></h2>
+<p>I will still ship a small game every month, 6 in total (This might be a stretch and might have to drop down to 3).</p>
+<p>At this point I should have a fairly good idea of what it takes to finish a game. It is time for me to do the “hard things”; starting with the hardest: marketing. I need to get some exposure and the best way for me is to write blog posts and create content online (like Youtube videos and/or Twitch streams). I’m unsure what the online content platform will be, so I’m leaving it as undecided, but I plan on starting during this time period.</p>
+<p>I will follow this routine:</p>
+<ul>
+<li>Monday: public devlog/screenshot + what i’ll tackle this week.</li>
+<li>Friday: playable build in Itch.io + what’s new this week.</li>
+<li>Month-end: Itch release</li>
+<li>Post-mortem</li>
+</ul>
+<p>To this point, the games that I uploaded were free; not anymore. I will put them for sale at a low price because I need to validate that players will be willing to pay real money for my games. Then, I’ll identify which games got most plays/downloads/engagement and try to find patterns. During this period I will try to participate in a couple of game jams with other people, but we’ll see.</p>
+<h2 id="months-13-16-depth-and-taste">Months 13-16: Depth and Taste<a class="zola-anchor" href="#months-13-16-depth-and-taste" aria-label="Anchor link for: months-13-16-depth-and-taste">🔗</a></h2>
+<p>I will produce one larger release on Steam.</p>
+<p>I’ll pick some of the best candidates from my catalog of games and prepare a larger release on Steam. This may be games that performed very well or one whose idea I think deserves a better try. With 6 months I do not think I can get more than one release, so I will be doing some prototyping and, hopefully, the small community that I’ve been building the last 6 months can pitch in.</p>
+<p>This is a year in the future, so I do not have any idea how it will be, but I would like to follow a routine like this:</p>
+<ul>
+<li>Two weeks for the protoypes -&gt; i’ll take 2 of them</li>
+<li>Two weeks to polish the 2 candidates -&gt; i’ll take 1</li>
+<li>Four months of production time</li>
+<li>One month of marketing and polish.</li>
+<li>I plan on running playtests on a regular basis.</li>
+</ul>
+<p>The objective here is to experience a Steam release. I would like it to make me some money, but honestly it is so much in the future that I have no idea what to expect.</p>
+<h1 id="the-commitment">The Commitment<a class="zola-anchor" href="#the-commitment" aria-label="Anchor link for: the-commitment">🔗</a></h1>
+<blockquote>
+<p><em>In preparing for battle I have always found that plans are useless, but planning is indispensable.</em> – Dwight D. Eisenhower</p>
+</blockquote>
+<p>There will be earning reports down the line. That is part of my commitment too. I want to be transparent and honest of what everything actually costs and eventually earns.</p>
+<p>And as the quote says, and I’m sorry for you the reader, this plan is absolutely useless. The act of me, figuring it out, asking myself if I believe I can deliver with these constraints is <strong>essential</strong>. That means, the plan will change. I hope it does so for the better, but we never know.</p>
+<p>With that being said, for the next 18 months, this is what I’m <em>planning</em> to do. And my expectations are that it will not survive the first contact with the enemy.</p>
+<p>The door is open to whoever reads this to ask the hard questions when I start making excuses. I cannot promise outcomes, but I can promise effort. Happy to have you along for the ride.</p>
+<p>Let’s see what happens.</p>
+<hr />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>Image by <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.artstation.com/shane-lee">Shane-Lee Littlewood</a> <a href="#fr-1-1">↩</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+    <!-- Next Article -->
+    <div class="sidebar text-right">
+      
+    </div>
+  </div>
+  <!-- Article Navigation Footer -->
+  <nav class="xl:hidden border-t border-c04 pt-4 pb-4">
+    <div class="flex justify-between items-center px-4 gap-4">
+      <!-- Previous Article -->
+      
+      <a class="group flex items-center space-x-3 flex-1 p-4 hover:bg-c01 rounded-lg transition-colors duration-200"
+        href="https://martihomssoler.github.io/blog/the-importance-of-square-wheels/">
+        <i
+          class="fa-solid fa-chevron-left accent-text text-2xl group-hover:scale-110 transition-transform duration-200 accent-hover-text"></i>
+        <div class="flex-1 text-left">
+          <span class="text-xs text-c05 block">Previous</span>
+          <span class="text-sm font-medium text-c07 transition-colors duration-200 line-clamp-2 accent-hover-text">The Importance of Building Square Wheels</span>
+        </div>
+      </a>
+      
+
+      <!-- Next Article -->
+      
+      <div class="flex-1"></div>
+      
+    </div>
+  </nav>
+</div>
+
+  </section>
+  <script>
+    const theme_switcher = document.querySelector('#theme-switcher');
+    function theme_switch() {
+      localStorage.theme = localStorage.theme == "light" ? "dark" : "light";
+      theme_set();
+    }
+    function theme_set() {
+      localStorage.theme == "light" ?
+        (
+          localStorage.theme = "light",
+          document.documentElement.classList.remove("dark"),
+          document.documentElement.classList.add("light"),
+          theme_switcher.classList.add('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-sun"></i>'}, 150)
+        ) :
+        (
+          localStorage.theme = "dark",
+          document.documentElement.classList.add("dark"),
+          document.documentElement.classList.remove("light"),
+          theme_switcher.classList.remove('translate-x-[1.5rem]'),
+          setTimeout(() => {theme_switcher.innerHTML = '<i class="fa-solid fa-moon"></i>'}, 150)
+        )
+    }
+    theme_set();
+  </script>
+  <!-- Search functionality -->
+  <script src="/search.js"></script>
+</body>
+
+</html>
