@@ -12,7 +12,7 @@ default_language = "en"
 index_format = "elasticlunr_json"
 
 [markdown]
-highlight_code = true
+highligh_code = true
 highlight_theme = "one-dark"
 render_emoji = true
 external_links_target_blank = true
